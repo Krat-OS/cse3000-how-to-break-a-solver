@@ -1,0 +1,17 @@
+The only commands I recommend to run on the login node are `unzip/tar`, `cp/mv/mkdir` and other basic linux commands which need few resources. The rest (`python/conda/make/executing SharpVelvet/model counters`) should done via an actual DelftBlue job.
+
+Note: I have already included the `counter/generator` config `.json` files in the provided SharpVelvet archive, in the "correct" sub-folders. The `.json` files are present in this folder as a backup.
+
+1. [Login](https://doc.dhpc.tudelft.nl/delftblue/Remote-access-to-DelftBlue/) to DelftBlue.
+2. [Transfer](https://doc.dhpc.tudelft.nl/delftblue/Data-transfer-to-DelftBlue/) the needed files to DelftBlue. For starting point, you can use the `ganak-v2.1-linux64` binary from the same folder as this file, the provided copy of SharpVelvet, pre-packaged with counter and generator configs, and the 3 `.sh` scripts. To follow these instructions easily, transfer the aforementioned files to your home folder: `scp [-J <bastion>] -p <local_file> <delftblue>:~/`. The linked manual section describes this in more details, if needed.
+3. Unzip archives if any are present: for `.zip` files use `unzip <archive.zip>` and for `.tar.xz` files : `tar -xf <archive.tar.xz>`.
+4. To compile the generators and set up SharpVelvet deps using Conda, schedule the compilation job: `sbatch compile_velvet.sh`.
+5. Wait till the job finishes. This will take a while due to `conda` being slow, but it is needed only once. After submitting a job using `sbatch`, you will get a jobID. To check status of a job: `seff <jobid>`. More info, if needed, can be found in the [manual](https://doc.dhpc.tudelft.nl/delftblue/Slurm-trouble-shooting/) section.
+6. In the same folder you ran `sbatch`, there will be a `slurm-<jobid>.out` file generated after the execution starts. You can open this file using your preferred editor (i.e. vim, nano, etc.) directly on DelftBlue. You can also transfer it to your local computer for further analysis if needed. Important: This file can be opened and read while the the job is still running, so you can check it's progress live.
+7. Generate instances using the `generate_velvet.sh` script: `sbatch generate_velvet.sh`. 
+8. Wait till the job finishes.
+9. Now you can finally run SharpVelvet on `ganak2.1` :). Just as in previous points run using `sbatch run_velvet.sh`.
+10. After the SharpVelvet run has finished, you can see SharpVelvet's output in the corresponding `slurm-<jobid>.out` file, and the report should be generated in the usual folder in the `SharpVelvet-main` directory.
+
+The relevant default parameters I used in the `generate` and `run` script are 12 CPU cores and 15 minutes maximum runtime. This enables instant scheduling with no wait times. When doing actual fuzzing, adjust as needed. However keep in mind that waiting time increases exponentially if requesting many (64/128/etc.) cores for longer periods (1/5/10hours) during periods of peak DelftBlue usage by fellow researchers.
+For the compile script, since conda is slow, I used a default of `45` minutes. 
