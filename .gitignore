@@ -1,0 +1,14 @@
+.venv/
+*.json
+generators/build/
+model-counters/
+out/
+
+# PYTHON
+__pycache__
+*/__pycache__
+
+# CPOG
+verifiers/cpog-check
+verifiers/cpog-gen
+verifiers/d4
