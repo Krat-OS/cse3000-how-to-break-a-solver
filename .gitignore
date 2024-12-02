@@ -12,3 +12,4 @@ __pycache__
 verifiers/cpog-check
 verifiers/cpog-gen
 verifiers/d4
+result_analysis/result_analysis.ipynb
