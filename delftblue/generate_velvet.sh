@@ -11,7 +11,7 @@ module load miniconda3
 echo Done Conda loading!
 conda activate sharpvelvet
 echo Done Conda Activation!
-python /home/$USER/SharpVelvet-main/src/generate_instances.py --generators /home/$USER/SharpVelvet-main/generators/generator_config_mc.json
+python /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet-main/src/generate_instances.py --generators /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet-main/generators/generator_config_mc.json
 conda deactivate
 echo Done Conda Deactivation!
 

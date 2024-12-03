@@ -11,7 +11,7 @@ module load miniconda3
 echo Done Conda loading!
 conda activate sharpvelvet
 echo Done Conda Activation!
-python /home/$USER/SharpVelvet-main/src/run_fuzzer.py --counters /home/$USER/SharpVelvet-main/counter_config_mc.json --instances /home/$USER/SharpVelvet-main/out/instances/cnf
+python /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet-main/src/run_fuzzer.py --counters /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet-main/counter_config_mc.json --instances /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet-main/out/instances/cnf
 conda deactivate
 echo Done Conda Deactivation!
 

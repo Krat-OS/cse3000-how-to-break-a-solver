@@ -14,8 +14,8 @@ module load miniconda3
 mkdir -p /scratch/$USER/.conda
 ln -s /scratch/$USER/.conda $HOME/.conda
 
-cd /home/$USER/SharpVelvet-main/generators
+cd /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet-main/generators
 g++ cnf-fuzz-biere.c -o biere-fuzz
 
-conda env create -f /home/$USER/SharpVelvet-main/env/sharpvelvet.yml
+conda env create -f /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet-main/env/sharpvelvet.yml
 
