@@ -1,0 +1,3 @@
+[submodule "revisiting_satzilla"]
+	path = revisiting_satzilla
+	url = https://github.com/hadarshavit/revisiting_satzilla
