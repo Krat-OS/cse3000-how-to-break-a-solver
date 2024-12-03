@@ -1,15 +1,16 @@
-.venv/
-*.json
-generators/build/
-model-counters/
-out/
+SharpVelvet/*.json
+SharpVelvet/generators/build/
+SharpVelvet/model-counters/
+SharpVelvet/out/
 
 # PYTHON
-__pycache__
-*/__pycache__
+SharpVelvet/__pycache__
+SharpVelvet/*/__pycache__
+cristian-tool/__pycache__
+cristian-tool/*/__pycache__
 
 # CPOG
-verifiers/cpog-check
-verifiers/cpog-gen
-verifiers/d4
-result_analysis/result_analysis.ipynb
+SharpVelvet/verifiers/cpog-check
+SharpVelvet/verifiers/cpog-gen
+SharpVelvet/verifiers/d4
+cristian-tool/result_analysis.ipynb
