@@ -4,7 +4,7 @@ import glob
 import pandas as pd
 
 instances_list = "../SharpVelvet/out/2024-11-27_s764342644147327724_generated_instances.txt"
-output_dir = "../SharpVelvet/out/features_output/"
+output_dir = "out/features_output/"
 satzilla_path = "SAT-features-competition2024/features"
 
 csv_files = glob.glob(os.path.join(output_dir, "*.csv"))
