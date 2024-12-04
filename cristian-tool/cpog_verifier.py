@@ -4,7 +4,7 @@ import shutil
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from concurrent.futures import TimeoutError as FuturesTimeoutError
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, List
 from datetime import datetime
 import threading
 
@@ -257,6 +257,63 @@ def process_row(row: pd.Series, verifier_dir: Path) -> tuple[int, Dict[str, Any]
 
     return row.name, result
 
+def process_instance_group(group: pd.DataFrame, verifier_dir: Path) -> List[tuple[int, Dict[str, Any]]]:
+    """Process a group of rows sharing the same instance_path.
+
+    Args:
+        group: DataFrame containing rows with the same instance_path
+        verifier_dir: Directory containing verification tools
+
+    Returns:
+        List[tuple]: List of (row_index, results_dictionary) for each row in the group
+    """
+    if pd.isna(group["instance_path"].iloc[0]):
+        return [(idx, create_missing_instance_result()) for idx in group.index]
+
+    instance_path = Path(group["instance_path"].iloc[0])
+    print_progress(f"Starting verification for instance: {instance_path.name}")
+
+    workspace = setup_instance_workspace(instance_path, verifier_dir)
+    results = []
+
+    try:
+        verified, error, cpog_count = verify_single_instance(instance_path, workspace)
+
+        for idx, row in group.iterrows():
+            if (pd.isna(row["count_value"]) or
+                not float(row["count_value"]).is_integer() or
+                row.get("_skip_due_to_threshold", False)):
+                results.append((idx, create_invalid_count_result()))
+                continue
+
+            result = {
+                "cpog_message": "NO ERROR" if error is None else error,
+                "cpog_count": cpog_count,
+                "count_matches": (
+                    (cpog_count > 0 and abs(cpog_count - row["count_value"]) < 1e-6) or
+                    (cpog_count == 0 and row["count_value"] == 0 and
+                     row["satisfiability"] == "UNSATISFIABLE" and error == "UNSAT")
+                ),
+                "verified": verified
+            }
+            results.append((idx, result))
+
+    except Exception as e:
+        error_result = {
+            "cpog_message": f"ERROR: {str(e)}",
+            "cpog_count": 0,
+            "count_matches": False,
+            "verified": False
+        }
+        results = [(idx, error_result) for idx in group.index]
+    finally:
+        cleanup_workspace(workspace)
+        remaining = update_remaining_count()
+        print_progress(
+            f"Completed verification for {instance_path.name}. Remaining instance groups: {remaining}")
+
+    return results
+
 def verify_with_cpog(
     df: pd.DataFrame,
     verifier_dir: Path | str = Path(__file__).parent / "cpog",
@@ -285,34 +342,35 @@ def verify_with_cpog(
     if max_cnt_thresh is not None:
         df_to_process.loc[df_to_process["count_value"] > max_cnt_thresh, "_skip_due_to_threshold"] = True
 
-    df_to_process = df_to_process.sort_values('count_value')
+    grouped = df_to_process.groupby("instance_path", group_keys=True)
 
     global remaining_count
-    remaining_count = len(df_to_process)
-    print_progress(f"Starting verification of {remaining_count} instances with {max_workers} workers")
+    remaining_count = len(grouped)
+    print_progress(f"Starting verification of {remaining_count} unique instances with {max_workers} workers")
 
     try:
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
-            future_to_idx = {
-                executor.submit(process_row, row, verifier_dir): idx
-                for idx, row in df_to_process.iterrows()
+            future_to_group = {
+                executor.submit(process_instance_group, group, verifier_dir): group
+                for _, group in grouped
             }
 
-            for future in as_completed(future_to_idx):
-                idx = future_to_idx[future]
+            for future in as_completed(future_to_group):
                 try:
-                    idx, results = future.result(timeout=thread_timeout)
-                    for key, value in results.items():
-                        if key == "cpog_count":
-                            value = int(value)
-                        results_df.at[idx, key] = value
+                    results = future.result(timeout=thread_timeout)
+                    for idx, result in results:
+                        for key, value in result.items():
+                            if key == "cpog_count":
+                                value = int(value)
+                            results_df.at[idx, key] = value
 
                 except FuturesTimeoutError:
-                    print_progress(f"Timeout occurred for instance at index {idx}")
-                    results_df.at[idx, "cpog_message"] = "TIMEOUT"
-                    results_df.at[idx, "cpog_count"] = 0
-                    results_df.at[idx, "count_matches"] = False
-                    results_df.at[idx, "verified"] = False
+                    group = future_to_group[future]
+                    print_progress(f"Timeout occurred for instance: {group['instance_path'].iloc[0]}")
+                    for idx in group.index:
+                        timeout_result = create_timeout_result()
+                        for key, value in timeout_result.items():
+                            results_df.at[idx, key] = value
                     update_remaining_count()
 
         print_progress("Verification complete for all instances")
