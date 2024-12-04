@@ -31,7 +31,24 @@ def read_cnf_file(cnf_path: Path) -> Optional[str]:
         return None
 
 def process_results(csv_path: Path | str) -> pd.DataFrame:
-    """Process results CSV and load associated CNF files.
+    """Process results CSV file.
+
+    Args:
+        csv_path: Path to results CSV file
+
+    Returns:
+        DataFrame: Results DataFrame
+    """
+    csv_path = Path(csv_path)
+    df = pd.read_csv(csv_path)
+    if 'instance' not in df.columns:
+        return df
+    else:
+        df.rename(columns={'instance': 'instance_path'}, inplace=True)
+    return df
+
+def process_results_and_insert_instance(csv_path: Path | str) -> pd.DataFrame:
+    """Process results CSV and load associated CNF files, inserting content into instance column.
 
     Args:
         csv_path: Path to results CSV file
@@ -39,12 +56,12 @@ def process_results(csv_path: Path | str) -> pd.DataFrame:
     Returns:
         DataFrame: Results with CNF contents added
     """
-    csv_path = Path(csv_path)
-    base_dir = csv_path.parent
-    df = pd.read_csv(csv_path)
+    df = process_results(csv_path)
+    base_dir = Path(csv_path).parent
 
-    df['instance_path'] = df['instance']
-    df['instance'] = None
+    if 'instance' in df.columns:
+        df['instance_path'] = df['instance']
+        df['instance'] = None
 
     for idx, row in df.iterrows():
         if pd.isna(row['instance_path']):
