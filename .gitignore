@@ -13,4 +13,13 @@ cristian-tool/*/__pycache__
 SharpVelvet/verifiers/cpog-check
 SharpVelvet/verifiers/cpog-gen
 SharpVelvet/verifiers/d4
+
+# Cristian Tool
 cristian-tool/result_analysis.ipynb
+cristian-tool/cpog/cpog-check
+cristian-tool/cpog/cpog-gen
+cristian-tool/cpog/d4
+cristian-tool/output.csv
+
+# IDE SPECIFIC
+.vscode/
