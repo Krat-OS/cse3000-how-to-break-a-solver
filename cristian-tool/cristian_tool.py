@@ -4,7 +4,7 @@ from typing import Optional
 
 import pandas as pd
 from cpog_verifier import verify_single_instance, verify_with_cpog
-from result_proccessor import process_results
+from result_processor import process_results
 
 
 def process_results_and_verify_with_cpog(
