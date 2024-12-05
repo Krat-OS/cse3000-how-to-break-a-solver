@@ -1,7 +1,11 @@
 #!/bin/bash
-
-# Initialize Conda
-source ~/miniconda3/etc/profile.d/conda.sh
+#SBATCH --job-name="compile-generators"
+#SBATCH --time=00:02:00
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=16
+#SBATCH --mem-per-cpu=1G
+#SBATCH --partition=compute-p2
+#SBATCH --account=education-eemcs-courses-cse3000
 
 # Dynamically determine the project directory based on the script's location
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
