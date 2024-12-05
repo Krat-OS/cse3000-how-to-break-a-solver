@@ -7,11 +7,15 @@
 #SBATCH --partition=compute-p2
 #SBATCH --account=education-eemcs-courses-cse3000
 
+# Fail fast on any error
+set -e
+
 # Dynamically determine the project directory based on the script's location
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")
+PROJECT_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")"
 
 # Define absolute paths for project and configuration files
+ENV_YAML="$PROJECT_DIR/env/global-env.yml"
 GENERATE_INSTANCES_SCRIPT="$PROJECT_DIR/SharpVelvet/src/generate_instances.py"
 RUN_FUZZER_SCRIPT="$PROJECT_DIR/SharpVelvet/src/run_fuzzer.py"
 GENERATOR_CONFIG="$PROJECT_DIR/SharpVelvet/tool-config/generator_config_mc.json"
@@ -25,6 +29,9 @@ SATZILLA_PATH="$PROJECT_DIR/scripts/features"
 
 # Conda environment name
 CONDA_ENV_NAME="global-env"
+
+# Load Conda environment
+source ~/miniconda3/etc/profile.d/conda.sh
 
 # Remove the existing instances directory
 if [ -d "$INSTANCE_DIR" ]; then
@@ -63,9 +70,11 @@ for package in "${REQUIRED_PACKAGES[@]}"; do
 done
 
 # Generate instances without verifier
+echo "Generating instances..."
 python3 "$GENERATE_INSTANCES_SCRIPT" --generators "$GENERATOR_CONFIG"
 
 # Run the solver (fuzzer) without cpog and verifier
+echo "Running the solver..."
 python3 "$RUN_FUZZER_SCRIPT" --counters "$COUNTER_CONFIG" --instances "$CNF_DIR"
 
 # Compute features for generated instances
@@ -91,13 +100,33 @@ done
 # Post-process CSV files to remove duplicate rows
 for CSV_FILE in "$FEATURES_OUTPUT_DIR"/*.csv; do
     if [ -f "$CSV_FILE" ]; then
-        python3 - <<END
+python3 - <<END
 import pandas as pd
-df = pd.read_csv("$CSV_FILE", header=None)
-first_row = df.iloc[0]
-df = df[df.ne(first_row).any(axis=1)]
-df.iloc[0] = first_row
-df.to_csv("$CSV_FILE", index=False, header=False)
+import os
+
+# Ensure the CSV file exists before proceeding
+csv_file_path = "$CSV_FILE"
+if os.path.isfile(csv_file_path):
+    try:
+        # Load the CSV file
+        df = pd.read_csv(csv_file_path, header=None)
+
+        # Keep the first row
+        first_row = df.iloc[0]
+
+        # Remove duplicate rows
+        df = df[df.ne(first_row).any(axis=1)]
+
+        # Reinsert the first row at the top
+        df.iloc[0] = first_row
+
+        # Save the updated CSV file
+        df.to_csv(csv_file_path, index=False, header=False)
+        print(f"Processed CSV file successfully: {csv_file_path}")
+    except Exception as e:
+        print(f"Error processing {csv_file_path}: {e}")
+else:
+    print(f"CSV file not found: {csv_file_path}")
 END
         echo "Processed CSV file: $CSV_FILE"
     fi
