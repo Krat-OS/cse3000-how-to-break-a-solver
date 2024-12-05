@@ -12,7 +12,6 @@ set -e
 
 # Dynamically determine the project directory based on the script's location
 PROJECT_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")"
-echo "PROJECT_DIR: $PROJECT_DIR"
 
 # Define absolute paths for project and configuration files
 ENV_YAML="$PROJECT_DIR/env/global-env.yml"
@@ -26,6 +25,9 @@ CNF_DIR="$INSTANCE_DIR/cnf"
 # Paths for features extraction
 FEATURES_OUTPUT_DIR="$PROJECT_DIR/SharpVelvet/out/features_output"
 SATZILLA_PATH="$PROJECT_DIR/scripts/features"
+
+# Conda environment name
+CONDA_ENV_NAME="sharpvelvet"
 
 # Remove the existing instances directory
 if [ -d "$INSTANCE_DIR" ]; then
@@ -42,6 +44,9 @@ if [ -d "$FEATURES_OUTPUT_DIR" ]; then
 fi
 
 mkdir -p "$FEATURES_OUTPUT_DIR"
+
+# Activate conda environment
+conda activate "$CONDA_ENV_NAME"
 
 # Ensure required Python packages are installed
 REQUIRED_PACKAGES=("pandas")
@@ -114,3 +119,6 @@ END
         echo "Processed CSV file: $CSV_FILE"
     fi
 done
+
+# Deactivate conda environment
+conda deactivate
