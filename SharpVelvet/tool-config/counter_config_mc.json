@@ -1,0 +1,7 @@
+{
+   "GPMC": {
+      "path":"/home/parallels/RP/GPMC/bin/gpmc",
+      "config":"{INSTANCE}",
+      "exact":"True"
+   }
+}
