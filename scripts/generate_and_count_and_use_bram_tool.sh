@@ -9,6 +9,11 @@
 
 # Fail fast on any error
 set -e
+module load miniconda3
+
+mkdir -p /scratch/$USER/.conda
+ln -s /scratch/$USER/.conda $HOME/.conda
+
 
 # Dynamically determine the project directory based on the script's location
 PROJECT_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")"
