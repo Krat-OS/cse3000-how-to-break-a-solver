@@ -28,10 +28,7 @@ FEATURES_OUTPUT_DIR="$PROJECT_DIR/SharpVelvet/out/features_output"
 SATZILLA_PATH="$PROJECT_DIR/scripts/features"
 
 # Conda environment name
-CONDA_ENV_NAME="global-env"
-
-# Load Conda environment
-source ~/miniconda3/etc/profile.d/conda.sh
+CONDA_ENV_NAME="sharpvelvet"
 
 # Remove the existing instances directory
 if [ -d "$INSTANCE_DIR" ]; then
@@ -48,14 +45,6 @@ if [ -d "$FEATURES_OUTPUT_DIR" ]; then
 fi
 
 mkdir -p "$FEATURES_OUTPUT_DIR"
-
-# Check if the conda environment exists
-if ! conda env list | grep -q "^$CONDA_ENV_NAME "; then
-    echo "Conda environment '$CONDA_ENV_NAME' does not exist. Creating it..."
-    conda env create -f "$ENV_YAML"
-else
-    echo "Conda environment '$CONDA_ENV_NAME' already exists."
-fi
 
 # Activate conda environment
 conda activate "$CONDA_ENV_NAME"
