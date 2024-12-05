@@ -3,9 +3,11 @@
 # Initialize Conda
 source ~/miniconda3/etc/profile.d/conda.sh
 
+# Dynamically determine the project directory based on the script's location
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")
+
 # Define absolute paths for project and configuration files
-PROJECT_DIR="/home/parallels/RP/cse3000-how-to-break-a-solver"
-ENV_YAML="$PROJECT_DIR/env/global-env.yml"
 GENERATE_INSTANCES_SCRIPT="$PROJECT_DIR/SharpVelvet/src/generate_instances.py"
 RUN_FUZZER_SCRIPT="$PROJECT_DIR/SharpVelvet/src/run_fuzzer.py"
 GENERATOR_CONFIG="$PROJECT_DIR/SharpVelvet/tool-config/generator_config_mc.json"
