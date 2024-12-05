@@ -1,6 +1,6 @@
 {
    "GPMC": {
-      "path":"/home/parallels/RP/GPMC/bin/gpmc",
+      "path":"/home/vjurisic/cse3000-how-to-break-a-solver/scripts/gpmc",
       "config":"{INSTANCE}",
       "exact":"True"
    }
