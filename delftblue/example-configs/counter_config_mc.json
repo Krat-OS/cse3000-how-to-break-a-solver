@@ -1,0 +1,14 @@
+{
+	"ganak":
+       	{
+		"path":"/home/${USER}/ganak-v2.1-linux64",
+	        "config":"",
+	        "exact":"True"
+	},
+	"gpmc":
+	{
+		"path":"/home/${USER}/Track1_MC/gpmc/bin/gpmc",
+                "config":" -mode=0 {INSTANCE} ",
+                "exact":"True"
+       	}
+}
