@@ -1,25 +1,17 @@
 #!/bin/bash
 #SBATCH --job-name="compile-generators"
-#SBATCH --time=00:02:00
+#SBATCH --time=00:05:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --mem-per-cpu=1G
 #SBATCH --partition=compute-p2
 #SBATCH --account=education-eemcs-courses-cse3000
 
-# Fail fast on any error
-set -e
-#module load miniconda3
+module load miniconda3
 
-#mkdir -p /scratch/$USER/.conda
-#ln -s /scratch/$USER/.conda $HOME/.conda
+PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SATZILLA_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../revisiting_satzilla" && pwd)"
 
-
-# Dynamically determine the project directory based on the script's location
-PROJECT_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")"
-
-# Define absolute paths for project and configuration files
-ENV_YAML="$PROJECT_DIR/env/global-env.yml"
 GENERATE_INSTANCES_SCRIPT="$PROJECT_DIR/SharpVelvet/src/generate_instances.py"
 RUN_FUZZER_SCRIPT="$PROJECT_DIR/SharpVelvet/src/run_fuzzer.py"
 GENERATOR_CONFIG="$PROJECT_DIR/SharpVelvet/tool-config/generator_config_mc.json"
@@ -29,7 +21,7 @@ CNF_DIR="$INSTANCE_DIR/cnf"
 
 # Paths for features extraction
 FEATURES_OUTPUT_DIR="$PROJECT_DIR/SharpVelvet/out/features_output"
-SATZILLA_PATH="/home/vjurisic/revisiting_satzilla/SAT-features-competition2024/features"
+SATZILLA_PATH="$SATZILLA_DIR//SAT-features-competition2024/features"
 
 # Conda environment name
 CONDA_ENV_NAME="sharpvelvet"

@@ -7,24 +7,16 @@
 #SBATCH --partition=compute-p2
 #SBATCH --account=education-eemcs-courses-cse3000
 
-# Initialize Conda
-source ~/miniconda3/etc/profile.d/conda.sh
+module load miniconda3
 
-# Dynamically determine the project directory based on the script's location
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")
+PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-ENV_YAML="$PROJECT_DIR/env/global-env.yml"
 GENERATE_INSTANCES_SCRIPT="$PROJECT_DIR/SharpVelvet/src/generate_instances.py"
 RUN_FUZZER_SCRIPT="$PROJECT_DIR/SharpVelvet/src/run_fuzzer.py"
 GENERATOR_CONFIG="$PROJECT_DIR/SharpVelvet/tool-config/generator_config_mc.json"
 COUNTER_CONFIG="$PROJECT_DIR/SharpVelvet/tool-config/counter_config_mc.json"
 INSTANCE_DIR="$PROJECT_DIR/SharpVelvet/out/instances"
 
-# Conda environment name
-CONDA_ENV_NAME="global-env"
-
-# Remove the existing instances directory
 if [ -d "$INSTANCE_DIR" ]; then
     echo "Deleting existing instances directory: $INSTANCE_DIR"
     rm -rf "$INSTANCE_DIR"
@@ -32,31 +24,7 @@ else
     echo "No existing instances directory found."
 fi
 
-# Check if the conda environment exists
-if ! conda env list | grep -q "^$CONDA_ENV_NAME "; then
-    echo "Conda environment '$CONDA_ENV_NAME' does not exist. Creating it..."
-    conda env create -f "$ENV_YAML"
-else
-    echo "Conda environment '$CONDA_ENV_NAME' already exists."
-fi
-
-# Activate conda environment
-conda activate "$CONDA_ENV_NAME"
-
-# Ensure required Python packages are installed
-REQUIRED_PACKAGES=("pandas")
-for package in "${REQUIRED_PACKAGES[@]}"; do
-    if ! python3 -c "import $package" &>/dev/null; then
-        echo "Installing missing package: $package"
-        pip install $package
-    fi
-done
-
-# Generate instances without verifier
+conda activate "global-env"
 python3 "$GENERATE_INSTANCES_SCRIPT" --generators "$GENERATOR_CONFIG"
-
-# Run the solver (fuzzer) without cpog and verifier
 python3 "$RUN_FUZZER_SCRIPT" --counters "$COUNTER_CONFIG" --instances "$INSTANCE_DIR/cnf"
-
-# Deactivate conda environment
 conda deactivate
