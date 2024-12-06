@@ -9,11 +9,6 @@
 
 # Fail fast on any error
 set -e
-#module load miniconda3
-
-#mkdir -p /scratch/$USER/.conda
-#ln -s /scratch/$USER/.conda $HOME/.conda
-
 
 # Dynamically determine the project directory based on the script's location
 PROJECT_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")"
@@ -26,13 +21,15 @@ GENERATOR_CONFIG="$PROJECT_DIR/SharpVelvet/tool-config/generator_config_mc.json"
 COUNTER_CONFIG="$PROJECT_DIR/SharpVelvet/tool-config/counter_config_mc.json"
 INSTANCE_DIR="$PROJECT_DIR/SharpVelvet/out/instances"
 CNF_DIR="$INSTANCE_DIR/cnf"
-
-# Paths for features extraction
 FEATURES_OUTPUT_DIR="$PROJECT_DIR/SharpVelvet/out/features_output"
 SATZILLA_PATH="/home/vjurisic/revisiting_satzilla/SAT-features-competition2024/features"
 
 # Conda environment name
-CONDA_ENV_NAME="sharpvelvet"
+CONDA_ENV_NAME="global-env"
+
+# Activate Conda environment
+eval "$(/home/vjurisic/miniconda3/bin/conda shell.bash hook)"
+conda activate "$CONDA_ENV_NAME"
 
 # Remove the existing instances directory
 if [ -d "$INSTANCE_DIR" ]; then
@@ -49,9 +46,6 @@ if [ -d "$FEATURES_OUTPUT_DIR" ]; then
 fi
 
 mkdir -p "$FEATURES_OUTPUT_DIR"
-
-# Activate conda environment
-conda activate "$CONDA_ENV_NAME"
 
 # Ensure required Python packages are installed
 REQUIRED_PACKAGES=("pandas")
@@ -79,12 +73,9 @@ find "$FEATURES_OUTPUT_DIR" -type f -name "*.csv" -delete
 # Process each instance
 for CNF_FILE in "$CNF_DIR"/*.cnf; do
     if [ -f "$CNF_FILE" ]; then
-        # Get the generator type from the filename
         filename=$(basename "$CNF_FILE")
         generator_type="${filename%%_*}"
         OUTPUT_FILE="$FEATURES_OUTPUT_DIR/features_output_${generator_type}.csv"
-
-        # Run the SATzilla features extractor
         "$SATZILLA_PATH" -base "$CNF_FILE" "$OUTPUT_FILE" >/dev/null 2>&1
         echo "Computed features for $CNF_FILE"
     fi
@@ -93,37 +84,24 @@ done
 # Post-process CSV files to remove duplicate rows
 for CSV_FILE in "$FEATURES_OUTPUT_DIR"/*.csv; do
     if [ -f "$CSV_FILE" ]; then
-python3 - <<END
+        python3 - <<END
 import pandas as pd
 import os
 
-# Ensure the CSV file exists before proceeding
 csv_file_path = "$CSV_FILE"
 if os.path.isfile(csv_file_path):
     try:
-        # Load the CSV file
         df = pd.read_csv(csv_file_path, header=None)
-
-        # Keep the first row
         first_row = df.iloc[0]
-
-        # Remove duplicate rows
         df = df[df.ne(first_row).any(axis=1)]
-
-        # Reinsert the first row at the top
         df.iloc[0] = first_row
-
-        # Save the updated CSV file
         df.to_csv(csv_file_path, index=False, header=False)
-        print(f"Processed CSV file successfully: {csv_file_path}")
     except Exception as e:
         print(f"Error processing {csv_file_path}: {e}")
-else:
-    print(f"CSV file not found: {csv_file_path}")
 END
         echo "Processed CSV file: $CSV_FILE"
     fi
 done
 
-# Deactivate conda environment
+# Deactivate Conda environment
 conda deactivate
