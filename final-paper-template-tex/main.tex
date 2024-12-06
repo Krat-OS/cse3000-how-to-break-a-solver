@@ -1,0 +1,69 @@
+\documentclass[english, a4paper]{article}
+\pdfpagewidth=8.5in
+\pdfpageheight=11in
+
+% IJCAI-24 styling
+\usepackage{ijcai24}
+\usepackage{times}
+\usepackage{soul}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[small]{caption}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage[switch]{lineno}
+\usepackage[autostyle=true,english=american]{csquotes}
+\MakeOuterQuote{"}
+
+% Bibliography setup
+\usepackage{cite}
+\bibliographystyle{named}
+
+\makeatletter
+    \let\@internalcite\cite
+    \def\cite{\def\citeauthoryear##1##2{##1, ##2}\@internalcite}
+    \def\shortcite{\def\citeauthoryear##1##2{##2}\@internalcite}
+    \def\@biblabel#1{\def\citeauthoryear##1##2{##1, ##2}[#1]\hfill}
+\makeatother
+
+% \renewcommand*\ttdefault{txtt}
+\raggedbottom
+
+% Theorems
+\newtheorem{example}{Example}
+\newtheorem{theorem}{Theorem}
+
+% PDF metadata
+\pdfinfo{
+/TemplateVersion (IJCAI.2024.0)
+}
+
+\begin{document}
+
+% TU Delft title page
+\input{title_page}
+
+\linenumbers
+
+% Main content
+\twocolumn  % Start two-column format after title page
+
+\input{sections/introduction}
+\input{sections/related_work}
+\input{sections/methodology_or_problem_description}
+\input{sections/your_contribution}
+\input{sections/experimental_setup_and_results}
+\input{sections/responsible_research}
+\input{sections/discussion}
+\input{sections/conclusion_and_future_work}
+\input{sections/appendix}
+
+\pagebreak
+\bibliography{references}
+
+\end{document}

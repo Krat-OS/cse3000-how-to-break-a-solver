@@ -9,8 +9,12 @@ SharpVelvet/*/__pycache__
 cristian-tool/__pycache__
 cristian-tool/*/__pycache__
 
+# TeX
+final-paper-template-tex/doc/*
+
+# IDE Specific
+.vscode/*
+
 # CPOG
-SharpVelvet/verifiers/cpog-check
-SharpVelvet/verifiers/cpog-gen
-SharpVelvet/verifiers/d4
 cristian-tool/result_analysis.ipynb
+cristian-tool/cpog/*

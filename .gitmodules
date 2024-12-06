@@ -1,0 +1,3 @@
+[submodule "bram-tool/satzilla_feature_extractor_2024"]
+	path = bram-tool/satzilla_feature_extractor_2024
+	url = https://github.com/hadarshavit/revisiting_satzilla
