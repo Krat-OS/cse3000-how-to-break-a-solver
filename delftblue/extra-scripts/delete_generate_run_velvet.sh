@@ -7,7 +7,16 @@
 #SBATCH --partition=compute-p2
 #SBATCH --account=education-eemcs-courses-cse3000
 
+# Delftblue
 module load miniconda3
+
+# Local
+# eval "$(/home/vjurisic/miniconda3/bin/conda shell.bash hook)"
+
+if [ -d "/home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/out/instances" ]; then
+    echo "Deleting existing instances directory."
+    rm -rf "/home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/out/instances"
+fi
 
 conda activate "global-env"
 echo Done Conda Activation!
