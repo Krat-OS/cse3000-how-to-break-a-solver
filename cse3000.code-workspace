@@ -1,0 +1,46 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "latex-workshop.latex.tools": [
+            {
+                "name": "pdflatex",
+                "command": "pdflatex",
+                "args": [
+                    "-synctex=1",
+                    "-interaction=nonstopmode", 
+                    "-file-line-error",
+                    "-output-directory=doc",
+                    "%DOC%"
+                ]
+            },
+            {
+                "name": "bibtex",
+                "command": "bibtex",
+                "args": [
+                    "doc/%DOCFILE%"
+                ]
+            }
+        ],
+        "latex-workshop.latex.recipes": [
+            {
+                "name": "pdflatex -> bibtex -> pdflatex*2",
+                "tools": [
+                    "pdflatex",
+                    "bibtex",
+                    "pdflatex",
+                    "pdflatex"
+                ]
+            }
+        ],
+        "latex-workshop.latex.outDir": "./doc"
+    },
+    "extensions": {
+        "recommendations": [
+            "James-Yu.latex-workshop"
+        ]
+    }
+}
