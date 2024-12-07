@@ -21,4 +21,5 @@ cristian-tool/cpog/*
 
 # Local Testing
 /test
+/binaries
 cristian-tool/output.csv
