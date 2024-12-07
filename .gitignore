@@ -15,9 +15,10 @@ final-paper-template-tex/doc/*
 # IDE Specific
 .vscode/*
 
-# CPOG
+# Cristian Tool
 cristian-tool/result_analysis.ipynb
 cristian-tool/cpog/*
 
 # Local Testing
 /test
+cristian-tool/output.csv
