@@ -33,36 +33,36 @@ Run the CLI script using:
 
 1. **Run a Python Script:**
    ```python
-   python satzilla_feature_extractor_2024/compute_sat_feature_data_cli.py run_python_script /path/to/script.py --kwargs key1=value1 key2=value2
+   python satzilla_feature_extractor/compute_sat_feature_data_cli.py run_python_script /path/to/script.py --kwargs key1=value1 key2=value2
    ```
 
    This method is intended to be used for:
    
    - generating instances: 
    ```python
-   python satzilla_feature_extractor_2024/compute_sat_feature_data_cli.py run_python_script     /path/to/cse3000-how-to-break-a-solver/SharpVelvet/src/generate_instances.py     --kwargs generators=/path/to/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/example_generator_config_mc.json
+   python satzilla_feature_extractor/compute_sat_feature_data_cli.py run_python_script     /path/to/cse3000-how-to-break-a-solver/SharpVelvet/src/generate_instances.py     --kwargs generators=/path/to/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/example_generator_config_mc.json
    ```
    - fuzzing: 
    ```python
-   python satzilla_feature_extractor_2024/compute_sat_feature_data_cli.py run_python_script     /path/to/cse3000-how-to-break-a-solver/SharpVelvet/src/run_fuzzer.py     --kwargs counters=/path/to/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/example_counter_config_mc.json     instances=/path/to/cse3000-how-to-break-a-solver/SharpVelvet/out/instances/cnf
+   python satzilla_feature_extractor/compute_sat_feature_data_cli.py run_python_script     /path/to/cse3000-how-to-break-a-solver/SharpVelvet/src/run_fuzzer.py     --kwargs counters=/path/to/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/example_counter_config_mc.json     instances=/path/to/cse3000-how-to-break-a-solver/SharpVelvet/out/instances/cnf
    ```
 
 2. **Compute Features:**<br>
     This method produces a CSVs under `SharpVelvet/out/features_output`. First argument is the base of your cnf-s generated with our generators. Second argument set to `SharpVelvet/out/features_output`, will be the location of generated CSVs. For every cnf formula features are computed and stored in a CSV.
    ```python
-   python satzilla_feature_extractor_2024/compute_sat_feature_data_cli.py compute_features     /path/to/cse3000-how-to-break-a-solver/SharpVelvet/out/instances/cnf     /path/to/cse3000-how-to-break-a-solver/SharpVelvet/out/features_output     /path/to/revisiting_satzilla/SAT-features-competition2024/features
+   python satzilla_feature_extractor/compute_sat_feature_data_cli.py compute_features     /path/to/cse3000-how-to-break-a-solver/SharpVelvet/out/instances/cnf     /path/to/cse3000-how-to-break-a-solver/SharpVelvet/out/features_output     /path/to/revisiting_satzilla/SAT-features-competition2024/features
    ```
 
 3. **Process CSV Files:**<br>
     This method scans a specified directory for CSV files and removes duplicate rows based on the first row's values. It then saves the cleaned CSV files back to the original directory, ensuring no header is included in the output.
    ```python
-   python satzilla_feature_extractor_2024/compute_sat_feature_data_cli.py process_csv_files     /path/to/cse3000-how-to-break-a-solver/SharpVelvet/out/features_output
+   python satzilla_feature_extractor/compute_sat_feature_data_cli.py process_csv_files     /path/to/cse3000-how-to-break-a-solver/SharpVelvet/out/features_output
    ```
 
 4. **Delete Old Instances:**
     This method is used when you want to delete instances you already have and generate new ones.
    ```python
-   python satzilla_feature_extractor_2024/compute_sat_feature_data_cli.py delete_old_instances     /path/to/cse3000-how-to-break-a-solver/SharpVelvet/out/instances
+   python satzilla_feature_extractor/compute_sat_feature_data_cli.py delete_old_instances     /path/to/cse3000-how-to-break-a-solver/SharpVelvet/out/instances
    ```
 
 ---

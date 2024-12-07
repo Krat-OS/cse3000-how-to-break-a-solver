@@ -15,8 +15,8 @@ module load miniconda3
 
 CNF_DIR="/home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/out/instances/cnf"
 FEATURES_OUTPUT_DIR="/home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/out/features_output"
-SATZILLA_PATH="/home/$USER/revisiting_satzilla/SAT-features-competition2024/features"
-FEATURES_CLI_SCRIPT="/home/$USER/cse3000-how-to-break-a-solver/satzilla_feature_extractor_2024/compute_sat_feature_data_cli.py"
+SATZILLA_PATH="/home/vjurisic/cse3000-how-to-break-a-solver/satzilla_feature_extractor/revisiting_satzilla_tool/SAT-features-competition2024/features"
+FEATURES_CLI_SCRIPT="/home/$USER/cse3000-how-to-break-a-solver/satzilla_feature_extractor/compute_sat_feature_data_cli.py"
 
 conda activate "global-env"
 echo Done Conda Activation!

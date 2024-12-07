@@ -20,7 +20,7 @@ The SATZilla Feature Extractor project includes Python scripts designed for extr
 - **Jupyter Notebook Version:** A script optimized for interactive use and data analysis in Jupyter Notebooks.
 - **Command-Line Interface (CLI) Version:** A terminal-based tool suitable for large-scale processing, intended for use on high-performance clusters like DelftBlue.
 
-Click [here](satzilla_feature_extractor_2024/README.md) for detailed instructions and examples of how to use both versions effectively.
+Click [here](satzilla_feature_extractor/README.md) for detailed instructions and examples of how to use both versions effectively.
 
 
 ### 2. [CPOG Verifier Integration (Cristian's Tool)](cristian-tool/README.md)
