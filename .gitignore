@@ -1,11 +1,11 @@
-SharpVelvet/*.json
-SharpVelvet/generators/build/
-SharpVelvet/model-counters/
-SharpVelvet/out/
+SharpVelvet-main/*.json
+SharpVelvet-main/generators/build/
+SharpVelvet-main/model-counters/
+SharpVelvet-main/out/
 
 # PYTHON
-SharpVelvet/__pycache__
-SharpVelvet/*/__pycache__
+SharpVelvet-main/__pycache__
+SharpVelvet-main/*/__pycache__
 cristian-tool/__pycache__
 cristian-tool/*/__pycache__
 
