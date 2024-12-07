@@ -3,6 +3,7 @@ SharpVelvet/*.json
 SharpVelvet/generators/build/
 SharpVelvet/model-counters/
 SharpVelvet/out/
+/SharpVelvet/tool-config/vuk
 
 # PYTHON
 SharpVelvet/__pycache__
@@ -21,3 +22,8 @@ cristian-tool/result_analysis.ipynb
 cristian-tool/cpog/*
 cristian-tool/output.csv
 
+# SATZilla Feature Extractor Tool
+/satzilla_feature_extractor/test
+
+# Local Binaries
+/binaries

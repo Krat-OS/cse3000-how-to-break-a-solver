@@ -1,7 +1,7 @@
 The only commands I recommend to run on the login node are `unzip/tar`, `cp/mv/mkdir` and other basic linux commands which need few resources. 
 The rest (`python/conda/make/executing SharpVelvet/model counters`) should done via an actual DelftBlue job.
 
-You will have to copy the `.json` files from the `example-configs` folder and update the path to match your setup. 
+You will have to copy the `.json` files from the `configs` folder and update the path to match your setup. 
 The `bash` scrips have the path setup as `/home/$USER`, which works out-of-the-box if you transfer the files to your DelftBlue home folder. 
 
 I recommend setting up an `SSH key-pair` and saving the `<user>@<delftblue>` as an alias in `.ssh/config`. The instructions are present in the DelftBlue manual section linked in step 1. Ask me if you need help with that.  
