@@ -11,18 +11,16 @@ def run_python_script(script_path: str, **kwargs):
     print(f"Running script: {' '.join(cmd)}")
     subprocess.run(cmd, check=True)
 
-
 def clear_and_create_directory(dir_path: str):
     """Clear the existing directory and recreate it."""
     if os.path.exists(dir_path):
         print(f"Deleting existing directory: {dir_path}")
-        os.system(f"rm -rf {dir_path}")
+        shutil.rmtree(dir_path)
     print(f"Creating directory: {dir_path}")
     os.makedirs(dir_path, exist_ok=True)
 
-
 def compute_features(cnf_dir: str, features_output_dir: str, satzilla_path: str):
-    """Compute features for all CNF files."""
+    """Compute features for all CNF files and store them in output directory."""
     clear_and_create_directory(features_output_dir)
     for cnf_file in os.listdir(cnf_dir):
         if cnf_file.endswith(".cnf"):
@@ -33,15 +31,8 @@ def compute_features(cnf_dir: str, features_output_dir: str, satzilla_path: str)
                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             print(f"Features saved to: {output_file}")
 
-
-
 def process_csv_files(features_output_dir: str):
-    """
-    Process CSV files to remove duplicates and display their full paths.
-
-    Args:
-        features_output_dir (str): Path to the directory containing CSV files.
-    """
+    """Process CSV files to remove duplicates."""
     for csv_file in os.listdir(features_output_dir):
         if csv_file.endswith(".csv"):
             csv_file_path = os.path.join(features_output_dir, csv_file)
@@ -54,19 +45,10 @@ def process_csv_files(features_output_dir: str):
                 df.to_csv(csv_file_path, index=False, header=False)
                 print(f"Processed successfully: {csv_file_path}")
             except Exception as e:
-                print(f"Error processing {csv_file_path}: {e}")\
-
+                print(f"Error processing {csv_file_path}: {e}")
 
 def delete_old_instances(directory: str):
-    """
-    Deletes the old instances directory if it exists.
-    
-    Args:
-        directory (str): Path to the instances directory.
-    
-    Returns:
-        None
-    """
+    """Delete old instances directory if it exists."""
     if os.path.exists(directory):
         print(f"Deleting existing instances directory: {directory}")
         shutil.rmtree(directory)

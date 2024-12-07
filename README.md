@@ -13,7 +13,7 @@ The group is composed of the following members:
 
 ## Table of Contents
 
-### 1. [SATZilla Feature Extractor](satzilla_feature_extractor_2024/README.md)
+### 1. [SATZilla Feature Extractor](satzilla_feature_extractor/README.md)
 
 The SATZilla Feature Extractor project includes Python scripts designed for extracting features from SAT instances. It provides two versions:
 

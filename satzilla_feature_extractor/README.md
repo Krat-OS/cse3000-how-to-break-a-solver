@@ -1,6 +1,6 @@
 # Satzilla Feature Extractor 2024
 
-**Before you use this tool, clone [https://github.com/hadarshavit/revisiting_satzilla/](https://github.com/hadarshavit/revisiting_satzilla/) in the same directory where the `cse3000-how-to-break-a-solver` repository is. This is the source of `features` binary.**
+**Submodule needs to be setup and paths to features binary need to be changed accordingly.**
 
 This repository contains two scripts designed for feature extraction from SAT instances:
 
