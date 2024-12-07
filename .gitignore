@@ -18,8 +18,9 @@ final-paper-template-tex/doc/*
 # Cristian Tool
 cristian-tool/result_analysis.ipynb
 cristian-tool/cpog/*
-
-# Local Testing
-/test
-/binaries
 cristian-tool/output.csv
+
+# Personal
+/test
+/SharpVelvet/tool-config/vuk
+/binaries
