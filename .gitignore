@@ -10,6 +10,8 @@ SharpVelvet/__pycache__
 SharpVelvet/*/__pycache__
 cristian-tool/__pycache__
 cristian-tool/*/__pycache__
+satzilla_feature_extractor/__pycache__
+satzilla_feature_extractor/*/__pycache__
 
 # TeX
 final-paper-template-tex/doc/*
