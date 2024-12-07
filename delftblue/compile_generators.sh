@@ -10,6 +10,6 @@
 module load 2024r1
 module load gcc/13.2.0
 
-cd /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet-main/generators
+cd /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/generators
 g++ cnf-fuzz-biere.c -o biere-fuzz
 
