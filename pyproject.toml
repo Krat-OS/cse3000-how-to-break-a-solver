@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cse3000-how-to-break-a-solver"
+version = "0.1.0"
+description = "This project contains multiple tools used by the CSE3000 Research Project Group 6: Finding different ways to break a solver."
+authors = [
+    { name = "Bram Snelten", email = "b.p.snelten@student.tudelft.nl" },
+    { name = "Cristian Soare", email = "c.soare@student.tudelft.nl" },
+    { name = "David Coroian", email = "d.n.coroian@student.tudelft.nl" },
+    { name = "Vuk Jurišić", email = "v.jurisic@student.tudelft.nl" }
+]
+readme = "README.md"
+license = { text = "MIT" }
+
+dependencies = [
+    "gmpy2",
+    "pandas==2.2.2",
+    "ipykernel",
+    "matplotlib",
+    "seaborn"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = [
+    "cpog_verifier",
+    "result_processor",
+    "result_analysis",
+    "satzilla_feature_extractor",
+    "delftblue",
+    "final-paper-template-tex",
+    "SharpVelvet"
+]

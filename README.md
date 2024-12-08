@@ -23,7 +23,7 @@ The SATZilla Feature Extractor project includes Python scripts designed for extr
 Click [here](satzilla_feature_extractor/README.md) for detailed instructions and examples of how to use both versions effectively.
 
 
-### 2. [CPOG Verifier Integration (Cristian's Tool)](cristian-tool/README.md)
+### 2. [CPOG Verifier Integration (Cristian's Tool)](cpog_verifier/README.md)
 
 ### 3. Delft Blue Scripts (David's Tool)
 

@@ -3,29 +3,27 @@ SharpVelvet/*.json
 SharpVelvet/generators/build/
 SharpVelvet/model-counters/
 SharpVelvet/out/
-/SharpVelvet/tool-config/vuk
+SharpVelvet/tool-config/vuk/
 
-# PYTHON
-SharpVelvet/__pycache__
-SharpVelvet/*/__pycache__
-cristian-tool/__pycache__
-cristian-tool/*/__pycache__
-satzilla_feature_extractor/__pycache__
-satzilla_feature_extractor/*/__pycache__
+# Python Artifacts
+**/__pycache__/
+*.egg-info/
 
-# TeX
-final-paper-template-tex/doc/*
+# TeX Build Artifacts
+final-paper-template-tex/doc/
 
 # IDE Specific
-.vscode/*
+.vscode/
 
-# Cristian Tool
-cristian-tool/result_analysis.ipynb
-cristian-tool/cpog/*
-cristian-tool/output.csv
+# Result Analysis
+result_analysis/result_analysis.ipynb
 
-# SATZilla Feature Extractor Tool
-/satzilla_feature_extractor/test
+# CPOG Verifier
+cpog_verifier/cpog/
+cpog_verifier/output.csv
 
-# Local Binaries
-/binaries
+# SATZilla Feature Extractor
+satzilla_feature_extractor/test/
+
+# Local Binaries (VUK)
+binaries/
