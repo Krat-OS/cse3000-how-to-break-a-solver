@@ -4,58 +4,74 @@ import shutil
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from concurrent.futures import TimeoutError as FuturesTimeoutError
 from pathlib import Path
-from typing import Any, Dict, Optional, List
+from typing import Any, Dict, Optional, List, Tuple
 from datetime import datetime
 import threading
-
+import psutil
 import pandas as pd
+import gc
+import uuid
 
-print_lock = threading.Lock()
-remaining_count_lock = threading.Lock()
-remaining_count = 0
+print_lock: threading.Lock = threading.Lock()
+remaining_count_lock: threading.Lock = threading.Lock()
+remaining_count: int = 0
+
+
+def get_memory_usage_gb() -> float:
+    """Return current memory usage of the process in gigabytes.
+
+    Returns:
+        float: Memory usage in GB.
+    """
+    process = psutil.Process()
+    return process.memory_info().rss / (1024 ** 3)
+
 
 def print_progress(message: str) -> None:
     """Print a timestamped progress message in a thread-safe manner.
 
     Args:
-        message: The message to be printed
+        message: The message to be printed.
     """
     with print_lock:
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         print(f"[{timestamp}] {message}")
 
+
 def update_remaining_count(delta: int = -1) -> int:
-    """Update the global count of remaining instances in a thread-safe manner.
+    """Update the global count of remaining instances thread-safely.
 
     Args:
-        delta: The value to add to the remaining count (default: -1)
+        delta: Value to add to remaining count.
 
     Returns:
-        int: The updated count of remaining instances
+        int: Updated count of remaining instances.
     """
     global remaining_count
     with remaining_count_lock:
         remaining_count += delta
         return remaining_count
 
-def setup_instance_workspace(instance_path: Path, verifier_dir: Path) -> Path:
-    """Create and setup a temporary workspace for processing an instance.
+
+def setup_instance_workspace(instance_path: Path, verifier_dir: Path, thread_id: str) -> Path:
+    """Create and setup a temporary workspace for processing an instance with thread isolation.
 
     Args:
-        instance_path: Path to the CNF instance file
-        verifier_dir: Path to the directory containing verification tools
+        instance_path: Path to the CNF instance file.
+        verifier_dir: Path to the directory containing verification tools.
+        thread_id: Unique identifier for the thread.
 
     Returns:
-        Path: Path to the created workspace directory
+        Path: Path to the created workspace directory.
     """
-    instance_name = instance_path.stem
-    workspace = Path(tempfile.gettempdir()) / f"cpog_workspace_{instance_name}"
+    instance_name: str = instance_path.stem
+    workspace: Path = Path(tempfile.gettempdir()) / f"cpog_workspace_{thread_id}_{instance_name}"
 
     if workspace.exists():
         shutil.rmtree(workspace)
     workspace.mkdir(parents=True)
 
-    new_verifier_dir = workspace / "cpog"
+    new_verifier_dir: Path = workspace / "cpog"
     shutil.copytree(verifier_dir, new_verifier_dir)
 
     for executable in new_verifier_dir.glob("*"):
@@ -64,229 +80,180 @@ def setup_instance_workspace(instance_path: Path, verifier_dir: Path) -> Path:
 
     return workspace
 
+
 def cleanup_workspace(workspace: Path) -> None:
     """Remove a temporary workspace directory.
 
     Args:
-        workspace: Path to the workspace directory to be cleaned up
+        workspace: Path to the workspace directory to be cleaned up.
     """
     try:
-        shutil.rmtree(workspace)
-        print_progress(f"Cleaned up workspace: {workspace}")
+        if workspace.exists():
+            shutil.rmtree(workspace)
+            print_progress(f"Cleaned up workspace: {workspace}")
     except Exception as e:
         print_progress(f"Error cleaning up workspace {workspace}: {e}")
 
-def run_command(cmd: list[str], cwd: Optional[Path] = None, timeout: int = 300) -> tuple[int, str, str]:
+
+def clear_ram() -> None:
+    """Force clear RAM by terminating subprocesses and invoking garbage collection."""
+    gc.collect()
+    process: psutil.Process = psutil.Process()
+
+    for child in process.children(recursive=True):
+        try:
+            child.terminate()
+        except Exception:
+            pass
+
+    _, alive = psutil.wait_procs(process.children(recursive=True), timeout=3)
+    for proc in alive:
+        try:
+            proc.kill()
+        except Exception:
+            pass
+
+
+def run_command(
+    cmd: List[str],
+    cwd: Optional[Path] = None,
+    timeout: int = 300
+) -> Tuple[int, str, str]:
     """Execute a shell command with timeout.
 
     Args:
-        cmd: Command to execute as list of strings
-        cwd: Working directory for command execution
-        timeout: Maximum execution time in seconds
+        cmd: Command to execute as list of strings.
+        cwd: Working directory for command execution.
+        timeout: Maximum execution time in seconds.
 
     Returns:
-        tuple: (return_code, stdout, stderr)
-
-    Raises:
-        subprocess.TimeoutExpired: If command execution exceeds timeout
+        Tuple[int, str, str]: Return code, stdout, and stderr from the command.
     """
+    process: Optional[subprocess.Popen] = None
     try:
         process = subprocess.Popen(
-            cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, cwd=cwd
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            cwd=cwd
         )
         stdout, stderr = process.communicate(timeout=timeout)
         return process.returncode, stdout, stderr
     except subprocess.TimeoutExpired:
-        process.kill()
+        if process:
+            process.kill()
         return -1, "", "Command timed out"
+    finally:
+        if process:
+            if process.stdout:
+                process.stdout.close()
+            if process.stderr:
+                process.stderr.close()
+            process.wait()
 
-def extract_model_count(stdout: str) -> int:
-    """Extract model count from command output.
-
-    Args:
-        stdout: Command output containing model count
-
-    Returns:
-        int: Extracted model count, 0 if not found
-    """
-    for line in stdout.splitlines():
-        if "Regular model count = " in line:
-            return int(line.split("=")[1].strip())
-    return 0
-
-def generate_d4nnf(cnf_path: Path, d4nnf_path: Path, verifier_dir: Path, timeout: int) -> tuple[bool, Optional[str]]:
-    """Generate D4NNF from CNF file.
-
-    Args:
-        cnf_path: Input CNF file path
-        d4nnf_path: Output D4NNF file path
-        verifier_dir: Directory containing d4 binary
-        timeout: Command timeout in seconds
-
-    Returns:
-        tuple: (success, error_message)
-    """
-    returncode, _, stderr = run_command([
-        str(verifier_dir / "d4"),
-        str(cnf_path),
-        "-dDNNF",
-        f"-out={str(d4nnf_path)}"
-    ], timeout=timeout)
-    return returncode == 0, None if returncode == 0 else f"D4NNF generation failed: {stderr}"
-
-def generate_cpog(cnf_path: Path, d4nnf_path: Path, cpog_path: Path, verifier_dir: Path, timeout: int) -> tuple[bool, Optional[str]]:
-    """Generate CPOG from D4NNF file.
-
-    Args:
-        cnf_path: Input CNF file path
-        d4nnf_path: Input D4NNF file path
-        cpog_path: Output CPOG file path
-        verifier_dir: Directory containing cpog-gen binary
-        timeout: Command timeout in seconds
-
-    Returns:
-        tuple: (success, error_message)
-    """
-    returncode, stdout, stderr = run_command([
-        str(verifier_dir / "cpog-gen"),
-        str(cnf_path),
-        str(d4nnf_path),
-        str(cpog_path)
-    ], timeout=timeout)
-
-    if "Compiled formula unsatisfiable.  Cannot verify" in stdout:
-        return False, "UNSAT"
-
-    return returncode == 0, None if returncode == 0 else f"CPOG generation failed: {stderr}"
-
-def verify_cpog(cnf_path: Path, cpog_path: Path, verifier_dir: Path, timeout: int) -> tuple[bool, Optional[str], int]:
-    """Verify CPOG file and get model count.
-
-    Args:
-        cnf_path: Input CNF file path
-        cpog_path: Input CPOG file path
-        verifier_dir: Directory containing cpog-check binary
-        timeout: Command timeout in seconds
-
-    Returns:
-        tuple: (success, error_message, model_count)
-    """
-    returncode, stdout, stderr = run_command([
-        str(verifier_dir / "cpog-check"),
-        str(cnf_path),
-        str(cpog_path)
-    ], timeout=timeout)
-    if returncode != 0:
-        return False, f"CPOG verification failed: {stderr}", 0
-    return True, None, extract_model_count(stdout)
 
 def verify_single_instance(
-    cnf_path: Path, workspace: Path, timeout: int = 300
-) -> tuple[bool, Optional[str], int]:
-    """Verify a single CNF instance using CPOG.
+    cnf_path: Path,
+    workspace: Path,
+    thread_id: str,
+    timeout: int = 300
+) -> Tuple[bool, Optional[str], int]:
+    """Verify a single CNF instance using CPOG with thread isolation.
 
     Args:
-        cnf_path: Path to CNF file
-        workspace: Instance-specific workspace directory
-        timeout: Maximum execution time per command in seconds
+        cnf_path: Path to CNF file.
+        workspace: Path to workspace directory.
+        thread_id: Unique identifier for the thread.
+        timeout: Maximum execution time in seconds.
 
     Returns:
-        tuple: (success, error_message, model_count)
+        Tuple[bool, Optional[str], int]: Success status, error message (if any), and model count.
     """
-    verifier_dir = workspace / "cpog"
-    d4nnf_path = workspace / "temp.d4nnf"
-    cpog_path = workspace / "temp.cpog"
-
-    success, error = generate_d4nnf(cnf_path, d4nnf_path, verifier_dir, timeout)
-    if not success:
-        return False, error, 0
-
-    success, error = generate_cpog(cnf_path, d4nnf_path, cpog_path, verifier_dir, timeout)
-    if not success:
-        return False, error, 0
-
-    return verify_cpog(cnf_path, cpog_path, verifier_dir, timeout)
-
-def process_row(row: pd.Series, verifier_dir: Path) -> tuple[int, Dict[str, Any]]:
-    """Process a single row of instance data.
-
-    Args:
-        row: DataFrame row containing instance data
-        verifier_dir: Directory containing verification tools
-
-    Returns:
-        tuple: (row_index, results_dictionary)
-    """
-    if pd.isna(row["instance_path"]):
-        return row.name, create_missing_instance_result()
-
-    if (pd.isna(row["count_value"]) or
-        not float(row["count_value"]).is_integer() or
-        row.get("_skip_due_to_threshold", False)):
-        return row.name, create_invalid_count_result()
-
-    instance_path = Path(row["instance_path"])
-    print_progress(f"Starting verification for instance: {instance_path.name} (count_value: {row['count_value']})")
-
-    workspace = setup_instance_workspace(instance_path, verifier_dir)
+    verifier_dir: Path = workspace / "cpog"
+    d4nnf_path: Path = workspace / f"temp_{thread_id}.d4nnf"
+    cpog_path: Path = workspace / f"temp_{thread_id}.cpog"
 
     try:
-        verified, error, cpog_count = verify_single_instance(instance_path, workspace)
-        result = {
-            "cpog_message": "NO ERROR" if error is None else error,
-            "cpog_count": cpog_count,
-            "count_matches": (
-                (cpog_count > 0 and abs(cpog_count - row["count_value"]) < 1e-6) or
-                (cpog_count == 0 and row["count_value"] == 0 and
-                 row["satisfiability"] == "UNSATISFIABLE" and error == "UNSAT")
-            ),
-            "verified": verified
-        }
+        # Generate D4NNF
+        returncode, _, stderr = run_command([
+            str(verifier_dir / "d4"),
+            str(cnf_path),
+            "-dDNNF",
+            f"-out={str(d4nnf_path)}"
+        ], timeout=timeout)
+        if returncode != 0:
+            return False, f"D4NNF generation failed: {stderr}", 0
+
+        # Generate CPOG
+        returncode, stdout, stderr = run_command([
+            str(verifier_dir / "cpog-gen"),
+            str(cnf_path),
+            str(d4nnf_path),
+            str(cpog_path)
+        ], timeout=timeout)
+
+        if "Compiled formula unsatisfiable.  Cannot verify" in stdout:
+            return False, "UNSAT", 0
+        if returncode != 0:
+            return False, f"CPOG generation failed: {stderr}", 0
+
+        # Verify CPOG
+        returncode, stdout, stderr = run_command([
+            str(verifier_dir / "cpog-check"),
+            str(cnf_path),
+            str(cpog_path)
+        ], timeout=timeout)
+
+        if returncode != 0:
+            return False, f"CPOG verification failed: {stderr}", 0
+
+        model_count: int = 0
+        for line in stdout.splitlines():
+            if "Regular model count = " in line:
+                model_count = int(line.split("=")[1].strip())
+                break
+
+        return True, None, model_count
+    
     except Exception as e:
-        result = {
-            "cpog_message": f"ERROR: {str(e)}",
-            "cpog_count": 0,
-            "count_matches": False,
-            "verified": False
-        }
-    finally:
-        cleanup_workspace(workspace)
-        remaining = update_remaining_count()
-        print_progress(
-            f"Completed verification for {instance_path.name}. Remaining instances: {remaining}")
+        return False, f"Verification failed with error: {str(e)}", 0
 
-    return row.name, result
 
-def process_instance_group(group: pd.DataFrame, verifier_dir: Path) -> List[tuple[int, Dict[str, Any]]]:
-    """Process a group of rows sharing the same instance_path.
+def process_instance_group(
+    group: pd.DataFrame,
+    verifier_dir: Path,
+    timeout: int
+) -> List[Tuple[int, Dict[str, Any]]]:
+    """Process a group of rows sharing the same instance_path with thread isolation.
 
     Args:
-        group: DataFrame containing rows with the same instance_path
-        verifier_dir: Directory containing verification tools
+        group: DataFrame containing rows with the same instance_path.
+        verifier_dir: Directory containing verification tools.
+        timeout: Maximum execution time in seconds.
 
     Returns:
-        List[tuple]: List of (row_index, results_dictionary) for each row in the group
+        List[Tuple[int, Dict[str, Any]]]: List of results for each row in the group.
     """
     if pd.isna(group["instance_path"].iloc[0]):
         return [(idx, create_missing_instance_result()) for idx in group.index]
 
-    instance_path = Path(group["instance_path"].iloc[0])
-    print_progress(f"Starting verification for instance: {instance_path.name}")
-
-    workspace = setup_instance_workspace(instance_path, verifier_dir)
-    results = []
+    thread_id: str = str(uuid.uuid4())
+    instance_path: Path = Path(group["instance_path"].iloc[0])
+    workspace: Path = setup_instance_workspace(instance_path, verifier_dir, thread_id)
+    results: List[Tuple[int, Dict[str, Any]]] = []
 
     try:
-        verified, error, cpog_count = verify_single_instance(instance_path, workspace)
+        verified, error, cpog_count = verify_single_instance(
+            instance_path, workspace, thread_id, timeout
+        )
 
         for idx, row in group.iterrows():
-            if (pd.isna(row["count_value"]) or
-                not float(row["count_value"]).is_integer() or
-                row.get("_skip_due_to_threshold", False)):
+            if pd.isna(row["count_value"]) or not float(row["count_value"]).is_integer():
                 results.append((idx, create_invalid_count_result()))
                 continue
 
-            result = {
+            result: Dict[str, Any] = {
                 "cpog_message": "NO ERROR" if error is None else error,
                 "cpog_count": cpog_count,
                 "count_matches": (
@@ -299,7 +266,7 @@ def process_instance_group(group: pd.DataFrame, verifier_dir: Path) -> List[tupl
             results.append((idx, result))
 
     except Exception as e:
-        error_result = {
+        error_result: Dict[str, Any] = {
             "cpog_message": f"ERROR: {str(e)}",
             "cpog_count": 0,
             "count_matches": False,
@@ -308,9 +275,10 @@ def process_instance_group(group: pd.DataFrame, verifier_dir: Path) -> List[tupl
         results = [(idx, error_result) for idx in group.index]
     finally:
         cleanup_workspace(workspace)
-        remaining = update_remaining_count()
+        remaining: int = update_remaining_count()
         print_progress(
-            f"Completed verification for {instance_path.name}. Remaining instance groups: {remaining}")
+            f"Completed verification for {instance_path.name}. Remaining instance groups: {remaining}"
+        )
 
     return results
 
@@ -319,73 +287,91 @@ def verify_with_cpog(
     verifier_dir: Path | str = Path(__file__).parent / "cpog",
     thread_timeout: int = 3600,
     max_workers: int = 10,
-    max_cnt_thresh: Optional[int] = None
+    batch_size: Optional[int] = None,
+    memory_limit_gb: float = 4.0
 ) -> pd.DataFrame:
-    """Verify multiple CNF instances using CPOG in parallel.
+    """Verify multiple CNF instances using CPOG with batching and thread isolation.
 
     Args:
-        df: DataFrame containing instance data
-        verifier_dir: Directory containing verification tools
-        thread_timeout: Maximum execution time per instance in seconds
-        max_workers: Maximum number of concurrent threads
-        max_cnt_thresh: Skip instances with count_value above this threshold
+        df: DataFrame containing instance data.
+        verifier_dir: Directory containing verification tools.
+        thread_timeout: Maximum execution time per instance in seconds.
+        max_workers: Maximum number of concurrent threads.
+        batch_size: Number of instances to process per batch.
+        memory_limit_gb: Maximum allowed memory usage in GB.
 
     Returns:
-        pd.DataFrame: DataFrame with verification results
+        pd.DataFrame: DataFrame with verification results.
     """
     verifier_dir = Path(verifier_dir)
-    results_df = df.copy()
+    results_df: pd.DataFrame = df.copy()
 
-    df_to_process = df.copy()
-
-    df_to_process["_skip_due_to_threshold"] = False
-    if max_cnt_thresh is not None:
-        df_to_process.loc[df_to_process["count_value"] > max_cnt_thresh, "_skip_due_to_threshold"] = True
-
-    grouped = df_to_process.groupby("instance_path", group_keys=True)
+    grouped = df.groupby("instance_path", group_keys=True)
+    groups: List[Tuple[str, pd.DataFrame]] = list(grouped)
+    total_groups: int = len(groups)
 
     global remaining_count
-    remaining_count = len(grouped)
-    print_progress(f"Starting verification of {remaining_count} unique instances with {max_workers} workers")
+    remaining_count = total_groups
+
+    print_progress(f"Starting verification of {total_groups} unique instances with {max_workers} workers")
+
+    batch_size = batch_size or total_groups
+    batch_count: int = 0
 
     try:
-        with ThreadPoolExecutor(max_workers=max_workers) as executor:
-            future_to_group = {
-                executor.submit(process_instance_group, group, verifier_dir): group
-                for _, group in grouped
-            }
+        for i in range(0, total_groups, batch_size):
+            batch_count += 1
+            current_batch = groups[i:i + batch_size]
+            print_progress(f"Processing batch {batch_count} with {len(current_batch)} instance groups")
 
-            for future in as_completed(future_to_group):
-                try:
-                    results = future.result(timeout=thread_timeout)
-                    for idx, result in results:
-                        for key, value in result.items():
-                            if key == "cpog_count":
-                                value = int(value)
-                            results_df.at[idx, key] = value
+            with ThreadPoolExecutor(max_workers=max_workers) as executor:
+                future_to_group = {
+                    executor.submit(
+                        process_instance_group,
+                        group,
+                        verifier_dir,
+                        thread_timeout
+                    ): group_name
+                    for group_name, group in current_batch
+                }
 
-                except FuturesTimeoutError:
-                    group = future_to_group[future]
-                    print_progress(f"Timeout occurred for instance: {group['instance_path'].iloc[0]}")
-                    for idx in group.index:
-                        timeout_result = create_timeout_result()
-                        for key, value in timeout_result.items():
-                            results_df.at[idx, key] = value
-                    update_remaining_count()
+                for future in as_completed(future_to_group):
+                    try:
+                        results = future.result()
+                        for idx, result in results:
+                            for key, value in result.items():
+                                if key == "cpog_count":
+                                    value = int(value)
+                                results_df.at[idx, key] = value
 
-        print_progress("Verification complete for all instances")
+                    except FuturesTimeoutError:
+                        group_name = future_to_group[future]
+                        print_progress(f"Timeout occurred for instance: {group_name}")
+                        group = grouped.get_group(group_name)
+                        for idx in group.index:
+                            timeout_result = create_timeout_result()
+                            for key, value in timeout_result.items():
+                                results_df.at[idx, key] = value
+                        update_remaining_count()
+
+            # Only clear RAM after the entire batch is complete
+            if get_memory_usage_gb() > memory_limit_gb:
+                print_progress("Memory usage exceeded threshold. Forcing cleanup...")
+                clear_ram()
 
     except KeyboardInterrupt:
         print_progress("\nInterrupted by user. Returning partial results...")
-        executor.shutdown(wait=False)
 
-    if "_skip_due_to_threshold" in results_df.columns:
-        results_df.drop("_skip_due_to_threshold", axis=1, inplace=True)
-
+    print_progress("Verification complete for all instances")
     return results_df
 
+
 def create_timeout_result() -> Dict[str, Any]:
-    """Create a result dictionary for timeout case."""
+    """Create a result dictionary for timeout case.
+
+    Returns:
+        Dict[str, Any]: Dictionary containing timeout result data.
+    """
     return {
         "cpog_message": "TIMEOUT",
         "cpog_count": 0,
@@ -393,8 +379,13 @@ def create_timeout_result() -> Dict[str, Any]:
         "verified": False
     }
 
+
 def create_missing_instance_result() -> Dict[str, Any]:
-    """Create a result dictionary for missing instance case."""
+    """Create a result dictionary for missing instance case.
+
+    Returns:
+        Dict[str, Any]: Dictionary containing missing instance result data.
+    """
     return {
         "cpog_message": "No instance provided",
         "cpog_count": 0,
@@ -402,8 +393,13 @@ def create_missing_instance_result() -> Dict[str, Any]:
         "verified": False
     }
 
-def create_invalid_count_result():
-    """Create a result dictionary for invalid count value case."""
+
+def create_invalid_count_result() -> Dict[str, Any]:
+    """Create a result dictionary for invalid count value case.
+
+    Returns:
+        Dict[str, Any]: Dictionary containing invalid count result data.
+    """
     return {
         "cpog_message": "Invalid count value",
         "cpog_count": 0,
