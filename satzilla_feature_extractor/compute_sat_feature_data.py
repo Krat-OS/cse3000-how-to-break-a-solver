@@ -1,7 +1,15 @@
 import os
 import shutil
 import subprocess
+import tempfile
+from pathlib import Path
+from typing import List
+
 import pandas as pd
+
+from cpog_verifier.utils import run_command
+from result_processor.utils import process_results
+
 
 def run_python_script(script_path: str, **kwargs):
     """Run a Python script with optional arguments."""
@@ -19,17 +27,65 @@ def clear_and_create_directory(dir_path: str):
     print(f"Creating directory: {dir_path}")
     os.makedirs(dir_path, exist_ok=True)
 
-def compute_features(cnf_dir: str, features_output_dir: str, satzilla_path: str):
-    """Compute features for all CNF files and store them in output directory."""
+def merge_feature_csvs(csv_dir: Path) -> pd.DataFrame:
+    """Merge all CSV files in directory into single DataFrame.
+
+    Args:
+        csv_dir: Directory containing CSV files to merge
+
+    Returns:
+        pd.DataFrame: Merged DataFrame containing all feature data
+    """
+    dfs: List[pd.DataFrame] = []
+
+    for csv_file in csv_dir.glob("*.csv"):
+        df = process_results(csv_file)
+        df['instance_name'] = csv_file.stem
+        dfs.append(df)
+
+    if not dfs:
+        raise ValueError(f"No CSV files found in {csv_dir}")
+
+    return pd.concat(dfs, ignore_index=True)
+
+def compute_features(cnf_dir: str, features_output_dir: str, satzilla_path: str) -> None:
+    """Compute features for all CNF files and store them in output directory.
+
+    Args:
+        cnf_dir: Directory containing CNF files
+        features_output_dir: Directory to store output features
+        satzilla_path: Path to SATzilla executable
+    """
+    cnf_dir_path = Path(cnf_dir)
+    features_output_path = Path(features_output_dir)
+
     clear_and_create_directory(features_output_dir)
-    for cnf_file in os.listdir(cnf_dir):
-        if cnf_file.endswith(".cnf"):
-            generator_type = cnf_file.split("_")[0]
-            output_file = os.path.join(features_output_dir, f"features_output_{generator_type}.csv")
+
+    with tempfile.TemporaryDirectory() as temp_dir:
+        temp_path = Path(temp_dir)
+
+        for cnf_file in cnf_dir_path.glob("*.cnf"):
+            output_file = temp_path / f"{cnf_file.stem}.csv"
             print(f"Computing features for: {cnf_file}")
-            subprocess.run([satzilla_path, "-base", os.path.join(cnf_dir, cnf_file), output_file], 
-                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-            print(f"Features saved to: {output_file}")
+
+            cmd = [satzilla_path, "-base", str(cnf_file), str(output_file)]
+            return_code, _, stderr = run_command(cmd)
+
+            if return_code != 0:
+                print(f"Error computing features for {cnf_file}. Error: {stderr}")
+                continue
+
+            print(f"Features computed for: {cnf_file}")
+
+        try:
+            merged_df = merge_feature_csvs(temp_path)
+
+            output_file = features_output_path / "features_output.csv"
+            merged_df.to_csv(output_file, index=False)
+            print(f"Merged features saved to: {output_file}")
+
+        except ValueError as e:
+            print(f"Error merging CSV files: {e}")
 
 def process_csv_files(features_output_dir: str):
     """Process CSV files to remove duplicates."""

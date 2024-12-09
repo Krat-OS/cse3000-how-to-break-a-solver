@@ -6,6 +6,7 @@ SharpVelvet/out/
 SharpVelvet/tool-config/vuk/
 
 # Python Artifacts
+.venv/
 **/__pycache__/
 *.egg-info/
 
@@ -24,6 +25,7 @@ cpog_verifier/output.csv
 
 # SATZilla Feature Extractor
 satzilla_feature_extractor/test/
+satzilla_feature_extractor/output/*
 
 # Local Binaries (VUK)
 binaries/
