@@ -11,6 +11,7 @@ import psutil
 import pandas as pd
 import gc
 import uuid
+from os import environ
 
 print_lock: threading.Lock = threading.Lock()
 remaining_count_lock: threading.Lock = threading.Lock()
@@ -117,14 +118,16 @@ def clear_ram() -> None:
 def run_command(
     cmd: List[str],
     cwd: Optional[Path] = None,
-    timeout: int = 300
+    timeout: int = 300,
+    env: Optional[dict] = None
 ) -> Tuple[int, str, str]:
-    """Execute a shell command with timeout.
+    """Execute a shell command with timeout and optional environment variables.
 
     Args:
         cmd: Command to execute as list of strings.
         cwd: Working directory for command execution.
         timeout: Maximum execution time in seconds.
+        env: Environment variables to set for the command.
 
     Returns:
         Tuple[int, str, str]: Return code, stdout, and stderr from the command.
@@ -136,7 +139,8 @@ def run_command(
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             text=True,
-            cwd=cwd
+            cwd=cwd,
+            env=env
         )
         stdout, stderr = process.communicate(timeout=timeout)
         return process.returncode, stdout, stderr
@@ -185,13 +189,16 @@ def verify_single_instance(
         if returncode != 0:
             return False, f"D4NNF generation failed: {stderr}", 0
 
-        # Generate CPOG
+        # Generate CPOG with updated environment
+        env = environ.copy()
+        env["PATH"] = f"{str(verifier_dir)}:{env.get('PATH', '')}"
+
         returncode, stdout, stderr = run_command([
             str(verifier_dir / "cpog-gen"),
             str(cnf_path),
             str(d4nnf_path),
             str(cpog_path)
-        ], timeout=timeout)
+        ], timeout=timeout, env=env)
 
         if "Compiled formula unsatisfiable.  Cannot verify" in stdout:
             return False, "UNSAT", 0
@@ -218,7 +225,6 @@ def verify_single_instance(
     
     except Exception as e:
         return False, f"Verification failed with error: {str(e)}", 0
-
 
 def process_instance_group(
     group: pd.DataFrame,
