@@ -13,12 +13,16 @@ import gc
 import uuid
 from os import environ
 import time
+import signal
+import atexit
 
 print_lock: threading.Lock = threading.Lock()
 remaining_count_lock: threading.Lock = threading.Lock()
 remaining_count: int = 0
 batch_executor: Optional[ThreadPoolExecutor] = None
 should_terminate: threading.Event = threading.Event()
+active_processes: List[subprocess.Popen] = []
+processes_lock: threading.Lock = threading.Lock()
 
 def get_memory_usage_gb() -> float:
     """Return current memory usage of the process in gigabytes.
@@ -57,7 +61,6 @@ def print_progress(message: str) -> None:
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         print(f"[{timestamp}] {message}")
 
-
 def update_remaining_count(delta: int = -1) -> int:
     """Update the global count of remaining instances thread-safely.
 
@@ -71,7 +74,6 @@ def update_remaining_count(delta: int = -1) -> int:
     with remaining_count_lock:
         remaining_count += delta
         return remaining_count
-
 
 def setup_instance_workspace(instance_path: Path, verifier_dir: Path, thread_id: str) -> Path:
     """Create and setup a temporary workspace for processing an instance with thread isolation.
@@ -100,7 +102,6 @@ def setup_instance_workspace(instance_path: Path, verifier_dir: Path, thread_id:
 
     return workspace
 
-
 def cleanup_workspace(workspace: Path) -> None:
     """Remove a temporary workspace directory.
 
@@ -114,6 +115,19 @@ def cleanup_workspace(workspace: Path) -> None:
     except Exception as e:
         print_progress(f"Error cleaning up workspace {workspace}: {e}")
 
+def cleanup_on_exit():
+    """Cleanup function registered to run when the program exits."""
+    clear_ram()
+    with processes_lock:
+        for process in active_processes:
+            try:
+                process.terminate()
+                process.wait(timeout=1)
+            except:
+                try:
+                    process.kill()
+                except:
+                    pass
 
 def clear_ram() -> None:
     """Force clear RAM by terminating subprocesses and invoking garbage collection."""
@@ -132,7 +146,6 @@ def clear_ram() -> None:
             proc.kill()
         except Exception:
             pass
-
 
 def run_command(
     cmd: List[str],
@@ -161,6 +174,11 @@ def run_command(
             cwd=cwd,
             env=env
         )
+
+        # Track the process
+        with processes_lock:
+            active_processes.append(process)
+
         stdout, stderr = process.communicate(timeout=timeout)
         return process.returncode, stdout, stderr
     except subprocess.TimeoutExpired:
@@ -174,7 +192,10 @@ def run_command(
             if process.stderr:
                 process.stderr.close()
             process.wait()
-
+            # Remove process from tracking
+            with processes_lock:
+                if process in active_processes:
+                    active_processes.remove(process)
 
 def verify_single_instance(
     cnf_path: Path,
@@ -241,7 +262,7 @@ def verify_single_instance(
                 break
 
         return True, None, model_count
-    
+
     except Exception as e:
         return False, f"Verification failed with error: {str(e)}", 0
 
@@ -307,6 +328,25 @@ def process_instance_group(
 
     return results
 
+def _setup_signal_handlers():
+    """Set up signal handlers for graceful shutdown."""
+    def signal_handler(signum, frame):
+        global batch_executor, should_terminate
+
+        with print_lock:
+            print(f"\nReceived signal {signum}, initiating graceful shutdown...")
+
+        should_terminate.set()
+
+        if batch_executor:
+            batch_executor.shutdown(wait=False, cancel_futures=True)
+
+        clear_ram()
+        exit(128 + signum)
+
+    signal.signal(signal.SIGTERM, signal_handler)
+    signal.signal(signal.SIGINT, signal_handler)
+
 def verify_with_cpog(
     df: pd.DataFrame,
     verifier_dir: Path | str = Path(__file__).parent / "cpog",
@@ -315,63 +355,60 @@ def verify_with_cpog(
     batch_size: Optional[int] = None,
     memory_limit_gb: float = 4.0
 ) -> pd.DataFrame:
-    """Verify multiple CNF instances using CPOG with batching and thread isolation.
-
-    Args:
-        df: DataFrame containing instance data.
-        verifier_dir: Directory containing verification tools.
-        thread_timeout: Maximum execution time per instance in seconds.
-        max_workers: Maximum number of concurrent threads.
-        batch_size: Number of instances to process per batch.
-        memory_limit_gb: Maximum allowed memory usage in GB.
-
-    Returns:
-        pd.DataFrame: DataFrame with verification results.
-    """
+    """Verify multiple CNF instances using CPOG with batching and thread isolation."""
     global batch_executor, should_terminate
+    
+    # Set up signal handlers and cleanup
+    _setup_signal_handlers()
+    atexit.register(cleanup_on_exit)
+    
     should_terminate.clear()
     verifier_dir = Path(verifier_dir)
     results_df: pd.DataFrame = df.copy()
 
-    grouped = df.groupby("instance_path", group_keys=True)
-    groups: List[Tuple[str, pd.DataFrame]] = list(grouped)
-    total_groups: int = len(groups)
-
-    global remaining_count
-    remaining_count = total_groups
-
-    print_progress(f"Starting verification of {total_groups} unique instances with {max_workers} workers")
-
-    # Start memory monitoring thread
-    memory_monitor = threading.Thread(
-        target=monitor_memory_usage,
-        args=(memory_limit_gb,),
-        daemon=True
-    )
-    memory_monitor.start()
-
-    batch_size = batch_size or total_groups
-    batch_count: int = 0
-
     try:
+        grouped = df.groupby("instance_path", group_keys=True)
+        groups: List[Tuple[str, pd.DataFrame]] = list(grouped)
+        total_groups: int = len(groups)
+
+        global remaining_count
+        remaining_count = total_groups
+
+        print_progress(f"Starting verification of {total_groups} unique instances with {max_workers} workers")
+
+        # Start memory monitoring thread
+        memory_monitor = threading.Thread(
+            target=monitor_memory_usage,
+            args=(memory_limit_gb,),
+            daemon=True
+        )
+        memory_monitor.start()
+
+        batch_size = batch_size or total_groups
+        batch_count: int = 0
+
         for i in range(0, total_groups, batch_size):
+            if should_terminate.is_set():
+                print_progress("Termination requested, stopping after current batch")
+                break
+
             batch_count += 1
             current_batch = groups[i:i + batch_size]
             print_progress(f"Processing batch {batch_count} with {len(current_batch)} instance groups")
 
-            with ThreadPoolExecutor(max_workers=max_workers) as executor:
-                batch_executor = executor  # Store reference for memory monitor
-                future_to_group = {
-                    executor.submit(
-                        process_instance_group,
-                        group,
-                        verifier_dir,
-                        thread_timeout
-                    ): group_name
-                    for group_name, group in current_batch
-                }
+            try:
+                with ThreadPoolExecutor(max_workers=max_workers) as executor:
+                    batch_executor = executor
+                    future_to_group = {
+                        executor.submit(
+                            process_instance_group,
+                            group,
+                            verifier_dir,
+                            thread_timeout
+                        ): group_name
+                        for group_name, group in current_batch
+                    }
 
-                try:
                     for future in as_completed(future_to_group):
                         try:
                             results = future.result()
@@ -380,44 +417,62 @@ def verify_with_cpog(
                                     if key == "cpog_count":
                                         value = int(value)
                                     results_df.at[idx, key] = value
-
-                        except FuturesTimeoutError:
+                        except Exception as e:
                             group_name = future_to_group[future]
-                            print_progress(f"Timeout occurred for instance: {group_name}")
-                            group = grouped.get_group(group_name)
-                            for idx in group.index:
-                                timeout_result = create_timeout_result()
-                                for key, value in timeout_result.items():
-                                    results_df.at[idx, key] = value
-                            update_remaining_count()
+                            print_progress(f"Error processing group {group_name}: {e}")
+                            # Handle the error for this group but continue processing
+                            mark_group_as_failed(results_df, grouped.get_group(group_name))
 
-                except Exception as e:
-                    print_progress(f"Batch interrupted: {str(e)}")
-                    # Mark remaining instances in batch as failed
-                    for future, group_name in future_to_group.items():
-                        if not future.done():
-                            group = grouped.get_group(group_name)
-                            for idx in group.index:
-                                error_result = {
-                                    "cpog_message": "Batch terminated due to memory limit",
-                                    "cpog_count": 0,
-                                    "count_matches": False,
-                                    "verified": False
-                                }
-                                for key, value in error_result.items():
-                                    results_df.at[idx, key] = value
-
-            batch_executor = None
-            clear_ram()
+            except Exception as e:
+                print_progress(f"Batch {batch_count} interrupted: {str(e)}")
+                # Mark remaining instances in batch as failed
+                mark_remaining_as_failed(results_df, future_to_group, grouped)
+            finally:
+                batch_executor = None
+                clear_ram()
+                print_progress(f"Batch {batch_count} complete")
 
     except KeyboardInterrupt:
-        print_progress("\nInterrupted by user. Returning partial results...")
+        print_progress("\nInterrupted by user. Saving partial results...")
+    except Exception as e:
+        print_progress(f"Unexpected error: {e}")
+        raise
     finally:
         should_terminate.set()
-        memory_monitor.join(timeout=1.0)
+        if memory_monitor.is_alive():
+            memory_monitor.join(timeout=1.0)
+        
+        # Additional cleanup
+        if batch_executor:
+            batch_executor.shutdown(wait=False, cancel_futures=True)
+            batch_executor = None
+        clear_ram()
 
-    print_progress("Verification complete for all instances")
+    print_progress(f"Verification complete. Processed batches: {batch_count}")
     return results_df
+
+def mark_group_as_failed(results_df: pd.DataFrame, group: pd.DataFrame) -> None:
+    """Mark all instances in a group as failed."""
+    error_result = {
+        "cpog_message": "Processing failed",
+        "cpog_count": 0,
+        "count_matches": False,
+        "verified": False
+    }
+    for idx in group.index:
+        for key, value in error_result.items():
+            results_df.at[idx, key] = value
+
+def mark_remaining_as_failed(
+    results_df: pd.DataFrame,
+    future_to_group: Dict,
+    grouped: pd.core.groupby.DataFrameGroupBy
+) -> None:
+    """Mark all remaining unprocessed instances as failed."""
+    for future, group_name in future_to_group.items():
+        if not future.done():
+            group = grouped.get_group(group_name)
+            mark_group_as_failed(results_df, group)
 
 def create_timeout_result() -> Dict[str, Any]:
     """Create a result dictionary for timeout case.
@@ -432,7 +487,6 @@ def create_timeout_result() -> Dict[str, Any]:
         "verified": False
     }
 
-
 def create_missing_instance_result() -> Dict[str, Any]:
     """Create a result dictionary for missing instance case.
 
@@ -445,7 +499,6 @@ def create_missing_instance_result() -> Dict[str, Any]:
         "count_matches": False,
         "verified": False
     }
-
 
 def create_invalid_count_result() -> Dict[str, Any]:
     """Create a result dictionary for invalid count value case.
