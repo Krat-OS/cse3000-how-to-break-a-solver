@@ -12,11 +12,13 @@ import pandas as pd
 import gc
 import uuid
 from os import environ
+import time
 
 print_lock: threading.Lock = threading.Lock()
 remaining_count_lock: threading.Lock = threading.Lock()
 remaining_count: int = 0
-
+batch_executor: Optional[ThreadPoolExecutor] = None
+should_terminate: threading.Event = threading.Event()
 
 def get_memory_usage_gb() -> float:
     """Return current memory usage of the process in gigabytes.
@@ -27,6 +29,23 @@ def get_memory_usage_gb() -> float:
     process = psutil.Process()
     return process.memory_info().rss / (1024 ** 3)
 
+def monitor_memory_usage(memory_limit_gb: float, check_interval: float = 1.0) -> None:
+    """Monitor memory usage in a separate thread and terminate batch if limit exceeded.
+
+    Args:
+        memory_limit_gb: Maximum allowed memory usage in GB.
+        check_interval: Time between memory checks in seconds.
+    """
+    while not should_terminate.is_set():
+        current_usage = get_memory_usage_gb()
+        if current_usage > memory_limit_gb:
+            with print_lock:
+                print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] "
+                      f"Memory limit exceeded: {current_usage:.2f}GB > {memory_limit_gb:.2f}GB")
+                if batch_executor:
+                    batch_executor.shutdown(wait=False, cancel_futures=True)
+                clear_ram()
+        time.sleep(check_interval)
 
 def print_progress(message: str) -> None:
     """Print a timestamped progress message in a thread-safe manner.
@@ -309,6 +328,8 @@ def verify_with_cpog(
     Returns:
         pd.DataFrame: DataFrame with verification results.
     """
+    global batch_executor, should_terminate
+    should_terminate.clear()
     verifier_dir = Path(verifier_dir)
     results_df: pd.DataFrame = df.copy()
 
@@ -321,6 +342,14 @@ def verify_with_cpog(
 
     print_progress(f"Starting verification of {total_groups} unique instances with {max_workers} workers")
 
+    # Start memory monitoring thread
+    memory_monitor = threading.Thread(
+        target=monitor_memory_usage,
+        args=(memory_limit_gb,),
+        daemon=True
+    )
+    memory_monitor.start()
+
     batch_size = batch_size or total_groups
     batch_count: int = 0
 
@@ -331,6 +360,7 @@ def verify_with_cpog(
             print_progress(f"Processing batch {batch_count} with {len(current_batch)} instance groups")
 
             with ThreadPoolExecutor(max_workers=max_workers) as executor:
+                batch_executor = executor  # Store reference for memory monitor
                 future_to_group = {
                     executor.submit(
                         process_instance_group,
@@ -341,36 +371,53 @@ def verify_with_cpog(
                     for group_name, group in current_batch
                 }
 
-                for future in as_completed(future_to_group):
-                    try:
-                        results = future.result()
-                        for idx, result in results:
-                            for key, value in result.items():
-                                if key == "cpog_count":
-                                    value = int(value)
-                                results_df.at[idx, key] = value
+                try:
+                    for future in as_completed(future_to_group):
+                        try:
+                            results = future.result()
+                            for idx, result in results:
+                                for key, value in result.items():
+                                    if key == "cpog_count":
+                                        value = int(value)
+                                    results_df.at[idx, key] = value
 
-                    except FuturesTimeoutError:
-                        group_name = future_to_group[future]
-                        print_progress(f"Timeout occurred for instance: {group_name}")
-                        group = grouped.get_group(group_name)
-                        for idx in group.index:
-                            timeout_result = create_timeout_result()
-                            for key, value in timeout_result.items():
-                                results_df.at[idx, key] = value
-                        update_remaining_count()
+                        except FuturesTimeoutError:
+                            group_name = future_to_group[future]
+                            print_progress(f"Timeout occurred for instance: {group_name}")
+                            group = grouped.get_group(group_name)
+                            for idx in group.index:
+                                timeout_result = create_timeout_result()
+                                for key, value in timeout_result.items():
+                                    results_df.at[idx, key] = value
+                            update_remaining_count()
 
-            # Only clear RAM after the entire batch is complete
-            if get_memory_usage_gb() > memory_limit_gb:
-                print_progress("Memory usage exceeded threshold. Forcing cleanup...")
-                clear_ram()
+                except Exception as e:
+                    print_progress(f"Batch interrupted: {str(e)}")
+                    # Mark remaining instances in batch as failed
+                    for future, group_name in future_to_group.items():
+                        if not future.done():
+                            group = grouped.get_group(group_name)
+                            for idx in group.index:
+                                error_result = {
+                                    "cpog_message": "Batch terminated due to memory limit",
+                                    "cpog_count": 0,
+                                    "count_matches": False,
+                                    "verified": False
+                                }
+                                for key, value in error_result.items():
+                                    results_df.at[idx, key] = value
+
+            batch_executor = None
+            clear_ram()
 
     except KeyboardInterrupt:
         print_progress("\nInterrupted by user. Returning partial results...")
+    finally:
+        should_terminate.set()
+        memory_monitor.join(timeout=1.0)
 
     print_progress("Verification complete for all instances")
     return results_df
-
 
 def create_timeout_result() -> Dict[str, Any]:
     """Create a result dictionary for timeout case.
