@@ -27,8 +27,14 @@ def compute_features(cnf_dir: str, features_output_dir: str, satzilla_path: str)
             generator_type = cnf_file.split("_")[0]
             output_file = os.path.join(features_output_dir, f"features_output_{generator_type}.csv")
             print(f"Computing features for: {cnf_file}")
-            subprocess.run([satzilla_path, "-base", os.path.join(cnf_dir, cnf_file), output_file], 
-                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            subprocess.run(
+                [satzilla_path, "-base", os.path.join(cnf_dir, cnf_file), output_file],
+                check=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE
+            )
+            print(f"Command Output: {output.stdout.decode()}")
+            print(f"Command Error: {output.stderr.decode()}")
             print(f"Features saved to: {output_file}")
 
 def process_csv_files(features_output_dir: str):
