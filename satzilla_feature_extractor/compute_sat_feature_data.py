@@ -19,14 +19,6 @@ def run_python_script(script_path: str, **kwargs):
     print(f"Running script: {' '.join(cmd)}")
     subprocess.run(cmd, check=True)
 
-def clear_and_create_directory(dir_path: str):
-    """Clear the existing directory and recreate it."""
-    if os.path.exists(dir_path):
-        print(f"Deleting existing directory: {dir_path}")
-        shutil.rmtree(dir_path)
-    print(f"Creating directory: {dir_path}")
-    os.makedirs(dir_path, exist_ok=True)
-
 def merge_feature_csvs(csv_dir: Path) -> pd.DataFrame:
     """Merge all CSV files in directory into single DataFrame.
 
@@ -58,8 +50,18 @@ def compute_features(cnf_dir: str, features_output_dir: str, satzilla_path: str)
     """
     cnf_dir_path = Path(cnf_dir)
     features_output_path = Path(features_output_dir)
+    grandpa_dir = cnf_dir_path.parent.parent
 
-    clear_and_create_directory(features_output_dir)
+    # Find the *_generated_instances.txt file in the parent directory
+    generated_instances_file = next(grandpa_dir.glob("*_generated_instances.txt"), None)
+    if not generated_instances_file:
+        raise FileNotFoundError(
+            f"No *_generated_instances.txt file found in {grandpa_dir}. Cannot generate output file name."
+        )
+
+    # Extract the stem from the *_generated_instances.txt file
+    output_stem = generated_instances_file.stem.replace("_generated_instances", "")
+    output_file_name = f"{output_stem}_features_output.csv"
 
     with tempfile.TemporaryDirectory() as temp_dir:
         temp_path = Path(temp_dir)
@@ -80,7 +82,7 @@ def compute_features(cnf_dir: str, features_output_dir: str, satzilla_path: str)
         try:
             merged_df = merge_feature_csvs(temp_path)
 
-            output_file = features_output_path / "features_output.csv"
+            output_file = features_output_path / output_file_name
             merged_df.to_csv(output_file, index=False)
             print(f"Merged features saved to: {output_file}")
 
@@ -102,11 +104,3 @@ def process_csv_files(features_output_dir: str):
                 print(f"Processed successfully: {csv_file_path}")
             except Exception as e:
                 print(f"Error processing {csv_file_path}: {e}")
-
-def delete_old_instances(directory: str):
-    """Delete old instances directory if it exists."""
-    if os.path.exists(directory):
-        print(f"Deleting existing instances directory: {directory}")
-        shutil.rmtree(directory)
-    else:
-        print(f"No existing instances directory found at: {directory}")
