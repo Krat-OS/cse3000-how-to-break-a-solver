@@ -110,7 +110,7 @@ def verify_single_cnf(
             workspace = Path(temp_dir)
             new_verifier_dir = workspace / "cpog"
             shutil.copytree(verifier_dir, new_verifier_dir)
-            
+
             for executable in new_verifier_dir.glob("*"):
                 if not executable.name.startswith('.'):
                     executable.chmod(0o755)
@@ -144,67 +144,63 @@ def verify_single_cnf(
         raise
 
 def main() -> None:
-    """Main function to parse command-line arguments and process CSV or CNF files.
+    """
+    Main function to parse command-line arguments and process CSV or CNF files.
 
-    This function handles the command-line interface for the verifier tool.
-    It supports two main modes of operation:
-    1. Processing a CSV file containing multiple instances
+    This function handles the command-line interface for the verifier tool with
+    comprehensive error handling and support for graceful interruption.
+
+    Supports two primary modes of operation:
+    1. Processing a CSV file with multiple verification instances
     2. Verifying a single CNF file
 
-    Command-line arguments:
-        --csv-path: Path to CSV file containing instances to verify
-        --cnf-path: Path to single CNF file to verify
-        --verifier-dir: Path to directory containing verification binaries
-        --output-dir: Directory to save CPOG files (for single CNF verification)
-        --thread-timeout: Maximum time in seconds for each verification thread
-        --max-workers: Maximum number of parallel verification threads
-        --batch-size: Number of instances to process in each batch
-        --memory-limit-gb: Maximum allowed memory usage in gigabytes
+    Command-line arguments control various aspects of verification, including:
+    - Input file selection (CSV or CNF)
+    - Verification tool configuration
+    - Parallel processing parameters
+    - Memory and timeout constraints
 
-    The function performs the following steps:
-    1. Parses command-line arguments
-    2. Validates input paths and parameters
-    3. Sets up logging and signal handlers
-    4. Processes the input file(s) according to the specified mode
-    5. Handles any errors and performs cleanup
-
-    Error handling:
-        - Logs errors with appropriate context
-        - Exits with status code 1 on error
-        - Handles keyboard interrupts gracefully
-        - Ensures proper cleanup of resources
-
-    Note:
-        Either --csv-path or --cnf-path must be provided
+    Raises:
+        SystemExit: On unrecoverable errors or CLI usage mistakes
     """
     # Set up signal handlers at the start
     setup_signal_handlers()
-    
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--csv-path", help="Path to CSV file")
-    parser.add_argument("--cnf-path", help="Path to CNF file")
+
+    parser: argparse.ArgumentParser = argparse.ArgumentParser(
+        description="CPOG Verification Tool for CNF Instances"
+    )
+    parser.add_argument(
+        "--csv-path",
+        type=str,
+        help="Path to CSV file containing multiple verification instances"
+    )
+    parser.add_argument(
+        "--cnf-path",
+        type=str,
+        help="Path to single CNF file for direct verification"
+    )
     parser.add_argument(
         "--verifier-dir",
         default=Path(__file__).parent / "cpog",
         type=Path,
-        help="Path to verifier binaries"
+        help="Directory containing verification tool binaries"
     )
     parser.add_argument(
         "--output-dir",
         type=Path,
-        help="Directory to save CPOG file"
+        help="Directory to save generated CPOG files"
     )
     parser.add_argument(
         "--thread-timeout",
         type=int,
         default=3600,
-        help="Timeout in seconds for each thread"
+        help="Maximum execution time per verification thread (seconds)"
     )
     parser.add_argument(
         "--max-workers",
         type=int,
         default=10,
-        help="Maximum number of parallel workers"
+        help="Maximum number of parallel verification workers"
     )
     parser.add_argument(
         "--batch-size",
@@ -215,12 +211,12 @@ def main() -> None:
         "--memory-limit-gb",
         type=float,
         default=4.0,
-        help="Maximum allowed memory usage during batch processing"
+        help="Maximum memory usage allowed during batch processing (GB)"
     )
-    args = parser.parse_args()
+    args: argparse.Namespace = parser.parse_args()
 
-    results = None  # Store results outside try block to access in finally
-    output_path = None
+    results: Optional[pd.DataFrame] = None
+    output_path: Optional[Path] = None
 
     try:
         if args.csv_path:
@@ -234,9 +230,8 @@ def main() -> None:
                 memory_limit_gb=args.memory_limit_gb
             )
             output_path = get_output_path(args.csv_path)
-            return
 
-        if args.cnf_path:
+        elif args.cnf_path:
             verify_single_cnf(
                 args.cnf_path,
                 args.verifier_dir,
@@ -245,25 +240,29 @@ def main() -> None:
             )
             return
 
-        logging.error("Either --csv-path or --cnf-path must be provided.")
-        parser.print_help()
+        else:
+            logging.error(
+                "Invalid usage: Either --csv-path or --cnf-path must be provided"
+            )
+            parser.print_help()
+            sys.exit(1)
 
     except KeyboardInterrupt:
-        logging.info("\nProgram interrupted by user")
-        if results is not None:
-            logging.info("Saving partial results before exit...")
+        logging.info("\nVerification process interrupted by user")
+
     except Exception as e:
-        logging.error(f"Program failed: {e}")
-        if results is not None:
-            logging.info("Saving partial results despite error...")
+        logging.error(f"Verification process encountered an error: {e}")
         sys.exit(1)
+
     finally:
-        if results is not None and output_path is not None:
+        print("I REACHED THIS GUY!")
+        # Attempt to save partial results or full results
+        if results is not None or output_path is not None:
             try:
                 results.to_csv(output_path, index=False)
                 logging.info(f"Results saved to: {output_path}")
-            except Exception as e:
-                logging.error(f"Failed to save results: {e}")
+            except Exception as save_error:
+                logging.error(f"Failed to save results: {save_error}")
                 sys.exit(1)
 
 if __name__ == "__main__":

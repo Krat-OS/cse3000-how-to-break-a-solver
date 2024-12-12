@@ -2,7 +2,6 @@ import subprocess
 import tempfile
 import shutil
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from concurrent.futures import TimeoutError as FuturesTimeoutError
 from pathlib import Path
 from typing import Any, Dict, Optional, List, Tuple
 from datetime import datetime
@@ -15,8 +14,10 @@ from os import environ
 import time
 import signal
 import atexit
+import logging
+import sys
 
-print_lock: threading.Lock = threading.Lock()
+# Global locks and variables
 remaining_count_lock: threading.Lock = threading.Lock()
 remaining_count: int = 0
 batch_executor: Optional[ThreadPoolExecutor] = None
@@ -24,75 +25,75 @@ should_terminate: threading.Event = threading.Event()
 active_processes: List[subprocess.Popen] = []
 processes_lock: threading.Lock = threading.Lock()
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
+
 def get_memory_usage_gb() -> float:
-    """Return current memory usage of the process in gigabytes.
+    """
+    Return current memory usage of this process in gigabytes.
 
     Returns:
         float: Memory usage in GB.
     """
-    process = psutil.Process()
-    return process.memory_info().rss / (1024 ** 3)
+    proc = psutil.Process()
+    return proc.memory_info().rss / (1024 ** 3)
+
 
 def monitor_memory_usage(memory_limit_gb: float, check_interval: float = 1.0) -> None:
-    """Monitor memory usage in a separate thread and terminate batch if limit exceeded.
+    """
+    Monitor memory usage in a separate thread and terminate if limit is exceeded.
 
     Args:
-        memory_limit_gb: Maximum allowed memory usage in GB.
-        check_interval: Time between memory checks in seconds.
+        memory_limit_gb (float): Maximum allowed memory usage in GB.
+        check_interval (float): Time between checks in seconds.
     """
     while not should_terminate.is_set():
         current_usage = get_memory_usage_gb()
         if current_usage > memory_limit_gb:
-            with print_lock:
-                print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] "
-                      f"Memory limit exceeded: {current_usage:.2f}GB > {memory_limit_gb:.2f}GB")
-                if batch_executor:
-                    batch_executor.shutdown(wait=False, cancel_futures=True)
-                clear_ram()
+            logging.warning(
+                "Memory limit exceeded: %.2fGB > %.2fGB",
+                current_usage, memory_limit_gb
+            )
+            if batch_executor:
+                batch_executor.shutdown(wait=False, cancel_futures=True)
+            clear_ram()
         time.sleep(check_interval)
 
-def print_progress(message: str) -> None:
-    """Print a timestamped progress message in a thread-safe manner.
-
-    Args:
-        message: The message to be printed.
-    """
-    with print_lock:
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        print(f"[{timestamp}] {message}")
 
 def update_remaining_count(delta: int = -1) -> int:
-    """Update the global count of remaining instances thread-safely.
+    """
+    Update global count of remaining instances in a thread-safe manner.
 
     Args:
-        delta: Value to add to remaining count.
+        delta (int): Value to add to remaining_count.
 
     Returns:
-        int: Updated count of remaining instances.
+        int: Updated remaining_count.
     """
     global remaining_count
     with remaining_count_lock:
         remaining_count += delta
         return remaining_count
 
-def setup_instance_workspace(instance_path: Path, verifier_dir: Path, thread_id: str) -> Path:
-    """Create and setup a temporary workspace for processing an instance with thread isolation.
+
+def setup_instance_workspace(
+    instance_path: Path, verifier_dir: Path, thread_id: str
+) -> Path:
+    """
+    Create a unique temporary workspace for an instance.
 
     Args:
-        instance_path: Path to the CNF instance file.
-        verifier_dir: Path to the directory containing verification tools.
-        thread_id: Unique identifier for the thread.
+        instance_path (Path): Path to the CNF instance file.
+        verifier_dir (Path): Path to directory with verification tools.
+        thread_id (str): Unique thread identifier.
 
     Returns:
-        Path: Path to the created workspace directory.
+        Path: Workspace directory path.
     """
-    instance_name: str = instance_path.stem
-    workspace: Path = Path(tempfile.gettempdir()) / f"cpog_workspace_{thread_id}_{instance_name}"
-
-    if workspace.exists():
-        shutil.rmtree(workspace)
-    workspace.mkdir(parents=True)
-
+    temp_dir = tempfile.mkdtemp(prefix=f"cpog_workspace_{thread_id}_{instance_path.stem}_")
+    workspace = Path(temp_dir)
     new_verifier_dir: Path = workspace / "cpog"
     shutil.copytree(verifier_dir, new_verifier_dir)
 
@@ -102,21 +103,27 @@ def setup_instance_workspace(instance_path: Path, verifier_dir: Path, thread_id:
 
     return workspace
 
+
 def cleanup_workspace(workspace: Path) -> None:
-    """Remove a temporary workspace directory.
+    """
+    Remove a temporary workspace directory.
 
     Args:
-        workspace: Path to the workspace directory to be cleaned up.
+        workspace (Path): Workspace directory to remove.
     """
     try:
         if workspace.exists():
             shutil.rmtree(workspace)
-            print_progress(f"Cleaned up workspace: {workspace}")
+            logging.info("Cleaned up workspace: %s", workspace)
     except Exception as e:
-        print_progress(f"Error cleaning up workspace {workspace}: {e}")
+        logging.error("Error cleaning up workspace %s: %s", workspace, e)
 
-def cleanup_on_exit():
-    """Cleanup function registered to run when the program exits."""
+
+def cleanup_on_exit() -> None:
+    """
+    Cleanup function registered to run at program exit.
+    Terminates subprocesses and clears RAM.
+    """
     clear_ram()
     with processes_lock:
         for process in active_processes:
@@ -129,23 +136,26 @@ def cleanup_on_exit():
                 except:
                     pass
 
-def clear_ram() -> None:
-    """Force clear RAM by terminating subprocesses and invoking garbage collection."""
-    gc.collect()
-    process: psutil.Process = psutil.Process()
 
-    for child in process.children(recursive=True):
+def clear_ram() -> None:
+    """
+    Force clear RAM by terminating subprocesses and invoking garbage collection.
+    """
+    gc.collect()
+    proc: psutil.Process = psutil.Process()
+    for child in proc.children(recursive=True):
         try:
             child.terminate()
         except Exception:
             pass
 
-    _, alive = psutil.wait_procs(process.children(recursive=True), timeout=3)
-    for proc in alive:
+    _, alive = psutil.wait_procs(proc.children(recursive=True), timeout=3)
+    for p in alive:
         try:
-            proc.kill()
+            p.kill()
         except Exception:
             pass
+
 
 def run_command(
     cmd: List[str],
@@ -153,16 +163,17 @@ def run_command(
     timeout: int = 300,
     env: Optional[dict] = None
 ) -> Tuple[int, str, str]:
-    """Execute a shell command with timeout and optional environment variables.
+    """
+    Execute a command with timeout and optional env vars.
 
     Args:
-        cmd: Command to execute as list of strings.
-        cwd: Working directory for command execution.
-        timeout: Maximum execution time in seconds.
-        env: Environment variables to set for the command.
+        cmd (List[str]): Command to execute.
+        cwd (Optional[Path]): Working directory.
+        timeout (int): Timeout in seconds.
+        env (Optional[dict]): Environment variables.
 
     Returns:
-        Tuple[int, str, str]: Return code, stdout, and stderr from the command.
+        Tuple[int, str, str]: (Return code, stdout, stderr)
     """
     process: Optional[subprocess.Popen] = None
     try:
@@ -174,11 +185,8 @@ def run_command(
             cwd=cwd,
             env=env
         )
-
-        # Track the process
         with processes_lock:
             active_processes.append(process)
-
         stdout, stderr = process.communicate(timeout=timeout)
         return process.returncode, stdout, stderr
     except subprocess.TimeoutExpired:
@@ -192,10 +200,10 @@ def run_command(
             if process.stderr:
                 process.stderr.close()
             process.wait()
-            # Remove process from tracking
             with processes_lock:
                 if process in active_processes:
                     active_processes.remove(process)
+
 
 def verify_single_instance(
     cnf_path: Path,
@@ -203,16 +211,17 @@ def verify_single_instance(
     thread_id: str,
     timeout: int = 300
 ) -> Tuple[bool, Optional[str], int]:
-    """Verify a single CNF instance using CPOG with thread isolation.
+    """
+    Verify a single CNF instance using CPOG.
 
     Args:
-        cnf_path: Path to CNF file.
-        workspace: Path to workspace directory.
-        thread_id: Unique identifier for the thread.
-        timeout: Maximum execution time in seconds.
+        cnf_path (Path): Path to CNF file.
+        workspace (Path): Workspace directory.
+        thread_id (str): Unique thread ID.
+        timeout (int): Timeout in seconds.
 
     Returns:
-        Tuple[bool, Optional[str], int]: Success status, error message (if any), and model count.
+        Tuple[bool, Optional[str], int]: (verified, error, model_count)
     """
     verifier_dir: Path = workspace / "cpog"
     d4nnf_path: Path = workspace / f"temp_{thread_id}.d4nnf"
@@ -220,40 +229,70 @@ def verify_single_instance(
 
     try:
         # Generate D4NNF
-        returncode, _, stderr = run_command([
-            str(verifier_dir / "d4"),
-            str(cnf_path),
-            "-dDNNF",
-            f"-out={str(d4nnf_path)}"
-        ], timeout=timeout)
+        returncode, _, stderr = run_command(
+            [
+                str(verifier_dir / "d4"),
+                str(cnf_path),
+                "-dDNNF",
+                f"-out={str(d4nnf_path)}"
+            ],
+            cwd=workspace,
+            timeout=timeout
+        )
         if returncode != 0:
             return False, f"D4NNF generation failed: {stderr}", 0
 
-        # Generate CPOG with updated environment
+        # Set environment for cpog-gen and cpog-check
         env = environ.copy()
-        env["PATH"] = f"{str(verifier_dir)}:{env.get('PATH', '')}"
+        env["PATH"] = f"{str(verifier_dir)}:/usr/local/bin:{env.get('PATH', '')}"
 
-        returncode, stdout, stderr = run_command([
-            str(verifier_dir / "cpog-gen"),
-            str(cnf_path),
-            str(d4nnf_path),
-            str(cpog_path)
-        ], timeout=timeout, env=env)
+        # Generate CPOG
+        returncode, stdout, stderr = run_command(
+            [
+                str(verifier_dir / "cpog-gen"),
+                str(cnf_path.resolve()),
+                str(d4nnf_path.resolve()),
+                str(cpog_path.resolve())
+            ],
+            cwd=workspace,
+            timeout=timeout,
+            env=env
+        )
 
         if "Compiled formula unsatisfiable.  Cannot verify" in stdout:
+            # Unsat instance
+            # Check D4NNF file just in case
+            if not d4nnf_path.exists():
+                logging.error("D4NNF file not created for unsat instance.")
+                return False, "D4NNF file missing", 0
             return False, "UNSAT", 0
+
         if returncode != 0:
             return False, f"CPOG generation failed: {stderr}", 0
 
         # Verify CPOG
-        returncode, stdout, stderr = run_command([
-            str(verifier_dir / "cpog-check"),
-            str(cnf_path),
-            str(cpog_path)
-        ], timeout=timeout)
+        returncode, stdout, stderr = run_command(
+            [
+                str(verifier_dir / "cpog-check"),
+                str(cnf_path.resolve()),
+                str(cpog_path.resolve())
+            ],
+            cwd=workspace,
+            timeout=timeout,
+            env=env
+        )
 
         if returncode != 0:
             return False, f"CPOG verification failed: {stderr}", 0
+
+        if not d4nnf_path.exists():
+            logging.error("D4NNF file %s was not created.", d4nnf_path)
+            return False, "D4NNF file missing", 0
+
+        verified = True
+        if verified and not cpog_path.exists():
+            logging.error("CPOG file %s not created despite success.", cpog_path)
+            return False, "CPOG file missing after success", 0
 
         model_count: int = 0
         for line in stdout.splitlines():
@@ -266,20 +305,22 @@ def verify_single_instance(
     except Exception as e:
         return False, f"Verification failed with error: {str(e)}", 0
 
+
 def process_instance_group(
     group: pd.DataFrame,
     verifier_dir: Path,
     timeout: int
 ) -> List[Tuple[int, Dict[str, Any]]]:
-    """Process a group of rows sharing the same instance_path with thread isolation.
+    """
+    Process a group of rows with the same instance_path.
 
     Args:
-        group: DataFrame containing rows with the same instance_path.
-        verifier_dir: Directory containing verification tools.
-        timeout: Maximum execution time in seconds.
+        group (pd.DataFrame): Rows with same instance_path.
+        verifier_dir (Path): Directory of verification tools.
+        timeout (int): Timeout in seconds.
 
     Returns:
-        List[Tuple[int, Dict[str, Any]]]: List of results for each row in the group.
+        List[Tuple[int, Dict[str, Any]]]: Results for each row in the group.
     """
     if pd.isna(group["instance_path"].iloc[0]):
         return [(idx, create_missing_instance_result()) for idx in group.index]
@@ -295,57 +336,56 @@ def process_instance_group(
         )
 
         for idx, row in group.iterrows():
-            if pd.isna(row["count_value"]) or not float(row["count_value"]).is_integer():
-                results.append((idx, create_invalid_count_result()))
-                continue
-
+            # Even if count_value invalid, we still fill in results
             result: Dict[str, Any] = {
                 "cpog_message": "NO ERROR" if error is None else error,
                 "cpog_count": cpog_count,
                 "count_matches": (
-                    (cpog_count > 0 and abs(cpog_count - row["count_value"]) < 1e-6) or
-                    (cpog_count == 0 and row["count_value"] == 0 and
-                     row["satisfiability"] == "UNSATISFIABLE" and error == "UNSAT")
+                    (cpog_count > 0 and
+                     abs(cpog_count - row.get("count_value", 0)) < 1e-6) or
+                    (cpog_count == 0 and row.get("count_value", 0) == 0 and
+                     row.get("satisfiability", "") == "UNSATISFIABLE" and error == "UNSAT")
                 ),
                 "verified": verified
             }
+
+            val = row.get("count_value")
+            if pd.isna(val) or not isinstance(val, (int, float)) \
+               or not float(val).is_integer():
+                result["cpog_message"] = "Invalid count value"
+
             results.append((idx, result))
 
     except Exception as e:
-        error_result: Dict[str, Any] = {
-            "cpog_message": f"ERROR: {str(e)}",
-            "cpog_count": 0,
-            "count_matches": False,
-            "verified": False
-        }
-        results = [(idx, error_result) for idx in group.index]
+        err_res = create_cpog_error_result(f"ERROR: {str(e)}")
+        results = [(idx, err_res) for idx in group.index]
     finally:
         cleanup_workspace(workspace)
         remaining: int = update_remaining_count()
-        print_progress(
-            f"Completed verification for {instance_path.name}. Remaining instance groups: {remaining}"
+        logging.info(
+            "Completed verification for %s. Remaining instance groups: %d",
+            instance_path.name, remaining
         )
 
     return results
 
-def _setup_signal_handlers():
-    """Set up signal handlers for graceful shutdown."""
+
+def _setup_signal_handlers() -> None:
+    """
+    Set up signal handlers for graceful shutdown.
+    """
     def signal_handler(signum, frame):
         global batch_executor, should_terminate
-
-        with print_lock:
-            print(f"\nReceived signal {signum}, initiating graceful shutdown...")
-
+        logging.warning("Received signal %d, initiating shutdown...", signum)
         should_terminate.set()
-
         if batch_executor:
             batch_executor.shutdown(wait=False, cancel_futures=True)
-
         clear_ram()
-        exit(128 + signum)
+        sys.exit(128 + signum)
 
     signal.signal(signal.SIGTERM, signal_handler)
     signal.signal(signal.SIGINT, signal_handler)
+
 
 def verify_with_cpog(
     df: pd.DataFrame,
@@ -355,16 +395,35 @@ def verify_with_cpog(
     batch_size: Optional[int] = None,
     memory_limit_gb: float = 4.0
 ) -> pd.DataFrame:
-    """Verify multiple CNF instances using CPOG with batching and thread isolation."""
+    """
+    Verify multiple CNF instances with CPOG. Supports batching and threading.
+
+    Args:
+        df (pd.DataFrame): Dataframe with instances to verify.
+        verifier_dir (Path | str): Path to verification tools.
+        thread_timeout (int): Timeout per instance.
+        max_workers (int): Max parallel workers.
+        batch_size (Optional[int]): Instances per batch.
+        memory_limit_gb (float): Memory limit in GB.
+
+    Returns:
+        pd.DataFrame: Results with verification data added.
+    """
     global batch_executor, should_terminate
-    
-    # Set up signal handlers and cleanup
+
     _setup_signal_handlers()
     atexit.register(cleanup_on_exit)
-    
+
     should_terminate.clear()
     verifier_dir = Path(verifier_dir)
     results_df: pd.DataFrame = df.copy()
+
+    # Check required tools exist
+    required_tools = ["d4", "cpog-gen", "cpog-check", "cadical", "drat-trim"]
+    for tool in required_tools:
+        if not (verifier_dir / tool).exists():
+            logging.error("Required tool %s not found in %s", tool, verifier_dir)
+            sys.exit(1)
 
     try:
         grouped = df.groupby("instance_path", group_keys=True)
@@ -374,9 +433,11 @@ def verify_with_cpog(
         global remaining_count
         remaining_count = total_groups
 
-        print_progress(f"Starting verification of {total_groups} unique instances with {max_workers} workers")
+        logging.info(
+            "Starting verification of %d unique instances with %d workers",
+            total_groups, max_workers
+        )
 
-        # Start memory monitoring thread
         memory_monitor = threading.Thread(
             target=monitor_memory_usage,
             args=(memory_limit_gb,),
@@ -389,12 +450,15 @@ def verify_with_cpog(
 
         for i in range(0, total_groups, batch_size):
             if should_terminate.is_set():
-                print_progress("Termination requested, stopping after current batch")
+                logging.info("Termination requested, stopping after current batch")
                 break
 
             batch_count += 1
             current_batch = groups[i:i + batch_size]
-            print_progress(f"Processing batch {batch_count} with {len(current_batch)} instance groups")
+            logging.info(
+                "Processing batch %d with %d instance groups",
+                batch_count, len(current_batch)
+            )
 
             try:
                 with ThreadPoolExecutor(max_workers=max_workers) as executor:
@@ -410,6 +474,7 @@ def verify_with_cpog(
                     }
 
                     for future in as_completed(future_to_group):
+                        group_name = future_to_group[future]
                         try:
                             results = future.result()
                             for idx, result in results:
@@ -418,67 +483,70 @@ def verify_with_cpog(
                                         value = int(value)
                                     results_df.at[idx, key] = value
                         except Exception as e:
-                            group_name = future_to_group[future]
-                            print_progress(f"Error processing group {group_name}: {e}")
-                            # Handle the error for this group but continue processing
-                            mark_group_as_failed(results_df, grouped.get_group(group_name))
+                            logging.error(
+                                "Error processing group %s: %s", group_name, e
+                            )
+                            mark_group_as_failed(
+                                results_df, grouped.get_group(group_name)
+                            )
 
             except Exception as e:
-                print_progress(f"Batch {batch_count} interrupted: {str(e)}")
-                # Mark remaining instances in batch as failed
+                logging.error("Batch %d interrupted: %s", batch_count, str(e))
                 mark_remaining_as_failed(results_df, future_to_group, grouped)
             finally:
                 batch_executor = None
                 clear_ram()
-                print_progress(f"Batch {batch_count} complete")
+                logging.info("Batch %d complete", batch_count)
 
     except KeyboardInterrupt:
-        print_progress("\nInterrupted by user. Saving partial results...")
+        logging.info("Interrupted by user. Saving partial results...")
     except Exception as e:
-        print_progress(f"Unexpected error: {e}")
+        logging.error("Unexpected error: %s", e)
         raise
     finally:
         should_terminate.set()
         if memory_monitor.is_alive():
             memory_monitor.join(timeout=1.0)
-        
-        # Additional cleanup
+
         if batch_executor:
             batch_executor.shutdown(wait=False, cancel_futures=True)
             batch_executor = None
         clear_ram()
 
-    print_progress(f"Verification complete. Processed batches: {batch_count}")
+    logging.info("Verification complete. Processed batches: %d", batch_count)
     return results_df
 
+
 def mark_group_as_failed(results_df: pd.DataFrame, group: pd.DataFrame) -> None:
-    """Mark all instances in a group as failed."""
-    error_result = {
-        "cpog_message": "Processing failed",
-        "cpog_count": 0,
-        "count_matches": False,
-        "verified": False
-    }
+    """
+    Mark all instances in a group as failed.
+    """
+    err = create_processing_failed_result()
     for idx in group.index:
-        for key, value in error_result.items():
+        for key, value in err.items():
             results_df.at[idx, key] = value
+
 
 def mark_remaining_as_failed(
     results_df: pd.DataFrame,
     future_to_group: Dict,
     grouped: pd.core.groupby.DataFrameGroupBy
 ) -> None:
-    """Mark all remaining unprocessed instances as failed."""
+    """
+    Mark all remaining unprocessed instances as failed.
+    """
     for future, group_name in future_to_group.items():
         if not future.done():
             group = grouped.get_group(group_name)
             mark_group_as_failed(results_df, group)
 
+
 def create_timeout_result() -> Dict[str, Any]:
-    """Create a result dictionary for timeout case.
+    """
+    Create result for a timeout case.
 
     Returns:
-        Dict[str, Any]: Dictionary containing timeout result data.
+        Dict[str, Any]: Timeout result data.
     """
     return {
         "cpog_message": "TIMEOUT",
@@ -487,11 +555,13 @@ def create_timeout_result() -> Dict[str, Any]:
         "verified": False
     }
 
+
 def create_missing_instance_result() -> Dict[str, Any]:
-    """Create a result dictionary for missing instance case.
+    """
+    Create result for missing instance case.
 
     Returns:
-        Dict[str, Any]: Dictionary containing missing instance result data.
+        Dict[str, Any]: Missing instance result data.
     """
     return {
         "cpog_message": "No instance provided",
@@ -500,14 +570,49 @@ def create_missing_instance_result() -> Dict[str, Any]:
         "verified": False
     }
 
+
 def create_invalid_count_result() -> Dict[str, Any]:
-    """Create a result dictionary for invalid count value case.
+    """
+    Create result for invalid count value case.
 
     Returns:
-        Dict[str, Any]: Dictionary containing invalid count result data.
+        Dict[str, Any]: Invalid count result data.
     """
     return {
         "cpog_message": "Invalid count value",
+        "cpog_count": 0,
+        "count_matches": False,
+        "verified": False
+    }
+
+
+def create_cpog_error_result(message: str) -> Dict[str, Any]:
+    """
+    Create result for a CPOG-related error.
+
+    Args:
+        message (str): Error message.
+
+    Returns:
+        Dict[str, Any]: CPOG error result.
+    """
+    return {
+        "cpog_message": message,
+        "cpog_count": 0,
+        "count_matches": False,
+        "verified": False
+    }
+
+
+def create_processing_failed_result() -> Dict[str, Any]:
+    """
+    Create result for a generic processing failure.
+
+    Returns:
+        Dict[str, Any]: Processing failed result.
+    """
+    return {
+        "cpog_message": "Processing failed",
         "cpog_count": 0,
         "count_matches": False,
         "verified": False
