@@ -255,7 +255,6 @@ def main() -> None:
         sys.exit(1)
 
     finally:
-        print("I REACHED THIS GUY!")
         # Attempt to save partial results or full results
         if results is not None or output_path is not None:
             try:
