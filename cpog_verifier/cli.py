@@ -64,7 +64,7 @@ def process_results_and_verify_with_cpog(
         raise
 
 def get_output_path(input_path: str | Path) -> Path:
-    """Generate output path by appending '_cristian_tool_output' to the original filename.
+    """Generate output path by appending '_with_cpog' to the original filename.
 
     Args:
         input_path: Original CSV file path.
@@ -73,7 +73,7 @@ def get_output_path(input_path: str | Path) -> Path:
         Path: Output file path with modified filename.
     """
     input_path = Path(input_path)
-    return input_path.parent / f"{input_path.stem}_cristian_tool_output.csv"
+    return input_path.parent / f"{input_path.stem}_with_cpog.csv"
 
 def verify_single_cnf(
     cnf_path: str | Path,
