@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH --job-name="use-features"
-#SBATCH --time=00:05:00
+#SBATCH --time=00:15:00
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=16
-#SBATCH --mem-per-cpu=1G
+#SBATCH --cpus-per-task=8
+#SBATCH --mem-per-cpu=2G
 #SBATCH --partition=compute-p2
 #SBATCH --account=education-eemcs-courses-cse3000
 
