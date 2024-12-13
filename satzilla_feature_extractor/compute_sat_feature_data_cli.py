@@ -1,5 +1,5 @@
 import argparse
-from compute_sat_feature_data import (
+from satzilla_feature_extractor.compute_sat_feature_data import (
     run_python_script,
     compute_features,
     process_csv_files,
