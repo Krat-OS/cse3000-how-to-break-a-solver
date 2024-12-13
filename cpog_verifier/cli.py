@@ -14,17 +14,6 @@ from cpog_verifier.utils import verify_single_instance, verify_with_cpog, should
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-def setup_signal_handlers():
-    """Set up signal handlers for graceful shutdown."""
-    def signal_handler(signum, frame):
-        logging.info(f"Received signal {signum}, initiating shutdown...")
-        should_terminate.set()
-        # Don't exit immediately - let the finally block handle cleanup and saving
-        raise KeyboardInterrupt()
-
-    signal.signal(signal.SIGTERM, signal_handler)
-    signal.signal(signal.SIGINT, signal_handler)
-
 def process_results_and_verify_with_cpog(
     csv_path: str | Path,
     verifier_dir: str | Path,
@@ -33,7 +22,10 @@ def process_results_and_verify_with_cpog(
     batch_size: Optional[int] = None,
     memory_limit_gb: Optional[float] = 4.0
 ) -> pd.DataFrame:
-    """Process results CSV and verify with CPOG.
+    """Process results CSV and verify with CPOG without raising exceptions.
+
+    This function always returns results (partial or full), even if interrupted
+    or if an error occurs.
 
     Args:
         csv_path: Path to the CSV file to process.
@@ -44,11 +36,14 @@ def process_results_and_verify_with_cpog(
         memory_limit_gb: Maximum allowed memory usage during batch processing.
 
     Returns:
-        DataFrame: Results with verification data added.
+        DataFrame: Results with verification data added or partial results if interrupted.
     """
+    # Start with a processed DataFrame from the CSV
+    df = process_results(csv_path)
+
+    df_with_cpog = None
     try:
-        df = process_results(csv_path)
-        return verify_with_cpog(
+        df_with_cpog = verify_with_cpog(
             df,
             verifier_dir,
             thread_timeout=thread_timeout,
@@ -56,12 +51,15 @@ def process_results_and_verify_with_cpog(
             batch_size=batch_size,
             memory_limit_gb=memory_limit_gb
         )
+        return df_with_cpog
     except KeyboardInterrupt:
-        logging.info("Interrupted by user.")
-        raise
+        # Log and return whatever we have so far
+        logging.info("Interrupted by user. Returning partial results.")
+        return df_with_cpog if df_with_cpog is not None else df
     except Exception as e:
-        logging.error(f"Error in verification process: {e}")
-        raise
+        # Log error and return partial results if available, else original
+        logging.error(f"Error in verification process: {e}. Returning partial results.")
+        return df_with_cpog if df_with_cpog is not None else df
 
 def get_output_path(input_path: str | Path) -> Path:
     """Generate output path by appending '_with_cpog' to the original filename.
@@ -163,8 +161,6 @@ def main() -> None:
     Raises:
         SystemExit: On unrecoverable errors or CLI usage mistakes
     """
-    # Set up signal handlers at the start
-    setup_signal_handlers()
 
     parser: argparse.ArgumentParser = argparse.ArgumentParser(
         description="CPOG Verification Tool for CNF Instances"
@@ -247,22 +243,19 @@ def main() -> None:
             parser.print_help()
             sys.exit(1)
 
-    except KeyboardInterrupt:
-        logging.info("\nVerification process interrupted by user")
-
     except Exception as e:
-        logging.error(f"Verification process encountered an error: {e}")
-        sys.exit(1)
+        # If an unexpected error occurs here, we still may have partial results.
+        logging.error(f"Unexpected error: {e}")
 
     finally:
-        # Attempt to save partial results or full results
-        if results is not None or output_path is not None:
+        if results is not None and output_path is not None:
             try:
                 results.to_csv(output_path, index=False)
                 logging.info(f"Results saved to: {output_path}")
             except Exception as save_error:
                 logging.error(f"Failed to save results: {save_error}")
                 sys.exit(1)
+
 
 if __name__ == "__main__":
     main()

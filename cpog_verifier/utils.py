@@ -50,6 +50,7 @@ def monitor_memory_usage(memory_limit_gb: float, check_interval: float = 1.0) ->
         check_interval (float): Time between checks in seconds.
     """
     while not should_terminate.is_set():
+        logging.info("Current memory usage: %.2fGB", get_memory_usage_gb())
         current_usage = get_memory_usage_gb()
         if current_usage > memory_limit_gb:
             logging.warning(
@@ -378,10 +379,7 @@ def _setup_signal_handlers() -> None:
         global batch_executor, should_terminate
         logging.warning("Received signal %d, initiating shutdown...", signum)
         should_terminate.set()
-        if batch_executor:
-            batch_executor.shutdown(wait=False, cancel_futures=True)
-        clear_ram()
-        sys.exit(128 + signum)
+        raise KeyboardInterrupt()
 
     signal.signal(signal.SIGTERM, signal_handler)
     signal.signal(signal.SIGINT, signal_handler)
@@ -499,6 +497,11 @@ def verify_with_cpog(
                 logging.info("Batch %d complete", batch_count)
 
     except KeyboardInterrupt:
+        remaining_groups: List[Tuple[str, pd.DataFrame]] = groups[batch_count:]
+        for group_name, _ in remaining_groups:
+            mark_group_as_failed(
+                results_df, grouped.get_group(group_name)
+            )
         logging.info("Interrupted by user. Saving partial results...")
     except Exception as e:
         logging.error("Unexpected error: %s", e)
