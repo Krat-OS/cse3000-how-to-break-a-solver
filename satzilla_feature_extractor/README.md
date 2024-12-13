@@ -50,7 +50,7 @@ Run the CLI script using:
 2. **Compute Features:**<br>
     This method produces a CSVs under `SharpVelvet/out/features_output`. First argument is the base of your cnf-s generated with our generators. Second argument set to `SharpVelvet/out/features_output`, will be the location of generated CSVs. For every cnf formula features are computed and stored in a CSV.
    ```python
-   python satzilla_feature_extractor/compute_sat_feature_data_cli.py compute_features     /path/to/cse3000-how-to-break-a-solver/SharpVelvet/out/instances/cnf     /path/to/cse3000-how-to-break-a-solver/SharpVelvet/out/features_output     /path/to/revisiting_satzilla/SAT-features-competition2024/features
+   python satzilla_feature_extractor/compute_sat_feature_data_cli.py compute_features     /path/to/cse3000-how-to-break-a-solver/SharpVelvet/out/instances/cnf     /path/to/cse3000-how-to-break-a-solver/SharpVelvet/out/features_output     /path/to/features
    ```
 
 3. **Process CSV Files:**<br>
