@@ -160,7 +160,7 @@ def run_counter(counter: fut.Counter,
 
     command, counter_dir = fut.construct_command(counter, path_to_instance, memout=memout, timeout=timeout)
     start_time = time.time()
-    counter_output, err = fut.run(command.split(), counter_dir + '/', verbosity=verbosity)
+    counter_output, err = fut.run(command.split(), counter_dir + '/', verbosity=verbosity, timeout=timeout)
     error = fut.handle_errors(err, verbosity=verbosity)
     timed_out = fut.handle_timeout(start_time=start_time, timeout=timeout,
                                    counter_name=counter.name, path_to_instance=path_to_instance)
