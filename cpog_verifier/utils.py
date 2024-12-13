@@ -17,49 +17,86 @@ import atexit
 import logging
 import sys
 
+class CustomFormatter(logging.Formatter):
+    """
+    Custom logging formatter to show levelname only for WARNING or ERROR,
+    and add color to the output.
+    """
+    # Define color codes
+    RESET = "\033[0m"
+    COLORS = {
+        "WARNING": "\033[93m",  # Yellow
+        "ERROR": "\033[91m",    # Red
+    }
+
+    def format(self, record):
+        # Add color for WARNING or ERROR levels
+        if record.levelname in self.COLORS:
+            levelname_color = f"{self.COLORS[record.levelname]}{record.levelname}{self.RESET}"
+        else:
+            levelname_color = ""
+
+        # Format the log message
+        formatted_message = f"[CPOG Verifier {levelname_color}], {self.formatTime(record)}: {record.getMessage()}"
+        return formatted_message
+
+# Set up the logger
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger()
+handler = logging.StreamHandler()
+handler.setFormatter(CustomFormatter())
+logger.handlers = [handler]
+
 # Global locks and variables
 remaining_count_lock: threading.Lock = threading.Lock()
 remaining_count: int = 0
 batch_executor: Optional[ThreadPoolExecutor] = None
 should_terminate: threading.Event = threading.Event()
+memory_exceeded: threading.Event = threading.Event()
 active_processes: List[subprocess.Popen] = []
 processes_lock: threading.Lock = threading.Lock()
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
-)
-
 def get_memory_usage_gb() -> float:
     """
-    Return current memory usage of this process in gigabytes.
+    Return the total memory usage of this process and the tracked subprocesses in gigabytes.
 
     Returns:
-        float: Memory usage in GB.
+        float: Total memory usage in GB.
     """
-    proc = psutil.Process()
-    return proc.memory_info().rss / (1024 ** 3)
+    total_memory = 0
+    try:
+        proc = psutil.Process()
+        total_memory += proc.memory_info().rss  # Memory of the main process
+    except psutil.NoSuchProcess:
+        logging.warning("Main process no longer exists.")
 
+    with processes_lock:
+        for process in active_processes:
+            try:
+                child_proc = psutil.Process(process.pid)
+                total_memory += child_proc.memory_info().rss
+            except psutil.NoSuchProcess:
+                # Process may have already terminated
+                continue
+
+    return total_memory / (1024 ** 3)
 
 def monitor_memory_usage(memory_limit_gb: float, check_interval: float = 1.0) -> None:
     """
-    Monitor memory usage in a separate thread and terminate if limit is exceeded.
+    Monitor memory usage in a separate thread and clear RAM if limit is exceeded.
 
     Args:
         memory_limit_gb (float): Maximum allowed memory usage in GB.
         check_interval (float): Time between checks in seconds.
     """
     while not should_terminate.is_set():
-        logging.info("Current memory usage: %.2fGB", get_memory_usage_gb())
-        current_usage = get_memory_usage_gb()
+        current_usage: float = get_memory_usage_gb()
         if current_usage > memory_limit_gb:
-            logging.warning(
-                "Memory limit exceeded: %.2fGB > %.2fGB",
-                current_usage, memory_limit_gb
-            )
-            if batch_executor:
-                batch_executor.shutdown(wait=False, cancel_futures=True)
+            logging.warning("Memory Monitor triggered, memory limit (%.2fGB) exceeded", memory_limit_gb)
+            memory_exceeded.set()
             clear_ram()
+        else:
+            memory_exceeded.clear()
         time.sleep(check_interval)
 
 
@@ -447,16 +484,18 @@ def verify_with_cpog(
         batch_count: int = 0
 
         for i in range(0, total_groups, batch_size):
-            if should_terminate.is_set():
-                logging.info("Termination requested, stopping after current batch")
-                break
-
             batch_count += 1
             current_batch = groups[i:i + batch_size]
             logging.info(
                 "Processing batch %d with %d instance groups",
                 batch_count, len(current_batch)
             )
+
+            if memory_exceeded.is_set():
+                logging.warning("Memory limit exceeded, marking current batch as OUT OF MEMORY.")
+                mark_batch_as_memout(results_df, current_batch)
+                memory_exceeded.clear()
+                continue
 
             try:
                 with ThreadPoolExecutor(max_workers=max_workers) as executor:
@@ -529,6 +568,19 @@ def mark_group_as_failed(results_df: pd.DataFrame, group: pd.DataFrame) -> None:
         for key, value in err.items():
             results_df.at[idx, key] = value
 
+def mark_batch_as_memout(results_df: pd.DataFrame, current_batch: List[Tuple[str, pd.DataFrame]]) -> None:
+    """
+    Mark all elements in the current batch as OUT OF MEMORY.
+
+    Args:
+        results_df (pd.DataFrame): Dataframe to update.
+        current_batch (List[Tuple[str, pd.DataFrame]]): Current batch of instance groups.
+    """
+    memout_result = create_memout_result()
+    for _, group in current_batch:
+        for idx in group.index:
+            for key, value in memout_result.items():
+                results_df.at[idx, key] = value
 
 def mark_remaining_as_failed(
     results_df: pd.DataFrame,
@@ -558,6 +610,19 @@ def create_timeout_result() -> Dict[str, Any]:
         "verified": False
     }
 
+def create_memout_result() -> Dict[str, Any]:
+    """
+    Create result for an out-of-memory case.
+
+    Returns:
+        Dict[str, Any]: Memory-out result data.
+    """
+    return {
+        "cpog_message": "OUT OF MEMORY",
+        "cpog_count": 0,
+        "count_matches": False,
+        "verified": False
+    }
 
 def create_missing_instance_result() -> Dict[str, Any]:
     """
@@ -615,7 +680,7 @@ def create_processing_failed_result() -> Dict[str, Any]:
         Dict[str, Any]: Processing failed result.
     """
     return {
-        "cpog_message": "Processing failed",
+        "cpog_message": "PROCESSING FAILED",
         "cpog_count": 0,
         "count_matches": False,
         "verified": False
