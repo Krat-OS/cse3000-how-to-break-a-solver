@@ -106,11 +106,20 @@ fi
 echo "[cpog_verify.sh] Verifying CSV: $CSV_FILE"
 
 run_with_tracking \
-  "$PROJECT_PATH/global_cli.py" cpog_verify \
-  --csv-paths "$CSV_FILE" \
+  python "$PROJECT_PATH/global_cli.py" cpog_verify \
+  --csv-path "$CSV_FILE" \
   --max-workers "$MAX_WORKERS" \
   --thread-timeout "$THREAD_TIMEOUT" \
   --batch-size "$BATCH_SIZE" \
-  --memory-limit-gb "$MEMORY_LIMIT_GB"
+  --memory-limit-gb "$MEMORY_LIMIT_GB" \
+  --output-dir "$(dirname "$CSV_FILE")" \
+  --verifier-dir "$PROJECT_PATH/cpog_verifier/cpog" \
+
+if [[ -f "$OUTPUT_FILE" ]]; then
+  echo "[cpog_verify.sh] Verification complete. Output saved to $OUTPUT_FILE"
+else
+  echo "[cpog_verify.sh] Verification failed or output not generated."
+  exit 1
+fi
 
 echo "[cpog_verify.sh] Done."

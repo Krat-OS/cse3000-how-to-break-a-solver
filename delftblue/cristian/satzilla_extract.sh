@@ -15,17 +15,16 @@ PROJECT_PATH="/home/$USER/cse3000-how-to-break-a-solver"
 
 # Minimal user arguments:
 #   1) INSTANCES_DIR  (CNF folder)
-#   2) OUT_DIR        (Where to put feature CSV)
-#   3) BINARY_PATH    (Path to the Satzilla executable)
 INSTANCES_DIR="$1"
-OUT_DIR="$2"
-BINARY_PATH="$3"
 
-if [[ -z "$INSTANCES_DIR" || -z "$OUT_DIR" || -z "$BINARY_PATH" ]]; then
-  echo "Usage: sbatch satzilla_extract.sh <INSTANCES_DIR> <OUT_DIR> <BINARY_PATH>"
-  echo "Example: sbatch satzilla_extract.sh $PROJECT_PATH/SharpVelvet/out/instances/cnf $PROJECT_PATH/SharpVelvet/out $PROJECT_PATH/satzilla_feature_extractor/binaries/satzilla"
+if [[ -z "$INSTANCES_DIR" ]]; then
+  echo "Usage: sbatch satzilla_extract.sh <INSTANCES_DIR>"
+  echo "Example: sbatch satzilla_extract.sh $PROJECT_PATH/SharpVelvet/out/instances/cnf"
   exit 1
 fi
+
+OUT_DIR=$(dirname $(dirname "$INSTANCES_DIR"))
+BINARY_PATH="$PROJECT_PATH/satzilla_feature_extractor/binaries/features"
 
 ################################################################################
 # GRACEFUL SHUTDOWN
@@ -101,7 +100,7 @@ fi
 echo "[satzilla_extract.sh] Extracting Satzilla features from $INSTANCES_DIR => $OUT_DIR"
 
 run_with_tracking \
-  "$PROJECT_PATH/global_cli.py" satzilla_extract \
+  python "$PROJECT_PATH/global_cli.py" satzilla_extract \
   --instances "$INSTANCES_DIR" \
   --out-dir "$OUT_DIR" \
   --satzilla-binary-path "$BINARY_PATH"

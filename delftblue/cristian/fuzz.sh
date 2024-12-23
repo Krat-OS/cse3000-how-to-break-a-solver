@@ -13,19 +13,21 @@
 
 PROJECT_PATH="/home/$USER/cse3000-how-to-break-a-solver"
 
-# Usage: sbatch fuzz.sh <SOLVER_TIMEOUT> <INSTANCES_PATH> <SOLVER_NAME1> [SOLVER_NAME2 SOLVER_NAME3 ...]
+# Usage: sbatch fuzz.sh <SOLVER_TIMEOUT> <INSTANCES_PATH> <OUTPUT_DIR> <SOLVER_NAME1> [SOLVER_NAME2 SOLVER_NAME3 ...]
 # Example:
 #   sbatch fuzz.sh 60 \
 #       /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/out/instances/cnf \
+#       /home/$USER/cse3000-how-to-break-a-solver/fuzz-results \
 #       MySolver1 MySolver2
 
 SOLVER_TIMEOUT="$1"
 INSTANCES_PATH="$2"
-shift 2
+OUTPUT_DIR="$3"
+shift 3
 
 # The remaining arguments are solver names
 if [[ $# -lt 1 ]]; then
-  echo "Usage: sbatch fuzz.sh <SOLVER_TIMEOUT> <INSTANCES_PATH> <SOLVER_NAME1> [SOLVER_NAME2 ...]"
+  echo "Usage: sbatch fuzz.sh <SOLVER_TIMEOUT> <INSTANCES_PATH> <OUTPUT_DIR> <SOLVER_NAME1> [SOLVER_NAME2 ...]"
   exit 1
 fi
 
@@ -120,12 +122,14 @@ done
 
 echo "[fuzz.sh] Fuzzing with solvers: ${SOLVER_JSONS[*]}"
 echo "[fuzz.sh] Instances path: $INSTANCES_PATH, solver timeout: $SOLVER_TIMEOUT"
+echo "[fuzz.sh] Output directory: $OUTPUT_DIR"
 
 run_with_tracking \
   "$PROJECT_PATH/global_cli.py" fuzz \
   --instances "$INSTANCES_PATH" \
   --solvers "${SOLVER_JSONS[@]}" \
   --solver-timeout "$SOLVER_TIMEOUT" \
-  --sharpvelvet-fuzzer "$PROJECT_PATH/SharpVelvet/src/run_fuzzer.py"
+  --sharpvelvet-fuzzer "$PROJECT_PATH/SharpVelvet/src/run_fuzzer.py" \
+  --out-dir "$OUTPUT_DIR"
 
 echo "[fuzz.sh] Done."

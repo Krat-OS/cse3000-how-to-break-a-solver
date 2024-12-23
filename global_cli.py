@@ -24,16 +24,16 @@ import argparse
 import logging
 import os
 import shutil
+import signal
 import subprocess
 import sys
 import tempfile
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import List, Optional
-
 import pandas as pd
 
-from cpog_verifier.utils import verify_with_cpog, verify_single_instance
+from cpog_verifier.cli import process_results_and_verify_with_cpog, verify_single_cnf, get_output_path
 from satzilla_feature_extractor.compute_sat_feature_data import compute_features, process_csv_files
 
 ###############################################################################
@@ -75,6 +75,16 @@ def setup_logger() -> None:
 setup_logger()
 logger = logging.getLogger(__name__)
 
+# Global signal handling
+should_terminate = False
+
+def signal_handler(signum, frame) -> None:
+    global should_terminate
+    should_terminate = True
+    logger.warning(f"Received signal {signum}. Terminating processes.")
+
+signal.signal(signal.SIGTERM, signal_handler)
+signal.signal(signal.SIGINT, signal_handler)
 
 ###############################################################################
 # Subcommand: generate
@@ -156,7 +166,6 @@ def command_generate(args: argparse.Namespace) -> None:
 
     logger.info("Generation complete.")
 
-
 ###############################################################################
 # Subcommand: fuzz
 ###############################################################################
@@ -193,70 +202,68 @@ def add_fuzz_subparser(subparsers: argparse._SubParsersAction) -> None:
         required=True,
         help="Path to SharpVelvet's run_fuzzer.py."
     )
+    parser_fz.add_argument(
+        "--out-dir",
+        type=str,
+        required=True,
+        help="Path to the final output directory."
+    )
     parser_fz.set_defaults(func=command_fuzz)
 
 def command_fuzz(args: argparse.Namespace) -> None:
-    """
-    Execute the 'fuzz' subcommand:
-      1) For each solver, create a temp dir, copy instances, run run_fuzzer.py
-      2) Merge all _fuzz-results.csv into a single CSV in the instances directory
-    """
-    csv_paths: List[str] = []
+    def create_temp_dir() -> str:
+        return tempfile.mkdtemp(prefix="fuzz_out_")
 
-    def prepare_temp_dir(instances_dir: str) -> str:
-        """
-        Create a temp directory and copy all CNF instances into it.
-        """
-        tmp_dir = tempfile.mkdtemp(prefix="fuzz_")
-        shutil.copytree(instances_dir, os.path.join(tmp_dir, "cnf"))
-        return tmp_dir
-
-    def run_fuzzer_on_solver(solver_path: str) -> Optional[str]:
-        """
-        Run the fuzzer for a single solver in a temp dir. Return CSV path if found.
-        """
+    def run_fuzzer(solver_path: str, out_dir: str) -> None:
         if not os.path.isfile(solver_path):
             logger.warning(f"Solver file not found: {solver_path}")
-            return None
+            return
 
-        tmp_dir = prepare_temp_dir(args.instances)
         cmd = [
-            sys.executable,
-            args.sharpvelvet_fuzzer,
-            "--counters",
-            solver_path,
-            "--instances",
-            os.path.join(tmp_dir, "cnf"),
-            "--timeout",
-            str(args.solver_timeout),
+            sys.executable, args.sharpvelvet_fuzzer,
+            "--verbosity", "1",
+            "--counters", solver_path,
+            "--instances", args.instances,
+            "--timeout", str(args.solver_timeout),
+            "--out-dir", out_dir,
         ]
-        logger.info(f"Running fuzzer: {' '.join(cmd)}")
-        subprocess.run(cmd, check=True)
+        try:
+            logger.info(f"Running fuzzer: {' '.join(cmd)}")
+            subprocess.run(cmd, check=True)
 
-        # Look for _fuzz-results.csv in tmp_dir
-        for f in os.listdir(tmp_dir):
-            if f.endswith("_fuzz-results.csv"):
-                return os.path.join(tmp_dir, f)
-        return None
+        except subprocess.CalledProcessError as e:
+            logger.error(f"Error running fuzzer for solver {solver_path}: {e}")
 
-    futures = []
+    temp_out_dirs = []
     with ThreadPoolExecutor(max_workers=len(args.solvers)) as executor:
-        for solver_json in args.solvers:
-            futures.append(executor.submit(run_fuzzer_on_solver, solver_json))
+        futures = []
+        for solver_path in args.solvers:
+            out_dir = create_temp_dir()
+            temp_out_dirs.append(out_dir)
+            futures.append(executor.submit(run_fuzzer, solver_path, out_dir))
 
         for future in as_completed(futures):
-            result = future.result()
-            if result:
-                csv_paths.append(result)
+            future.result()
 
-    # Merge all fuzz-results CSVs
+    csv_paths: List[str] = []
+    for temp_out_dir in temp_out_dirs:
+        for item in os.listdir(temp_out_dir):
+            src = os.path.join(temp_out_dir, item)
+            dst = os.path.join(args.out_dir, item)
+            if item.endswith(".csv"):
+                csv_paths.append(src)
+
     if csv_paths:
-        out_csv = os.path.join(args.instances, "fuzz-results-merged.csv")
-        logger.info(f"Merging {len(csv_paths)} CSVs into {out_csv}")
-        merge_csv_files(csv_paths, out_csv)
-        logger.info("Fuzzing complete.")
-    else:
-        logger.warning("No fuzz-results CSVs were produced.")
+        final_csv_name = Path(csv_paths[0]).name
+        final_csv_path = os.path.join(args.out_dir, final_csv_name)
+        merge_csv_files(csv_paths, final_csv_path)
+        logger.info(f"Final merged CSV saved to: {final_csv_path}")
+
+    for out_dir in temp_out_dirs:
+        shutil.rmtree(out_dir, ignore_errors=True)
+        logger.info(f"Cleaned up temporary output directory: {out_dir}")
+
+    logger.info(f"All outputs saved to the specified directory: {args.out_dir}")
 
 def merge_csv_files(csv_paths: List[str], out_csv: str) -> None:
     """
@@ -272,7 +279,6 @@ def merge_csv_files(csv_paths: List[str], out_csv: str) -> None:
     merged.to_csv(out_csv, index=False)
     logger.info(f"Merged CSV file created at {out_csv}")
 
-
 ###############################################################################
 # Subcommand: cpog_verify
 ###############################################################################
@@ -286,134 +292,88 @@ def add_cpog_subparser(subparsers: argparse._SubParsersAction) -> None:
         help="Run the CPOG verifier on fuzz-results CSV or a single CNF."
     )
     parser_cpog.add_argument(
-        "--csv-paths",
-        nargs="+",
-        help="Paths to fuzz-results CSVs (or directories) to verify with CPOG."
+        "--csv-path",
+        type=str,
+        help="Path to CSV file containing verification instances."
     )
     parser_cpog.add_argument(
         "--cnf-path",
         type=str,
-        help="Path to single CNF file for direct verification."
+        help="Path to a single CNF file for verification."
     )
     parser_cpog.add_argument(
         "--verifier-dir",
-        type=str,
-        default="cpog",
-        help="Directory containing verifier binaries (if needed)."
+        type=Path,
+        default=Path(__file__).parent / "cpog",
+        help="Path to directory containing verifier binaries."
+    )
+    parser_cpog.add_argument(
+        "--output-dir",
+        type=Path,
+        help="Directory to save output CPOG files or CSV results."
     )
     parser_cpog.add_argument(
         "--thread-timeout",
         type=int,
         default=3600,
-        help="Timeout (seconds) for each verification thread."
+        help="Maximum execution time per verification thread (seconds)."
     )
     parser_cpog.add_argument(
         "--max-workers",
         type=int,
         default=10,
-        help="Maximum parallel verification workers."
+        help="Maximum number of parallel verification workers."
     )
     parser_cpog.add_argument(
         "--batch-size",
         type=int,
-        help="Number of instances to process in one batch."
+        help="Number of instances to process in a single batch."
     )
     parser_cpog.add_argument(
         "--memory-limit-gb",
         type=float,
         default=4.0,
-        help="Maximum memory usage in GB."
-    )
-    parser_cpog.add_argument(
-        "--output-dir",
-        type=str,
-        help="Directory to save any resulting CPOG file from single-CNF verification."
+        help="Maximum allowed memory usage during processing (GB)."
     )
     parser_cpog.set_defaults(func=command_cpog_verify)
 
 def command_cpog_verify(args: argparse.Namespace) -> None:
     """
     Execute the 'cpog_verify' subcommand by:
-      1) If --csv-paths given, run verify_with_cpog on each CSV
-      2) If --cnf-path given, run verify_single_instance
+      - Processing CSV files with multiple verification instances, OR
+      - Verifying a single CNF file.
     """
-    # If user gave CSV paths, batch-verify
-    if args.csv_paths:
-        # Expand any directory entries into a list of CSVs
-        csv_files = collect_csv_files(args.csv_paths)
-        if not csv_files:
-            logger.error("No CSV files found from --csv-paths.")
-            return
-
-        for csv_file in csv_files:
-            logger.info(f"Verifying CSV with CPOG: {csv_file}")
-            import pandas as pd
-            df = pd.read_csv(csv_file)
-            verified_df = verify_with_cpog(
-                df,
+    try:
+        if args.csv_path:
+            logger.info(f"Processing CSV file: {args.csv_path}")
+            results = process_results_and_verify_with_cpog(
+                csv_path=args.csv_path,
                 verifier_dir=args.verifier_dir,
                 thread_timeout=args.thread_timeout,
                 max_workers=args.max_workers,
                 batch_size=args.batch_size,
                 memory_limit_gb=args.memory_limit_gb
             )
-            # Save output CSV
-            out_file = get_cpog_verified_out(csv_file)
-            verified_df.to_csv(out_file, index=False)
-            logger.info(f"Saved verified CSV to: {out_file}")
+            output_path = get_output_path(args.csv_path)
+            results.to_csv(output_path, index=False)
+            logger.info(f"Results saved to: {output_path}")
 
-    # If user gave single CNF path
-    elif args.cnf_path:
-        cnf_p = Path(args.cnf_path)
-        if not cnf_p.is_file():
-            logger.error(f"CNF path is not a file: {cnf_p}")
-            return
-        logger.info(f"Verifying single CNF with cpog_verifier: {cnf_p}")
-        try:
-            # We'll do a quick workspace approach, or direct call
-            # (If you have a special function for single CNF verification, use it.)
-            workspace = tempfile.mkdtemp(prefix="cpog_single_")
-            verified, error, model_count = verify_single_instance(
-                cnf_p,
-                Path(workspace),
-                thread_id="single_cnfp",
+        elif args.cnf_path:
+            logger.info(f"Verifying single CNF file: {args.cnf_path}")
+            verify_single_cnf(
+                cnf_path=args.cnf_path,
+                verifier_dir=args.verifier_dir,
+                output_dir=args.output_dir,
                 timeout=args.thread_timeout
             )
-            shutil.rmtree(workspace, ignore_errors=True)
 
-            logger.info(f"Model count: {model_count}, Verified: {verified}, Error: {error}")
-            if verified and args.output_dir:
-                # Optionally copy out the .cpog file if you'd like.
-                logger.info("You can copy the .cpog file from the workspace if needed.")
-        except Exception as e:
-            logger.error(f"Error verifying single CNF: {e}")
-    else:
-        logger.error("Must provide either --csv-paths or --cnf-path.")
-        return
+        else:
+            logger.error("Either --csv-path or --cnf-path must be provided.")
+            sys.exit(1)
 
-    logger.info("cpog_verify complete.")
-
-def collect_csv_files(paths: List[str]) -> List[str]:
-    """
-    Given a list of file/dir paths, collect all .csv files.
-    """
-    collected = []
-    for p in paths:
-        pth = Path(p)
-        if pth.is_file() and pth.suffix == ".csv":
-            collected.append(str(pth))
-        elif pth.is_dir():
-            for f in pth.glob("*.csv"):
-                collected.append(str(f))
-    return collected
-
-def get_cpog_verified_out(csv_file: str) -> str:
-    """
-    Return a new CSV path for the verified result, e.g. `original_with_cpog.csv`.
-    """
-    p = Path(csv_file)
-    return str(p.parent / f"{p.stem}_with_cpog.csv")
-
+    except Exception as e:
+        logger.error(f"Unexpected error during CPOG verification: {e}")
+        sys.exit(1)
 
 ###############################################################################
 # Subcommand: satzilla_extract
@@ -461,12 +421,10 @@ def command_satzilla_extract(args: argparse.Namespace) -> None:
             satzilla_path=args.satzilla_binary_path
         )
         logger.info("Satzilla feature extraction complete.")
-        # Optionally process CSV files
         process_csv_files(args.out_dir)
         logger.info("Post-processing of CSV files complete.")
     except Exception as e:
         logger.error(f"Error during Satzilla extraction: {e}")
-
 
 ###############################################################################
 # Main CLI
