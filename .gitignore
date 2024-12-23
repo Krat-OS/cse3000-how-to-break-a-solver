@@ -23,9 +23,10 @@ result_analysis/result_analysis.ipynb
 cpog_verifier/cpog/
 cpog_verifier/output.csv
 
-# SATZilla Feature Extractor
-satzilla_feature_extractor/test/
-satzilla_feature_extractor/output/*
+# SATZilla Feature Extractor Tool
+/satzilla_feature_extractor/notebook.ipynb
+/satzilla_feature_extractor/plots.py
+/satzilla_feature_extractor/calculate_variance.py
 
 # Local Binaries (VUK)
 binaries/

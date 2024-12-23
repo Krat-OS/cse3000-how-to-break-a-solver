@@ -151,7 +151,7 @@ def parse_arguments():
 def run_counter(counter: fut.Counter,
                 path_to_instance: str,
                 log_dir: str,
-                timeout=10,
+                timeout=120,
                 memout=3200,
                 verbosity=1) -> dict:
 
@@ -177,7 +177,7 @@ def fuzz(instances: [],
          verified_counts=None,
          projected=False,
          weighted=False,
-         timeout=10,
+         timeout=120,
          memout=3200,
          verbosity=1,
          clean_up_proofs=False,
@@ -267,6 +267,8 @@ if __name__ == "__main__":
 
     rm.save_parameters(args, args.log_dir, output_prefix, os.path.basename(__file__))
     # TODO: save parameters
+
+    print(args)
 
     path_to_results, problem_instances = fuzz(
         instances=instances,
