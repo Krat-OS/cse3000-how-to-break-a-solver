@@ -15,9 +15,11 @@ final-paper-template-tex/doc/
 
 # IDE Specific
 .vscode/
+/.idea/
 
 # Result Analysis
 result_analysis/result_analysis.ipynb
+result_analysis/*.csv
 
 # CPOG Verifier
 cpog_verifier/cpog/
