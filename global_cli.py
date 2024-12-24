@@ -135,9 +135,9 @@ def command_generate(args: argparse.Namespace) -> None:
         sys.exit(1)
 
     with open(args.input_seeds, "r") as f:
-        seeds = [line.strip() for line in f if line.strip().isdigit()]
+        seeds: List[str] = [line.strip() for line in f if line.strip().isdigit()]
 
-    if not seeds:
+    if not seeds or not all(seed.isdigit() for seed in seeds):
         logger.error("No valid seeds found in the input seeds file.")
         sys.exit(1)
 
