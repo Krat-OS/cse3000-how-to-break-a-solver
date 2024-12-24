@@ -99,6 +99,12 @@ def add_generate_subparser(subparsers: argparse._SubParsersAction) -> None:
         help="Generate CNF instances using SharpVelvet's generate_instances.py."
     )
     parser_gen.add_argument(
+        "--input-seeds",
+        type=str,
+        required=True,
+        help="Path to a text file containing a list of seeds."
+    )
+    parser_gen.add_argument(
         "--generators",
         nargs="+",
         required=True,
@@ -111,18 +117,6 @@ def add_generate_subparser(subparsers: argparse._SubParsersAction) -> None:
         help="Number of iterations per generator."
     )
     parser_gen.add_argument(
-        "--sharpvelvet-generate",
-        type=str,
-        required=True,
-        help="Path to SharpVelvet's generate_instances.py."
-    )
-    parser_gen.add_argument(
-        "--sharpvelvet-out",
-        type=str,
-        required=True,
-        help="Path to SharpVelvet/out directory."
-    )
-    parser_gen.add_argument(
         "--out-dir",
         type=str,
         required=True,
@@ -133,38 +127,49 @@ def add_generate_subparser(subparsers: argparse._SubParsersAction) -> None:
 def command_generate(args: argparse.Namespace) -> None:
     """
     Execute the 'generate' subcommand:
-      1) Calls generate_instances.py for each generator
-      2) Moves the output to --out-dir.
+      1) Reads seeds from the input file.
+      2) Runs generate_instances.py as a script for each seed.
     """
-    for generator_path in args.generators:
-        if not os.path.isfile(generator_path):
-            logger.warning(f"Generator file not found: {generator_path}")
-            continue
+    if not os.path.isfile(args.input_seeds):
+        logger.error(f"Input seeds file not found: {args.input_seeds}")
+        sys.exit(1)
 
-        cmd = [
-            sys.executable,
-            args.sharpvelvet_generate,
-            "--generators",
-            generator_path,
-            "--num-iter",
-            str(args.num_iter),
-        ]
-        logger.info(f"Running generation command: {' '.join(cmd)}")
-        subprocess.run(cmd, check=True)
+    with open(args.input_seeds, "r") as f:
+        seeds = [line.strip() for line in f if line.strip().isdigit()]
 
-    # Move everything from sharpvelvet_out -> out_dir
-    if not os.path.isdir(args.sharpvelvet_out):
-        logger.warning(f"SharpVelvet out dir does not exist: {args.sharpvelvet_out}")
-        return
+    if not seeds:
+        logger.error("No valid seeds found in the input seeds file.")
+        sys.exit(1)
 
     os.makedirs(args.out_dir, exist_ok=True)
-    for item in os.listdir(args.sharpvelvet_out):
-        src = os.path.join(args.sharpvelvet_out, item)
-        dst = os.path.join(args.out_dir, item)
-        logger.info(f"Moving {src} -> {dst}")
-        shutil.move(src, dst)
 
-    logger.info("Generation complete.")
+    sharpvelvet_dir = os.path.dirname(os.path.abspath(__file__))
+    generate_instances_script = os.path.join(sharpvelvet_dir, "SharpVelvet/src/generate_instances.py")
+
+    def run_generation(seed: str):
+        try:
+            logger.info(f"Generating instances for seed {seed}...")
+            cmd = [
+                sys.executable,
+                generate_instances_script,
+                "--generators", *args.generators,
+                "--num-iter", str(args.num_iter),
+                "--seed", seed,
+                "--out-dir", args.out_dir,
+            ]
+            subprocess.run(cmd, check=True)
+            logger.info(f"Successfully generated instances for seed {seed}.")
+        except subprocess.CalledProcessError as e:
+            logger.error(f"Error generating instances for seed {seed}: {e}")
+        except Exception as e:
+            logger.error(f"Unexpected error for seed {seed}: {e}")
+
+    # Run generation for each seed
+    for seed in seeds:
+        run_generation(seed)
+
+    logger.info("Instance generation complete.")
+
 
 ###############################################################################
 # Subcommand: fuzz
@@ -220,7 +225,8 @@ def command_fuzz(args: argparse.Namespace) -> None:
             return
 
         cmd = [
-            sys.executable, args.sharpvelvet_fuzzer,
+            sys.executable,
+            args.sharpvelvet_fuzzer,
             "--verbosity", "1",
             "--counters", solver_path,
             "--instances", args.instances,

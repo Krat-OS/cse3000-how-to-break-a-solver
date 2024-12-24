@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name="generate-instances-cse3000-finding-different-ways-to-break-a-solver"
-#SBATCH --time=00:10:00
+#SBATCH --time=00:20:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=2048
@@ -16,15 +16,17 @@ PROJECT_PATH="/home/$USER/cse3000-how-to-break-a-solver"
 
 # Below: parse minimal user arguments from command line:
 #   1) Generator name (without .json)
-#   2) num-iter (integer)
-#   3) output directory
+#   2) Input seeds file path
+#   3) num-iter (integer)
+#   4) output directory
 GENERATOR_NAME="$1"
-NUM_ITER="$2"
-OUT_DIR="$3"
+INPUT_SEEDS="$2"
+NUM_ITER="$3"
+OUT_DIR="$4"
 
-if [[ -z "$GENERATOR_NAME" || -z "$NUM_ITER" || -z "$OUT_DIR" ]]; then
-  echo "Usage: sbatch generate.sh <GENERATOR_NAME> <NUM_ITER> <OUT_DIR>"
-  echo "Example: sbatch generate.sh MyGenerator 10 /home/user/out"
+if [[ -z "$GENERATOR_NAME" || -z "$INPUT_SEEDS" || -z "$NUM_ITER" || -z "$OUT_DIR" ]]; then
+  echo "Usage: sbatch generate.sh <GENERATOR_NAME> <INPUT_SEEDS> <NUM_ITER> <OUT_DIR>"
+  echo "Example: sbatch generate.sh MyGenerator input.txt 10 /home/user/out"
   exit 1
 fi
 
@@ -103,18 +105,24 @@ fi
 
 GENERATOR_JSON="$PROJECT_PATH/SharpVelvet/$GENERATOR_NAME.json"
 
-echo "[generate.sh] Using generator JSON: $GENERATOR_JSON"
 if [[ ! -f "$GENERATOR_JSON" ]]; then
   echo "Error: generator JSON not found at $GENERATOR_JSON"
   exit 1
 fi
 
+if [[ ! -f "$INPUT_SEEDS" ]]; then
+  echo "Error: Input seeds file not found at $INPUT_SEEDS"
+  exit 1
+fi
+
+echo "[generate.sh] Using generator JSON: $GENERATOR_JSON"
+echo "[generate.sh] Using input seeds file: $INPUT_SEEDS"
+
 run_with_tracking \
   "$PROJECT_PATH/global_cli.py" generate \
   --generators "$GENERATOR_JSON" \
+  --input-seeds "$INPUT_SEEDS" \
   --num-iter "$NUM_ITER" \
-  --sharpvelvet-generate "$PROJECT_PATH/SharpVelvet/src/generate_instances.py" \
-  --sharpvelvet-out "$PROJECT_PATH/SharpVelvet/out" \
   --out-dir "$OUT_DIR"
 
 echo "[generate.sh] Done."
