@@ -88,7 +88,7 @@ def parse_arguments():
 
     # -------------------------   BEHAVIOUR   ------------------------- #
     behaviour.add_argument(
-        "--timeout", "-t", dest="timeout", type=int, default=10, required=False,
+        "--timeout", "-t", dest="timeout", type=int, default=120, required=False,
         help="Timeout time for individual runs, in seconds."
     )
     behaviour.add_argument(

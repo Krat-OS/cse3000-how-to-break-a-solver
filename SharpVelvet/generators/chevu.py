@@ -3,6 +3,7 @@
 import sys
 import random
 import argparse
+from concurrent.futures import ThreadPoolExecutor
 
 class BipartiteGraph:
     def __init__(self, num_clauses=0, num_vars=0, edges=None):
@@ -11,34 +12,14 @@ class BipartiteGraph:
         self.edges = edges if edges is not None else []
 
     @classmethod
-    def create_random(cls, num_clauses, num_vars, max_edges=None):
-        """
-        Original random generator (unchanged).
-        Creates a random bipartite graph with given number of clauses and variables.
-        Clause nodes: 1..num_clauses
-        Var nodes:    1..num_vars (positive) and -1..-num_vars (negative)
-        """
-        if max_edges is None or max_edges > num_clauses * (2 * num_vars):
-            max_edges = num_clauses * (2 * num_vars)
-
-        num_edges = random.randint(0, max_edges)
-        clause_nodes = list(range(1, num_clauses + 1))
-        var_nodes = list(range(1, num_vars + 1)) + list(range(-1, -num_vars - 1, -1))
-
-        all_possible_edges = [(c, v) for c in clause_nodes for v in var_nodes]
-        chosen_edges = random.sample(all_possible_edges, num_edges)
-
-        return cls(num_clauses, num_vars, chosen_edges)
-
-    @classmethod
-    def create_constrained_random(cls,
-                                  min_clauses=80, max_clauses=120,
-                                  min_vars=40, max_vars=70,
-                                  min_clause_len=2, max_clause_len=8,
-                                  min_refs=4, max_refs=8,
-                                  allow_taut=False,
-                                  balanced=False,
-                                  clause_to_var_ratio=None):
+    def create_graph(cls,
+                     min_clauses=80, max_clauses=120,
+                     min_vars=40, max_vars=70,
+                     min_clause_len=2, max_clause_len=8,
+                     min_refs=4, max_refs=8,
+                     allow_taut=False,
+                     balanced=False,
+                     clause_to_var_ratio=None):
         """
         Create a bipartite graph subject to constraints:
           - #clauses in [min_clauses, max_clauses] OR determined by clause_to_var_ratio
@@ -75,34 +56,84 @@ class BipartiteGraph:
             else:
                 return random.choice(can_use)
 
+        previous_clause_literals = None  # To keep track of the previous clause's literals
+
         for c in range(1, num_clauses + 1):
-            clause_len = min_clause_len + int((max_clause_len - min_clause_len) * (random.random()**4))
             chosen_literals = set()
 
-            for _ in range(clause_len):
-                var = pick_variable()
-                if var is None:
-                    break
+            if c % 2 == 1:
+                # **Odd-Numbered Clauses: Randomly Generated**
+                clause_len = min_clause_len + int(
+                    (max_clause_len - min_clause_len) * (random.random() ** 4)
+                )
+                for _ in range(clause_len):
+                    var = pick_variable()
+                    if var is None:
+                        break
 
-                sign = random.choice([True, False]) 
-                literal = var if sign else -var
+                    sign = random.choice([True, False])
+                    literal = var if sign else -var
 
-                if literal in chosen_literals:
-                    continue
-                if not allow_taut and -literal in chosen_literals:
-                    continue
+                    if not allow_taut and -literal in chosen_literals:
+                        continue
 
-                references[var] += 1
-                chosen_literals.add(literal)
+                    if literal in chosen_literals:
+                        continue
 
+                    chosen_literals.add(literal)
+                    references[abs(literal)] += 1
+            else:
+                # **Even-Numbered Clauses: Constrained Generation**
+                if previous_clause_literals:
+                    chosen_literals = set(previous_clause_literals)
+                    flip_count = random.randint(1, len(chosen_literals))
+                    literals_to_flip = random.sample(list(chosen_literals), flip_count)
+
+                    for lit in literals_to_flip:
+                        chosen_literals.remove(lit)
+                        references[abs(lit)] -= 1
+                        flipped_lit = -lit
+
+                        if not allow_taut and flipped_lit in chosen_literals:
+                            chosen_literals.add(lit)
+                            references[abs(lit)] += 1
+                            continue
+
+                        if flipped_lit in chosen_literals:
+                            chosen_literals.add(lit)
+                            references[abs(lit)] += 1
+                            continue
+
+                        chosen_literals.add(flipped_lit)
+                        references[abs(flipped_lit)] += 1
+
+                    if random.choice([True, False]):
+                        if chosen_literals:
+                            lit_to_replace = random.choice(list(chosen_literals))
+                            chosen_literals.remove(lit_to_replace)
+                            references[abs(lit_to_replace)] -= 1
+                            var = pick_variable()
+                            if var is not None:
+                                sign = random.choice([True, False])
+                                new_lit = var if sign else -var
+
+                                if not allow_taut and -new_lit in chosen_literals:
+                                    chosen_literals.add(lit_to_replace)
+                                    references[abs(lit_to_replace)] += 1
+                                elif new_lit in chosen_literals:
+                                    chosen_literals.add(lit_to_replace)
+                                    references[abs(lit_to_replace)] += 1
+                                else:
+                                    chosen_literals.add(new_lit)
+                                    references[abs(new_lit)] += 1
+
+            previous_clause_literals = chosen_literals.copy()
             for lit in chosen_literals:
                 edges.append((c, lit))
 
         for var in range(1, num_vars + 1):
             while references[var] < min_refs:
-                clause_lengths = {
-                    clause_idx: 0 for clause_idx in range(1, num_clauses + 1)
-                }
+                clause_lengths = {clause_idx: 0 for clause_idx in range(1, num_clauses + 1)}
                 for clause_idx, lit in edges:
                     clause_lengths[clause_idx] += 1
 
@@ -122,8 +153,8 @@ class BipartiteGraph:
                 if literal in existing_literals:
                     continue
 
-                references[var] += 1
                 edges.append((c, literal))
+                references[var] += 1
 
         return cls(num_clauses, num_vars, edges)
 
@@ -294,33 +325,54 @@ class BipartiteGraph:
 # Main script entry point for SharpVelvet compatibility + generating instances
 ###############################################################################
 
-if __name__ == "__main__":
+def generate_instance(index, args):
+    """Generates a single bipartite graph instance."""
+    graph = BipartiteGraph.create_graph(
+        min_clauses=args.min_clauses,
+        max_clauses=args.max_clauses,
+        min_vars=args.min_vars,
+        max_vars=args.max_vars,
+        min_clause_len=args.min_clause_len,
+        max_clause_len=args.max_clause_len,
+        min_refs=args.min_refs,
+        max_refs=args.max_refs,
+        allow_taut=args.allow_taut,
+        balanced=args.balanced,
+        clause_to_var_ratio=args.ratio
+    )
+
+    solution = {v: random.choice([True, False]) for v in range(1, graph.num_vars + 1)}
+    graph.ensure_satisfiable(solution=solution)
+
+    return graph.to_cnf_string()
+
+def main():
     parser = argparse.ArgumentParser(
-        description="Generate bipartite graphs (CNF formulas) with constraints."
+        description="Generate bipartite graphs (CNF formulas) with constraints in parallel."
     )
     parser.add_argument("-s", "--seed", type=int, default=None,
                         help="Set the random seed (default: None).")
-    parser.add_argument("--instances", type=int, default=25,
-                        help="Number of instances to generate (default: 25).")
+    parser.add_argument("--instances", type=int, default=1,
+                        help="Number of instances to generate (default: 1).")
+    parser.add_argument("--threads", type=int, default=4,
+                        help="Number of threads to use for parallel generation (default: 4).")
 
-    parser.add_argument("dummy", nargs="?", help="Dummy argument for compatibility.", default=None)
-
-    parser.add_argument("--min-clauses", type=int, default=250,
-                        help="Minimum number of clauses (default=250).")
-    parser.add_argument("--max-clauses", type=int, default=260,
-                        help="Maximum number of clauses (default=260).")
-    parser.add_argument("--min-vars", type=int, default=60,
-                        help="Minimum number of variables (default=60).")
-    parser.add_argument("--max-vars", type=int, default=120,
-                        help="Maximum number of variables (default=120).")
-    parser.add_argument("--min-clause-len", type=int, default=3,
-                        help="Minimum clause length (default=3).")
-    parser.add_argument("--max-clause-len", type=int, default=8,
-                        help="Maximum clause length (default=8).")
-    parser.add_argument("--min-refs", type=int, default=3,
+    parser.add_argument("--min-clauses", type=int, default=500,
+                        help="Minimum number of clauses (default=500).")
+    parser.add_argument("--max-clauses", type=int, default=500,
+                        help="Maximum number of clauses (default=500).")
+    parser.add_argument("--min-vars", type=int, default=125,
+                        help="Minimum number of variables (default=125).")
+    parser.add_argument("--max-vars", type=int, default=150,
+                        help="Maximum number of variables (default=150).")
+    parser.add_argument("--min-clause-len", type=int, default=2,
+                        help="Minimum clause length (default=2).")
+    parser.add_argument("--max-clause-len", type=int, default=10,
+                        help="Maximum clause length (default=10).")
+    parser.add_argument("--min-refs", type=int, default=5,
                         help="Minimum references per variable (default=3).")
-    parser.add_argument("--max-refs", type=int, default=15,
-                        help="Maximum references per variable (default=15).")
+    parser.add_argument("--max-refs", type=int, default=20,
+                        help="Maximum references per variable (default=20).")
 
     parser.add_argument("--allow-taut", action="store_true",
                         help="Allow tautological clauses (default=False).")
@@ -332,23 +384,16 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    for i in range(1, args.instances + 1):
-        graph = BipartiteGraph.create_constrained_random(
-            min_clauses=args.min_clauses,
-            max_clauses=args.max_clauses,
-            min_vars=args.min_vars,
-            max_vars=args.max_vars,
-            min_clause_len=args.min_clause_len,
-            max_clause_len=args.max_clause_len,
-            min_refs=args.min_refs,
-            max_refs=args.max_refs,
-            allow_taut=args.allow_taut,
-            balanced=args.balanced,
-            clause_to_var_ratio=args.ratio
-        )
+    if args.seed is not None:
+        random.seed(args.seed)
 
-        solution = {v: random.choice([True, False]) for v in range(1, graph.num_vars + 1)}
-        graph.ensure_satisfiable(solution=solution)
+    with ThreadPoolExecutor(max_workers=args.threads) as executor:
+        futures = [executor.submit(generate_instance, i, args) for i in range(args.instances)]
+        for future in futures:
+            cnf_string = future.result()
+            if cnf_string is not None:
+                sys.stdout.write(cnf_string)
 
-    if graph.to_cnf_string() is not None:
-        sys.stdout.write(graph.to_cnf_string())
+if __name__ == "__main__":
+    main()
+
