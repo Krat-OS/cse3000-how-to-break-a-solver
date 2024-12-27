@@ -131,6 +131,7 @@ def create_horn_instances(header, clauses, output_folder, base_filename, threads
 
         # Adjust Horn clauses while maintaining satisfiability
         horn_count = count_horn_clauses(modified_clauses)
+        print(f"Instance {i}: Horn count of modified_clauses before tweaks: {horn_count}\n")
         difference = abs(target_horn_clauses - horn_count)
 
         if horn_count < target_horn_clauses:
@@ -147,12 +148,13 @@ def create_horn_instances(header, clauses, output_folder, base_filename, threads
             for clause in modified_clauses:
                 if horn_count <= target_horn_clauses:
                     break
-                positive_literals = [lit for lit in clause if lit > 0]
-                if len(positive_literals) == 1:
+                if len([lit for lit in clause if lit > 0]) <= 1:
                     neg_literals = [lit for lit in clause if lit < 0]
-                    if neg_literals:
-                        lit_to_flip = neg_literals[0]
-                        clause[clause.index(lit_to_flip)] = -lit_to_flip
+                    num_to_flip = min(2, len(neg_literals))
+                    for j in range(num_to_flip):
+                        lit_to_flip = neg_literals[j]
+                        clause[clause.index(lit_to_flip)] = abs(lit_to_flip)
+                    if len([lit for lit in clause if lit > 0]) >= 2:
                         horn_count -= 1
 
         horn_count = count_horn_clauses(modified_clauses)
