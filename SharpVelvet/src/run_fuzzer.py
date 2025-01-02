@@ -159,15 +159,31 @@ def run_counter(counter: fut.Counter,
         rm.log_message(f"Running counter {counter.name} on instance {path_to_instance}.")
 
     command, counter_dir = fut.construct_command(counter, path_to_instance, memout=memout, timeout=timeout)
+
+    # 1. Start timing
     start_time = time.time()
+
+    # Run the solver
     counter_output, err = fut.run(command.split(), counter_dir + '/', verbosity=verbosity, timeout=timeout)
+
+    # Check errors/timeouts
     error = fut.handle_errors(err, verbosity=verbosity)
     timed_out = fut.handle_timeout(start_time=start_time, timeout=timeout,
                                    counter_name=counter.name, path_to_instance=path_to_instance)
 
-    return fut.parse_counter_output(
+    # 2. Compute total solver time
+    solve_time = time.time() - start_time
+
+    # Parse solver output
+    result_dict = fut.parse_counter_output(
         counter_output, counter, path_to_instance,
-        timed_out=timed_out, error=error, log_dir=log_dir, command=command)
+        timed_out=timed_out, error=error, log_dir=log_dir, command=command
+    )
+
+    # 3. Add solver time to the returned dictionary
+    result_dict["solve_time"] = solve_time
+
+    return result_dict
 
 
 def fuzz(instances: [],
@@ -261,9 +277,17 @@ if __name__ == "__main__":
         m = re.match(instances_prefix_pat, os.path.basename(args.instances))
         output_prefix = m.group('prefix')
     else:
-        print(os.path.basename(sorted(instances)[0]))
-        m = re.match(instance_seed_pat, os.path.basename(sorted(instances)[0]))
-        output_prefix = f"{datetime.now().strftime('%Y-%m-%d')}_s{m.group('seed')}"
+        first_instance_filename = os.path.basename(sorted(instances)[0])
+        print(first_instance_filename)
+        m = re.match(instance_seed_pat, first_instance_filename)
+        
+        if m:
+            # If the filename matches the existing pattern, use the seed
+            output_prefix = f"{datetime.now().strftime('%Y-%m-%d')}_s{m.group('seed')}"
+        else:
+            # Fallback: just use date + the base filename (without extension)
+            base_name = os.path.splitext(first_instance_filename)[0]
+            output_prefix = f"{datetime.now().strftime('%Y-%m-%d')}_{base_name}"
 
     rm.save_parameters(args, args.log_dir, output_prefix, os.path.basename(__file__))
     # TODO: save parameters

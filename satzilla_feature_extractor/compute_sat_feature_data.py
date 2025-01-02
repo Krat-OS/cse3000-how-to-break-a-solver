@@ -49,18 +49,23 @@ def compute_features(cnf_dir: str, features_output_dir: str, satzilla_path: str)
     """
     cnf_dir_path = Path(cnf_dir)
     features_output_path = Path(features_output_dir)
-    grandpa_dir = cnf_dir_path.parent.parent
+    grandpa_dir = cnf_dir_path.parent.parent.parent
 
-    # Find the *_generated_instances.txt file in the parent directory
-    generated_instances_file = next(grandpa_dir.glob("*_generated_instances.txt"), None)
-    if not generated_instances_file:
+    # Derive the generated_instances file based on the cnf_dir name
+    folder_name = cnf_dir_path.name
+    generated_instances_file = grandpa_dir / f"{folder_name}_generated_instances.txt"
+
+    if not generated_instances_file.exists():
         raise FileNotFoundError(
-            f"No *_generated_instances.txt file found in {grandpa_dir}. Cannot generate output file name."
+            f"Expected generated instances file not found: {generated_instances_file}"
         )
 
     # Extract the stem from the *_generated_instances.txt file
     output_stem = generated_instances_file.stem.replace("_generated_instances", "")
     output_file_name = f"{output_stem}_features_output.csv"
+
+    # Ensure the output directory exists
+    features_output_path.mkdir(parents=True, exist_ok=True)
 
     with tempfile.TemporaryDirectory() as temp_dir:
         temp_path = Path(temp_dir)
