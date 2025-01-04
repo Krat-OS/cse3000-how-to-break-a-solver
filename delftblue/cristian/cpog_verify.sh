@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH --job-name="cpog-verify-instances-cse3000-finding-different-ways-to-break-a-solver"
-#SBATCH --time=04:00:00
+#SBATCH --time=24:00:00
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=6
-#SBATCH --mem-per-cpu=65536
+#SBATCH --cpus-per-task=4
+#SBATCH --mem-per-cpu=30G
 #SBATCH --partition=compute-p2
 #SBATCH --account=education-eemcs-courses-cse3000
 
