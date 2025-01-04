@@ -38,8 +38,24 @@ def process_results_and_verify_with_cpog(
     Returns:
         DataFrame: Results with verification data added or partial results if interrupted.
     """
-    # Start with a processed DataFrame from the CSV
     df = process_results(csv_path)
+    already_verified_data = pd.DataFrame()
+
+    if "cpog_message" and "timed_out" and "verified" in df.columns:
+        initial_row_count = len(df)
+
+        already_verified_data = df[
+            (df["verified"] == True) |
+            (df["cpog_message"].isin(["NO ERROR", "UNSAT"])) |
+            (df["timed_out"] == True)
+            ]
+
+        df = df[~df.index.isin(already_verified_data.index)]
+
+        logging.info(
+            f"Filtered {len(already_verified_data)} rows from input CSV. "
+            f"Remaining for verification: {len(df)} rows."
+        )
 
     df_with_cpog = None
     try:
@@ -53,12 +69,12 @@ def process_results_and_verify_with_cpog(
         )
         return df_with_cpog
     except KeyboardInterrupt:
-        # Log and return whatever we have so far
         logging.info("Interrupted by user. Returning partial results.")
-        return df_with_cpog if df_with_cpog is not None else df
     except Exception as e:
-        # Log error and return partial results if available, else original
         logging.error(f"Error in verification process: {e}. Returning partial results.")
+    finally:
+        if not already_verified_data.empty:
+            df_with_cpog = pd.concat([df_with_cpog, already_verified_data], ignore_index=True)
         return df_with_cpog if df_with_cpog is not None else df
 
 def get_output_path(input_path: str | Path) -> Path:
