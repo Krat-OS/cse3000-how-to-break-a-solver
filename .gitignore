@@ -3,7 +3,7 @@ SharpVelvet/*.json
 SharpVelvet/generators/build/
 SharpVelvet/model-counters/
 SharpVelvet/out/
-SharpVelvet/tool-config/vuk/
+# SharpVelvet/tool-config/vuk/
 
 # Python Artifacts
 .venv/
@@ -24,9 +24,9 @@ cpog_verifier/cpog/
 cpog_verifier/output.csv
 
 # SATZilla Feature Extractor Tool
-/satzilla_feature_extractor/notebook.ipynb
-/satzilla_feature_extractor/plots.py
-/satzilla_feature_extractor/calculate_variance.py
+# /satzilla_feature_extractor/notebook.ipynb
+# /satzilla_feature_extractor/plots.py
+# /satzilla_feature_extractor/calculate_variance.py
 
 # Local Binaries (VUK)
 binaries/
