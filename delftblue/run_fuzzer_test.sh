@@ -28,7 +28,7 @@ configs=(
 for cfg in "${configs[@]}"; do
     python /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/src/run_fuzzer.py \
         --counters "$cfg" \
-        --instances /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/instances/small-test \
+        --instances /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/instances/smaller-test \
         &
 done
 
