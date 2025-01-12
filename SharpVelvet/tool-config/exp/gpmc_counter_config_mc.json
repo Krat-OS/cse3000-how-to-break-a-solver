@@ -1,5 +1,5 @@
 {
-    "GPMC": {
+    "gpmc": {
       "path": "/home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/gpmc",
       "config": "{INSTANCE}",
       "exact": "True"
