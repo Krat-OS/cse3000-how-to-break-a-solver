@@ -21,7 +21,7 @@ configs=(
     "/home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/exp/d4r_counter_config_mc.json"
     "/home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/exp/ganak_counter_config_mc.json"
     "/home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/exp/gpmc_counter_config_mc.json"
-    "/home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/exp/sharpSAT_counter_config_mc.json"
+    # "/home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/exp/sharpSAT_counter_config_mc.json"
 )
 
 # Run each solver configuration in parallel
