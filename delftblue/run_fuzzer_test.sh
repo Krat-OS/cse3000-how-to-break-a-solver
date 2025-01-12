@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH --job-name="sharpvelvet-test-run-5solvers"
 #SBATCH --time=02:00:00
-#SBATCH --ntasks=4
+#SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --mem-per-cpu=16G
+#SBATCH --mem-per-cpu=8G
 #SBATCH --partition=compute-p2
 #SBATCH --account=education-eemcs-courses-cse3000
 
@@ -21,7 +21,6 @@ configs=(
     "/home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/exp/d4r_counter_config_mc.json"
     "/home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/exp/ganak_counter_config_mc.json"
     "/home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/exp/gpmc_counter_config_mc.json"
-    # "/home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/exp/sharpSAT_counter_config_mc.json"
 )
 
 # Run each solver configuration in parallel
