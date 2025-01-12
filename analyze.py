@@ -117,7 +117,7 @@ def report_mismatches(mismatches):
 if __name__ == "__main__":
     input_directory = "SharpVelvet/out"
     output_directory = "SharpVelvet/out/sorted"
-    seed = "s16320865262207757705"
+    seed = "s1779779729113289578"
     os.makedirs(output_directory, exist_ok=True)
 
     sorted_dataframes, mismatches = process_csv_files(input_directory, output_directory, seed=seed)
