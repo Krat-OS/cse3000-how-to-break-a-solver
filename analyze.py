@@ -48,11 +48,10 @@ def process_csv_files(input_dir, output_dir, seed=None):
 
     return dataframes, mismatches
 
-def plot_gpmc(dataframes):
+def plot_gpmc(dataframes, seed):
     gpmc_found = False
     for file, df in dataframes.items():
-        solver = re.search(r'2025-01-12_chevu_000_s16320865262207757705_000_(\w+)_fuzz-results\.csv', file)
-        solver = solver.group(1) if solver else None
+        solver = re.search(rf'2025-01-12_chevu_000_{seed}_000_(\w+)_fuzz-results\.csv', file).group(1)
         print("SOLVER: " + solver)
         indices = df['instance'].apply(lambda x: int(re.search(r'_(\d{3})\.', x).group(1)))
 
@@ -122,6 +121,6 @@ if __name__ == "__main__":
     os.makedirs(output_directory, exist_ok=True)
 
     sorted_dataframes, mismatches = process_csv_files(input_directory, output_directory, seed=seed)
-    plot_gpmc(sorted_dataframes)
+    plot_gpmc(sorted_dataframes, seed)
     plot_solving_times(sorted_dataframes)
     report_mismatches(mismatches)
