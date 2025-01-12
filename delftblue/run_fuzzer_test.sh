@@ -3,7 +3,7 @@
 #SBATCH --time=02:00:00
 #SBATCH --ntasks=5
 #SBATCH --cpus-per-task=16
-#SBATCH --mem-per-cpu=32G
+#SBATCH --mem-per-cpu=16G
 #SBATCH --partition=compute-p2
 #SBATCH --account=education-eemcs-courses-cse3000
 
