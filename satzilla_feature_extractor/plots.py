@@ -70,6 +70,61 @@ def sort_csv_by_instance_name(csv_file_path):
 
     print(f"Sorted CSV file saved to {csv_file_path}")
 
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def plot_solve_time_and_count(csv_file_path, a=None, b=None):
+    """
+    Plot the solve time and count value for each instance in the CSV file.
+
+    Args:
+        csv_file_path (str): Path to the CSV file.
+        a (int, optional): Start index of the range to plot. Default is None (start at 0).
+        b (int, optional): End index of the range to plot. Default is None (plot until the end).
+    """
+    # Read and sort the CSV file by instance name
+    sort_csv_by_instance_name(csv_file_path)
+    df = pd.read_csv(csv_file_path)
+
+    # Check if required columns exist
+    if 'solve_time' not in df.columns or 'count_value' not in df.columns:
+        raise ValueError("The CSV file must contain 'solve_time' and 'count_value' columns.")
+
+    # Extract data
+    solve_times = pd.to_numeric(df['solve_time'], errors='coerce').dropna()
+    count_values = pd.to_numeric(df['count_value'], errors='coerce').dropna()
+
+    # Apply index range if specified
+    if a is not None and b is not None:
+        if a < 0 or b > len(solve_times):
+            raise ValueError(f"Indices out of range: a={a}, b={b}, length={len(solve_times)}")
+        solve_times = solve_times.iloc[a:b]
+        count_values = count_values.iloc[a:b]
+        indices = range(a, b)
+    else:
+        indices = range(len(solve_times))
+
+    # Create the plot with dual y-axes
+    fig, ax1 = plt.subplots(figsize=(12, 6))
+
+    # Left y-axis for solve time
+    ax1.set_xlabel("Instance Index", fontsize=15)
+    ax1.set_ylabel("Solve Time (seconds)", fontsize=15, color='blue')
+    ax1.plot(indices, solve_times, color='blue', marker='o', alpha=0.7, label='Solve Time')
+    ax1.tick_params(axis='y', labelcolor='blue')
+    ax1.grid(visible=True, linestyle='--', alpha=0.6)
+
+    # Right y-axis for count value
+    ax2 = ax1.twinx()
+    ax2.set_ylabel("Count Value", fontsize=15, color='red')
+    ax2.plot(indices, count_values, color='red', marker='o', alpha=0.7, label='Count Value')
+    ax2.tick_params(axis='y', labelcolor='red')
+
+    # Add title and legend
+    fig.tight_layout()
+    plt.show()
+
+
 def plot_solve_time(csv_file_path, a=None, b=None):
     """
     Plot the solve time for each instance in the CSV file.
@@ -102,9 +157,8 @@ def plot_solve_time(csv_file_path, a=None, b=None):
     # Plot the solve times with connected dots
     plt.figure(figsize=(12, 6))
     plt.plot(indices, solve_times, color='blue', alpha=0.7, marker='o', label='Solve Time')
-    plt.title("Solve Time for Each Instance", fontsize=14)
-    plt.xlabel("Instance Index", fontsize=12)
-    plt.ylabel("Solve Time (seconds)", fontsize=12)
+    plt.xlabel("Instance Index", fontsize=15)
+    plt.ylabel("Solve Time (seconds)", fontsize=15)
     plt.legend()
     plt.grid(visible=True, linestyle='--', alpha=0.6)
     plt.tight_layout()

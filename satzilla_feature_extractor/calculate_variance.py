@@ -46,6 +46,7 @@ def plot_variance_table(csv_file_path, k=1, normalize=False, fs=12):
     for feature in selected_features:
         mean = df[feature].mean()
         std_dev = df[feature].std()
+        print(f"{feature}: Mean: {mean}, St. dev: {std_dev}\n")
 
         # Avoid division by zero
         if mean == 0:
