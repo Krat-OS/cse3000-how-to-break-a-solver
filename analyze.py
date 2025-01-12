@@ -49,13 +49,20 @@ def process_csv_files(input_dir, output_dir, seed=None):
     return dataframes, mismatches
 
 def plot_gpmc(dataframes):
-    plt.figure(figsize=(12, 8))
-
+    gpmc_found = False
     for file, df in dataframes.items():
-        solver = re.search(r'_(\w+)_fuzz-results\.csv', file).group(1)
+        solver = re.search(r'2025-01-12_chevu_000_s16320865262207757705_000_(\w+)_fuzz-results\.csv', file)
+        solver = solver.group(1) if solver else None
+        print("SOLVER: " + solver)
         indices = df['instance'].apply(lambda x: int(re.search(r'_(\d{3})\.', x).group(1)))
 
         if solver == 'gpmc':
+            gpmc_found = True
+
+            if 'count_value' not in df.columns or df['count_value'].isnull().all():
+                print("Error: GPMC data is missing or count_value column is empty.")
+                return
+
             fig, ax1 = plt.subplots(figsize=(12, 8))
 
             ax1.set_xlabel("Instance Index")
@@ -70,8 +77,13 @@ def plot_gpmc(dataframes):
 
             fig.tight_layout()
             plt.title("GPMC: Count Values vs Solving Times")
+            ax1.legend(loc="upper left")
+            ax2.legend(loc="upper right")
             plt.show()
             break
+
+    if not gpmc_found:
+        print("Error: No GPMC data found.")
 
 def plot_solving_times(dataframes):
     plt.figure(figsize=(12, 8))
