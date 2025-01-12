@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name="sharpvelvet-test-run-5solvers"
-#SBATCH --time=02:00:00
+#SBATCH --time=24:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem-per-cpu=8G
@@ -27,7 +27,7 @@ configs=(
 for cfg in "${configs[@]}"; do
     python /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/src/run_fuzzer.py \
         --counters "$cfg" \
-        --instances /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/instances/smaller-test \
+        --instances /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/instances/small-test \
         &
 done
 

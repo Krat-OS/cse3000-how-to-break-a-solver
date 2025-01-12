@@ -88,11 +88,11 @@ def parse_arguments():
 
     # -------------------------   BEHAVIOUR   ------------------------- #
     behaviour.add_argument(
-        "--timeout", "-t", dest="timeout", type=int, default=6000, required=False,
+        "--timeout", "-t", dest="timeout", type=int, default=900, required=False,
         help="Timeout time for individual runs, in seconds."
     )
     behaviour.add_argument(
-        "--memout", "-m", dest="memout", type=int, default=3200, required=False,
+        "--memout", "-m", dest="memout", type=int, default=32000, required=False,
         help="Max memory for individual runs."
     )
     behaviour.add_argument(
@@ -151,8 +151,8 @@ def parse_arguments():
 def run_counter(counter: fut.Counter,
                 path_to_instance: str,
                 log_dir: str,
-                timeout=6000,
-                memout=3200,
+                timeout=900,
+                memout=32000,
                 verbosity=1) -> dict:
 
     if verbosity >= 2:
@@ -193,16 +193,16 @@ def fuzz(instances: [],
          verified_counts=None,
          projected=False,
          weighted=False,
-         timeout=6000,
-         memout=3200,
+         timeout=900,
+         memout=32000,
          verbosity=1,
          clean_up_proofs=False,
          ):
     # Create data structures to store summary of results
     df = pd.DataFrame(columns=[])
     log_dir = f"{out_dir}/logs"
-    path_to_csv = f"{out_dir}/{output_prefix}_fuzz-results.csv"
-    path_to_problematic_instances = f"{out_dir}/{output_prefix}_problematic-instances.txt"
+    path_to_csv = f"{out_dir}/{output_prefix}_{counters[0].name}_fuzz-results.csv"
+    path_to_problematic_instances = f"{out_dir}/{output_prefix}_{counters[0].name}_problematic-instances.txt"
     fm.silent_remove(path_to_problematic_instances)
     problem_instances = []
     verified = False
