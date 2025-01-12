@@ -1,0 +1,7 @@
+{
+    "GPMC": {
+      "path": "/home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/ganak",
+      "config": "{INSTANCE}",
+      "exact": "True"
+    }
+  }
