@@ -1,2 +1,10 @@
 ,counter,instance,satisfiability,problem_type,est_type,est_val,counter_type,count_precision,count_notation,count_value,timed_out,error,solve_time,generator,verified
-0,gpmc,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn/chevu_000_s5207252779782092302_091.cnf,,,,,,,,,True,False,2131.2411732673645,unknown,False
+0,gpmc,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn/chevu_000_s5207252779782092302_091.cnf,,,,,,,,,True,False,957.693835735321,unknown,False
+1,gpmc,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn/chevu_006_s5207252779782092308_075.cnf,,,,,,,,,True,False,949.8629105091095,unknown,False
+2,gpmc,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn/chevu_000_s5207252779782092302_039.cnf,,,,,,,,,True,False,933.057450056076,unknown,False
+3,gpmc,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn/chevu_004_s5207252779782092306_055.cnf,,,,,,,,,True,False,904.7356750965118,unknown,False
+4,gpmc,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn/chevu_005_s5207252779782092307_055.cnf,,,,,,,,,True,False,904.5229542255402,unknown,False
+5,gpmc,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn/chevu_007_s5207252779782092309_080.cnf,,,,,,,,,True,False,904.3619868755341,unknown,False
+6,gpmc,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn/chevu_008_s5207252779782092310_084.cnf,,,,,,,,,True,False,906.733690738678,unknown,False
+7,gpmc,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn/chevu_005_s5207252779782092307_051.cnf,,,,,,,,,True,False,904.4020764827728,unknown,False
+8,gpmc,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn/chevu_005_s5207252779782092307_023.cnf,,,,,,,,,True,False,919.8861050605774,unknown,False
