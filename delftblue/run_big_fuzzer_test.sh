@@ -1,6 +1,6 @@
 #!/bin/bash
-#SBATCH --job-name="sharpvelvet-test-run-5solvers"
-#SBATCH --time=24:00:00
+#SBATCH --job-name="big-sharpvelvet-test-run-45solvers"
+#SBATCH --time=64:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem-per-cpu=8G
