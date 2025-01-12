@@ -2,8 +2,8 @@
 #SBATCH --job-name="sharpvelvet-test-run-5solvers"
 #SBATCH --time=02:00:00
 #SBATCH --ntasks=5
-#SBATCH --cpus-per-task=16
-#SBATCH --mem-per-cpu=8G
+#SBATCH --cpus-per-task=8
+#SBATCH --mem-per-cpu=4G
 #SBATCH --partition=compute-p2
 #SBATCH --account=education-eemcs-courses-cse3000
 
