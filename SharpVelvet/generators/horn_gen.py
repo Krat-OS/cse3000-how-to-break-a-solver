@@ -158,17 +158,21 @@ def create_horn_instances(header, clauses, output_folder, base_filename, threads
                         horn_count -= 1
 
         horn_count = count_horn_clauses(modified_clauses)
-        print(f"Instance {i}: Horn count of modified_clauses before make_satisfiable: {horn_count}\n")
+        # print(f"Instance {i}: Horn count of modified_clauses before make_satisfiable: {horn_count}\n")
 
-        # Ensure satisfiability
-        sat_clauses = make_satisfiable(modified_clauses, num_vars, target_horn_clauses, i)
+        # ensure satisfiability with 75% chance
+        if (random.random() < 0.75):
+            sat_clauses = make_satisfiable(modified_clauses, num_vars, target_horn_clauses, i)
+        else:
+            # Use the modified clauses directly without guaranteeing satisfiability
+            sat_clauses = modified_clauses
 
         final_horn_count = count_horn_clauses(sat_clauses)
-        difference = target_horn_clauses - final_horn_count
-        print(f"Instance {i}: Horn count of sat_clauses after make_satisfiable: {final_horn_count}\n")
-        print(f"Instance {i}: Target horn clause count: {target_horn_clauses}\n")
-        print(f"Instance {i}: Difference between target and sat_clauses: {difference}\n")
-        print(f"__________________________________________________________________________________\n\n")
+        # difference = target_horn_clauses - final_horn_count
+        # print(f"Instance {i}: Horn count of sat_clauses after make_satisfiable: {final_horn_count}\n")
+        # print(f"Instance {i}: Target horn clause count: {target_horn_clauses}\n")
+        # print(f"Instance {i}: Difference between target and sat_clauses: {difference}\n")
+        # print(f"__________________________________________________________________________________\n\n")
 
         cnf_string = f"{header}\n"
         cnf_string += "c t mc\n"
