@@ -365,10 +365,10 @@ def main():
                         help="Minimum number of clauses (default=400).")
     parser.add_argument("--max-clauses", type=int, default=400,
                         help="Maximum number of clauses (default=400).")
-    parser.add_argument("--min-vars", type=int, default=110,
-                        help="Minimum number of variables (default=110).")
-    parser.add_argument("--max-vars", type=int, default=110,
-                        help="Maximum number of variables (default=110).")
+    parser.add_argument("--min-vars", type=int, default=100,
+                        help="Minimum number of variables (default=100).")
+    parser.add_argument("--max-vars", type=int, default=100,
+                        help="Maximum number of variables (default=100).")
     parser.add_argument("--min-clause-len", type=int, default=3,
                         help="Minimum clause length (default=3).")
     parser.add_argument("--max-clause-len", type=int, default=3,

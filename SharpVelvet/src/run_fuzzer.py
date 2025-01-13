@@ -88,11 +88,11 @@ def parse_arguments():
 
     # -------------------------   BEHAVIOUR   ------------------------- #
     behaviour.add_argument(
-        "--timeout", "-t", dest="timeout", type=int, default=3600, required=False,
+        "--timeout", "-t", dest="timeout", type=int, default=900, required=False,
         help="Timeout time for individual runs, in seconds."
     )
     behaviour.add_argument(
-        "--memout", "-m", dest="memout", type=int, default=3200, required=False,
+        "--memout", "-m", dest="memout", type=int, default=10000, required=False,
         help="Max memory for individual runs."
     )
     behaviour.add_argument(
@@ -151,8 +151,8 @@ def parse_arguments():
 def run_counter(counter: fut.Counter,
                 path_to_instance: str,
                 log_dir: str,
-                timeout=3600,
-                memout=3200,
+                timeout=900,
+                memout=10000,
                 verbosity=1) -> dict:
 
     if verbosity >= 2:
@@ -193,8 +193,8 @@ def fuzz(instances: [],
          verified_counts=None,
          projected=False,
          weighted=False,
-         timeout=3600,
-         memout=3200,
+         timeout=900,
+         memout=10000,
          verbosity=1,
          clean_up_proofs=False,
          ):
