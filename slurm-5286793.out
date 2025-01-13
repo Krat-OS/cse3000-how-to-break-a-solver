@@ -17431,3 +17431,8 @@ Namespace(counters='/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/too
 [SharpVelvet], 2025-01-13, 17h20m46s: Instance 736/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-250clause-horn/chevu_007_s1779779729113289585_012.cnf
 [SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-250clause-horn/chevu_007_s1779779729113289585_012.cnf.
 [SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-250clause-horn/chevu_007_s1779779729113289585_012.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 161059211647304430560
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-13, 17h23m05s: Instance 737/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-250clause-horn/chevu_007_s1779779729113289585_040.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-250clause-horn/chevu_007_s1779779729113289585_040.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-250clause-horn/chevu_007_s1779779729113289585_040.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
