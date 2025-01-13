@@ -1,11 +1,27 @@
 import sys
 import os
+import argparse
 import pandas as pd
 import matplotlib.pyplot as plt
 import mplcursors  # For enabling hover functionality
 from collections import defaultdict
 
-def plot_solve_times(seed):
+def plot_solve_times(seed, solver_filter=None,
+                     xmin=None, xmax=None,
+                     ymin=None, ymax=None,
+                     y2min=None, y2max=None):
+    """
+    If solver_filter is None or 'all', plot all solvers side-by-side.
+      - Then, for each instance, if multiple solvers have different 'count_value' for that instance,
+        print a mismatch warning to the terminal.
+
+    If solver_filter is a specific solver (e.g., "d4g"), plot only that solver.
+      - Also plot its model counts on a separate y-axis (right side) as a line.
+
+    Axis limits:
+      - If xmin, xmax, ymin, ymax, y2min, y2max are provided, we set them.
+      - Otherwise, Matplotlib auto-scales.
+    """
     directory = "../SharpVelvet/out/"
     files = [f for f in os.listdir(directory) if seed in f and f.endswith(".csv")]
 
@@ -13,92 +29,141 @@ def plot_solve_times(seed):
         print(f"No files found for seed: {seed}")
         sys.exit(1)
 
-    plt.figure(figsize=(16, 8))  # Increased width and height for better visualization
-    
-    # Keep track of solver -> color
+    # ---------------------------------------------------
+    # Prepare a figure
+    # ---------------------------------------------------
+    fig, ax1 = plt.subplots(figsize=(16, 8))  # Main axes for solve times
+
+    # Keep track of:
+    #  1) solver -> color
+    #  2) solver -> total empty/None counts
+    #  3) solver -> whether error = True anywhere
     solvers = {}
-    
-    # Keep track of solver -> total empty/None counts
     solver_empty_counts = defaultdict(int)
-    
-    # Keep track of solver -> whether error = True anywhere
     solver_errors = defaultdict(bool)
 
-    # For hover annotations:
-    all_scatter_points = []   # Each entry is a PathCollection for a solver's file(s)
-    all_annotation_texts = [] # Parallel list storing the text for hover in each scatter
-    
-    # -- Loop over files --
+    # We'll store data for mismatch checks or second y-axis usage
+    solver_dfs = defaultdict(list)
+
+    # For hover annotations (solve time):
+    all_solved_points = []
+    all_unsolved_points = []
+    all_solved_annotations = []
+    all_unsolved_annotations = []
+
+    # For mismatch checking across multiple solvers
+    instance_counts = defaultdict(dict)
+
+    # ---------------------------------------------------
+    # Process each CSV file
+    # ---------------------------------------------------
     for file_name in files:
         file_path = os.path.join(directory, file_name)
 
-        # Extract the solver name from the file name
+        # Example file name: "2025-01-12_chevu_000_s1779779729113289578_000_d4g_fuzz-results.csv"
+        # Parse out the solver from index 5
         solver = file_name.split('_')[5].split('_fuzz-results')[0]
-        print("Solver:", solver)
+        print("Solver found in file:", solver)
 
-        # Read the CSV
+        # Filter out solvers if requested
+        if solver_filter and solver_filter != "all":
+            if solver != solver_filter:
+                continue
+
+        # Read CSV
         df = pd.read_csv(file_path)
-        
-        # 1) Extract instance short path (after "/instances/")
+
+        # Extract instance short path
         df["instance_short"] = df["instance"].str.split("instances/").str[-1]
 
-        # 2) Track empty/None for count_value
+        # Track error columns & empty/None counts
+        if "error" in df.columns and df["error"].any():
+            solver_errors[solver] = True
+
         if "count_value" in df.columns:
             df_empty_count = df["count_value"].isna().sum() + df["count_value"].eq("").sum()
             solver_empty_counts[solver] += df_empty_count
 
-        # 3) Track error column
-        if "error" in df.columns:
-            if df["error"].any():
-                solver_errors[solver] = True
-        
-        # Extract the two 3-digit numbers
+        # Extract numeric index
         df['primary_num'] = df['instance'].str.extract(r'_(\d{3})_')[0].astype(int)
         df['secondary_num'] = df['instance'].str.extract(r'_(\d{3}).cnf$')[0].astype(int)
-        # Calculate the index
         df['index'] = df['primary_num'] + df['secondary_num'] * 10
 
-        # Plot the solver's data
-        scatter = plt.scatter(
-            df['index'],
-            df['solve_time'],
-            s=10,    # Size of the dots
+        # Convert count_value to numeric if possible
+        if "count_value" in df.columns:
+            df['count_value'] = pd.to_numeric(df['count_value'], errors='coerce')
+
+        # Split into solved vs unsolved
+        solved = df[df["count_value"].notna()]
+        unsolved = df[df["count_value"].isna()]
+
+        # Plot solved instances on ax1
+        solved_scatter = ax1.scatter(
+            solved['index'],
+            solved['solve_time'],
+            s=5,
+            marker='o',  # circle
             label=None
         )
-        
-        # Store solver color (use the first facecolor in the PathCollection)
-        solvers[solver] = scatter.get_facecolor()[0]
+        solvers[solver] = solved_scatter.get_facecolor()[0]
 
-        # Keep instance_short for hover text
-        all_scatter_points.append(scatter)
-        all_annotation_texts.append(df['instance_short'].tolist())
+        all_solved_points.append(solved_scatter)
+        all_solved_annotations.append(solved['instance_short'].tolist())
+
+        # Plot unsolved instances on ax1
+        unsolved_scatter = ax1.scatter(
+            unsolved['index'],
+            unsolved['solve_time'],
+            s=50,
+            marker='x',  # circle with X
+            color=solved_scatter.get_facecolor()[0],
+            label=None
+        )
+        all_unsolved_points.append(unsolved_scatter)
+        all_unsolved_annotations.append(unsolved['instance_short'].tolist())
+
+        # Keep the entire DF for line plotting or mismatch checks
+        solver_dfs[solver].append(df)
+
+        # Collect data for mismatch checking (only if showing all)
+        if (solver_filter is None) or (solver_filter == "all"):
+            for idx, row in df.iterrows():
+                inst = row["instance_short"]
+                cval = row.get("count_value", None)
+                if pd.notna(cval):
+                    instance_counts[inst][solver] = str(int(cval))
 
     # ---------------------------------------------------
-    # Configure the plot
+    # If nothing was plotted, exit
     # ---------------------------------------------------
-    plt.xlabel("Instance Index")
-    plt.ylabel("Solve Time (seconds)")
-    plt.title(f"Solve Times for Seed {seed}")
-    plt.xticks([0, 200, 400, 600, 800, 1000])
-    plt.grid(True)
+    if not all_solved_points and not all_unsolved_points:
+        print(f"No data found for solver filter '{solver_filter}'. Exiting.")
+        return
 
     # ---------------------------------------------------
-    # Build a custom legend
+    # Plot formatting for solve time
+    # ---------------------------------------------------
+    ax1.set_xlabel("Instance Index")
+    ax1.set_ylabel("Solve Time (seconds)")
+    ax_title = f"Solve Times for Seed {seed}"
+    if solver_filter and solver_filter != "all":
+        ax_title += f" - Solver: {solver_filter}"
+    else:
+        ax_title += " - ALL Solvers"
+    ax1.set_title(ax_title)
+    ax1.grid(True)
+
+    # ---------------------------------------------------
+    # Build a custom legend for the solvers
     # ---------------------------------------------------
     legend_labels = []
     for solver, color in solvers.items():
         label_str = solver
-        
-        # Append ERROR if needed
         if solver_errors[solver]:
             label_str += " (ERROR)"
-        
-        # Append empty/None counts if > 0
         empty_count = solver_empty_counts[solver]
         if empty_count > 0:
-            label_str += f" (empty/None: {empty_count})"
-        
-        # Create a legend handle
+            label_str += f" (Unsolved: {empty_count})"
         legend_labels.append(
             plt.Line2D([0], [0],
                        marker='o',
@@ -106,45 +171,128 @@ def plot_solve_times(seed):
                        lw=0,
                        label=label_str)
         )
-    plt.legend(handles=legend_labels, title="Solvers", loc="upper right")
+    if legend_labels:
+        ax1.legend(handles=legend_labels, title="Solvers", loc="upper right")
 
     # ---------------------------------------------------
-    # Add hover functionality via mplcursors
+    # Mismatch check if 'all' solvers are plotted
     # ---------------------------------------------------
-    # Use multiple=True so we can attach to multiple scatter objects
-    cursor = mplcursors.cursor(all_scatter_points, hover=True, multiple=True)
+    if solver_filter is None or solver_filter == "all":
+        for inst, sdict in instance_counts.items():
+            unique_vals = set(sdict.values())
+            if len(unique_vals) > 1:
+                print(f"[Mismatch Warning] Instance '{inst}' has multiple count_values: {sdict}")
+
+    # ---------------------------------------------------
+    # If a single solver is specified, plot count_value on a second y-axis
+    # ---------------------------------------------------
+    ax2 = None
+    if solver_filter and solver_filter != "all":
+        combined_df = pd.concat(solver_dfs[solver_filter], ignore_index=True)
+        combined_df = combined_df.dropna(subset=['count_value'])
+        if not combined_df.empty:
+            combined_df.sort_values(by='index', inplace=True)
+            ax2 = ax1.twinx()
+            ax2.set_ylabel("Model Count")
+            ax2.plot(
+                combined_df['index'],
+                combined_df['count_value'],
+                color='black',
+                linestyle='-',
+                label="Model Count"
+            )
+
+    # ---------------------------------------------------
+    # Add hover functionality for the scatter points
+    # ---------------------------------------------------
+    cursor = mplcursors.cursor(all_solved_points + all_unsolved_points, hover=True, multiple=True)
 
     @cursor.connect("add")
     def on_add(sel):
-        # Identify which PathCollection is being hovered
         scatter_obj = sel.artist
-        # Find the scatter's index in our list
-        scatter_index = all_scatter_points.index(scatter_obj)
-        # sel.index is the index of the hovered point in that PathCollection
-        local_index = sel.index
-        # Retrieve the short instance path
-        instance_text = all_annotation_texts[scatter_index][local_index]
-        sel.annotation.set_text(instance_text)
-        # Optional: make annotation more visible
+        if scatter_obj in all_solved_points:
+            scatter_index = all_solved_points.index(scatter_obj)
+            annotation_text = all_solved_annotations[scatter_index][sel.index]
+        else:
+            scatter_index = all_unsolved_points.index(scatter_obj)
+            annotation_text = all_unsolved_annotations[scatter_index][sel.index]
+        sel.annotation.set_text(annotation_text)
         sel.annotation.get_bbox_patch().set(fc="white", alpha=0.8)
 
+    @cursor.connect("remove")
+    def on_remove(sel):
+        sel.annotation.set_visible(False)
+
     # ---------------------------------------------------
-    # Save and show the plot
+    # Optional Axis Limits
     # ---------------------------------------------------
-    output_path = os.path.join(directory, f"solve_times_{seed}_dots_with_hover.png")
+    # x-axis
+    if xmin is not None or xmax is not None:
+        ax1.set_xlim(left=xmin, right=xmax)
+
+    # primary y-axis (solve time)
+    if ymin is not None or ymax is not None:
+        ax1.set_ylim(bottom=ymin, top=ymax)
+
+    # secondary y-axis (model count), if it exists
+    if ax2 is not None:
+        if y2min is not None or y2max is not None:
+            ax2.set_ylim(bottom=y2min, top=y2max)
+
+    # ---------------------------------------------------
+    # Save and show the figure
+    # ---------------------------------------------------
+    output_filename = f"solve_times_{seed}.png"
+    if solver_filter and solver_filter != "all":
+        output_filename = f"solve_times_{seed}_{solver_filter}.png"
+
+    output_path = os.path.join(directory, output_filename)
     plt.savefig(output_path)
     print(f"Plot saved to {output_path}")
 
-    # Finally display the interactive window
     plt.show()
 
 def main():
-    if len(sys.argv) != 2:
-        print("Usage: python plot_times.py <seed>")
-        sys.exit(1)
+    """
+    Usage:
+        python plot_times.py <seed> [solver_filter] [options]
 
-    seed = sys.argv[1]
-    plot_solve_times(seed)
+    Examples:
+        # Automatic scaling, all solvers:
+        python plot_times.py s1779779729113289578
+
+        # Automatic scaling, single solver:
+        python plot_times.py s1779779729113289578 d4g
+
+        # Set x-axis from 0..500, y-axis from 0..200
+        python plot_times.py s1779779729113289578 d4g --xmin 0 --xmax 500 --ymin 0 --ymax 200
+
+        # If single solver, y2-axis can be clamped via --y2min, --y2max as well
+    """
+    parser = argparse.ArgumentParser()
+    parser.add_argument("seed", help="Seed string (e.g., s1779779729113289578)")
+    parser.add_argument("solver_filter", nargs="?", default=None,
+                        help="Specific solver (e.g., d4g, g4r) or 'all'. If omitted, defaults to all.")
+    # Optional axis limits
+    parser.add_argument("--xmin", type=float, default=None, help="Min X-axis (solve-time index) limit")
+    parser.add_argument("--xmax", type=float, default=None, help="Max X-axis (solve-time index) limit")
+    parser.add_argument("--ymin", type=float, default=None, help="Min Y-axis (solve-time) limit")
+    parser.add_argument("--ymax", type=float, default=None, help="Max Y-axis (solve-time) limit")
+    parser.add_argument("--y2min", type=float, default=None, help="Min Y2-axis (model-count) limit")
+    parser.add_argument("--y2max", type=float, default=None, help="Max Y2-axis (model-count) limit")
+
+    args = parser.parse_args()
+
+    plot_solve_times(
+        seed=args.seed,
+        solver_filter=args.solver_filter,
+        xmin=args.xmin,
+        xmax=args.xmax,
+        ymin=args.ymin,
+        ymax=args.ymax,
+        y2min=args.y2min,
+        y2max=args.y2max
+    )
 
 if __name__ == "__main__":
     main()
