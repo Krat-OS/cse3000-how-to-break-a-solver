@@ -1,0 +1,22 @@
+{
+    "counters": "/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/exp/gpmc_counter_config_mc.json",
+    "instances": "/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/small-test",
+    "projected": false,
+    "weighted": false,
+    "timeout": 3600,
+    "memout": 3200,
+    "verbosity": 2,
+    "keep_bugs_only": false,
+    "out_dir": "/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/out",
+    "log_dir": "/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/out/logs",
+    "verified_counts": null,
+    "clean_up_proofs": false,
+    "counters_configs": {
+        "gpmc": {
+            "path": "/home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/gpmc",
+            "config": "{INSTANCE}",
+            "exact": "True"
+        }
+    }
+}}
+}
