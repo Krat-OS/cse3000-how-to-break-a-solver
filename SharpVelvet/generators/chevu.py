@@ -108,24 +108,28 @@ class BipartiteGraph:
                         references[abs(flipped_lit)] += 1
 
                     if random.choice([True, False]):
-                        if chosen_literals:
-                            lit_to_replace = random.choice(list(chosen_literals))
-                            chosen_literals.remove(lit_to_replace)
-                            references[abs(lit_to_replace)] -= 1
-                            var = pick_variable()
-                            if var is not None:
-                                sign = random.choice([True, False])
-                                new_lit = var if sign else -var
-
-                                if not allow_taut and -new_lit in chosen_literals:
-                                    chosen_literals.add(lit_to_replace)
-                                    references[abs(lit_to_replace)] += 1
-                                elif new_lit in chosen_literals:
-                                    chosen_literals.add(lit_to_replace)
-                                    references[abs(lit_to_replace)] += 1
-                                else:
-                                    chosen_literals.add(new_lit)
-                                    references[abs(new_lit)] += 1
+                        num_literals_to_flip = random.choice([1, 2])
+                        
+                        for _ in range(num_literals_to_flip):
+                            if chosen_literals:
+                                lit_to_replace = random.choice(list(chosen_literals))
+                                chosen_literals.remove(lit_to_replace)
+                                references[abs(lit_to_replace)] -= 1
+                                var = pick_variable()
+                                
+                                if var is not None:
+                                    sign = random.choice([True, False])
+                                    new_lit = var if sign else -var
+                                    
+                                    if not allow_taut and -new_lit in chosen_literals:
+                                        chosen_literals.add(lit_to_replace)
+                                        references[abs(lit_to_replace)] += 1
+                                    elif new_lit in chosen_literals:
+                                        chosen_literals.add(lit_to_replace)
+                                        references[abs(lit_to_replace)] += 1
+                                    else:
+                                        chosen_literals.add(new_lit)
+                                        references[abs(new_lit)] += 1
 
             previous_clause_literals = chosen_literals.copy()
             for lit in chosen_literals:
@@ -357,19 +361,19 @@ def main():
     parser.add_argument("--threads", type=int, default=4,
                         help="Number of threads to use for parallel generation (default: 4).")
 
-    parser.add_argument("--min-clauses", type=int, default=500,
-                        help="Minimum number of clauses (default=500).")
-    parser.add_argument("--max-clauses", type=int, default=500,
-                        help="Maximum number of clauses (default=500).")
-    parser.add_argument("--min-vars", type=int, default=150,
-                        help="Minimum number of variables (default=150).")
-    parser.add_argument("--max-vars", type=int, default=150,
-                        help="Maximum number of variables (default=150).")
+    parser.add_argument("--min-clauses", type=int, default=400,
+                        help="Minimum number of clauses (default=400).")
+    parser.add_argument("--max-clauses", type=int, default=400,
+                        help="Maximum number of clauses (default=400).")
+    parser.add_argument("--min-vars", type=int, default=110,
+                        help="Minimum number of variables (default=110).")
+    parser.add_argument("--max-vars", type=int, default=110,
+                        help="Maximum number of variables (default=110).")
     parser.add_argument("--min-clause-len", type=int, default=3,
                         help="Minimum clause length (default=3).")
     parser.add_argument("--max-clause-len", type=int, default=3,
                         help="Maximum clause length (default=3).")
-    parser.add_argument("--min-refs", type=int, default=6,
+    parser.add_argument("--min-refs", type=int, default=5,
                         help="Minimum references per variable (default=6).")
     parser.add_argument("--max-refs", type=int, default=40,
                         help="Maximum references per variable (default=40).")
