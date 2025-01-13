@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name="big-sharpvelvet-test-run-45solvers"
-#SBATCH --time=20:00:00
+#SBATCH --job-name="450-3cnf-test"
+#SBATCH --time=24:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem-per-cpu=8G
-#SBATCH --partition=compute-p1
+#SBATCH --partition=compute-p2
 #SBATCH --account=education-eemcs-courses-cse3000
 
 # Load Miniconda module
@@ -27,7 +27,7 @@ configs=(
 for cfg in "${configs[@]}"; do
     python /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/src/run_fuzzer.py \
         --counters "$cfg" \
-        --instances /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn \
+        --instances /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-450clause-horn \
         &
 done
 

@@ -1,7 +1,7 @@
 {
     "ganak": {
       "path": "/home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/ganak",
-      "config": "{INSTANCE}",
-      "exact": "True"
+      "config":" --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 {INSTANCE}",
+      "exact":"True"
     }
   }
