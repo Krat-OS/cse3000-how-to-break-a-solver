@@ -87,7 +87,7 @@ def plot_solve_times(seed, solver_filter=None,
         # Extract numeric index
         df['primary_num'] = df['instance'].str.extract(r'_(\d{3})_')[0].astype(int)
         df['secondary_num'] = df['instance'].str.extract(r'_(\d{3}).cnf$')[0].astype(int)
-        df['index'] = df['primary_num'] + df['secondary_num'] * 10
+        df['index'] = (df['primary_num'] + df['secondary_num'] * 10) / 10.1
 
         # Convert count_value to numeric if possible
         if "count_value" in df.columns:
@@ -172,7 +172,7 @@ def plot_solve_times(seed, solver_filter=None,
                        label=label_str)
         )
     if legend_labels:
-        ax1.legend(handles=legend_labels, title="Solvers", loc="upper right")
+        ax1.legend(handles=legend_labels, title="Solvers", loc="upper cneter")
 
     # ---------------------------------------------------
     # Mismatch check if 'all' solvers are plotted
