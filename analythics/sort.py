@@ -15,7 +15,6 @@ def sort_file(file_path):
 
     # Save back to the same file
     sorted_df.to_csv(file_path, index=False)
-    print(f"Sorted {file_path}")
 
 def main():
     if len(sys.argv) != 2:

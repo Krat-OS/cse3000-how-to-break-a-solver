@@ -63,7 +63,6 @@ def plot_solve_times(seed, solver_filter=None,
         # Example file name: "2025-01-12_chevu_000_s1779779729113289578_000_d4g_fuzz-results.csv"
         # Parse out the solver from index 5
         solver = file_name.split('_')[5].split('_fuzz-results')[0]
-        print("Solver found in file:", solver)
 
         # Filter out solvers if requested
         if solver_filter and solver_filter != "all":
@@ -172,7 +171,7 @@ def plot_solve_times(seed, solver_filter=None,
                        label=label_str)
         )
     if legend_labels:
-        ax1.legend(handles=legend_labels, title="Solvers", loc="upper cneter")
+        ax1.legend(handles=legend_labels, title="Solvers", loc="upper center")
 
     # ---------------------------------------------------
     # Mismatch check if 'all' solvers are plotted
@@ -252,6 +251,63 @@ def plot_solve_times(seed, solver_filter=None,
 
     plt.show()
 
+    # Print solver stats
+    solver_stats = []
+    for solver, df_list in solver_dfs.items():
+        # Combine all CSV chunks for this solver
+        combined_df = pd.concat(df_list, ignore_index=True)
+
+        # "solved": rows where 'count_value' is not NaN
+        solved_count = combined_df['count_value'].notna().sum()
+
+        # "UNSATISFIABLE"
+        unsat_count = combined_df[combined_df['satisfiability'] == 'UNSATISFIABLE'].shape[0]
+
+        # "not solved": 'satisfiability' is empty/NaN AND 'count_value' is empty/NaN
+        not_solved_count = combined_df[
+            (combined_df['satisfiability'].isna() | (combined_df['satisfiability'] == '')) &
+            (combined_df['count_value'].isna() | (combined_df['count_value'] == ''))
+        ].shape[0]
+
+        # "error == True"
+        error_count = combined_df[combined_df['error'] == True].shape[0]
+
+        # "timed_out == True"
+        timed_out_count = combined_df[combined_df['timed_out'] == True].shape[0]
+
+        solver_stats.append([
+            solver,
+            solved_count,
+            unsat_count,
+            not_solved_count,
+            error_count,
+            timed_out_count
+        ])
+
+    # Print results in a small table
+    print("\nSolver Stats Summary:")
+    print(f"{'Solver':<15} "
+        f"{'Solved':<8} "
+        f"{'UNSAT':<8} "
+        f"{'Not-solved':<11} "
+        f"{'Error':<8} "
+        f"{'Timed Out':<10}")
+
+    for (
+        solver_name,
+        solved_cnt,
+        unsat_cnt,
+        not_solved_cnt,
+        error_cnt,
+        timed_out_cnt
+    ) in solver_stats:
+        print(f"{solver_name:<15} "
+            f"{solved_cnt:<8} "
+            f"{unsat_cnt:<8} "
+            f"{not_solved_cnt:<11} "
+            f"{error_cnt:<8} "
+            f"{timed_out_cnt:<10}")
+        
 def main():
     """
     Usage:

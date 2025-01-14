@@ -10,7 +10,7 @@ def main():
     seed = sys.argv[1]
     solver = sys.argv[2] if len(sys.argv) > 2 else "all"
 
-    print(f"Processing seed: {seed}")
+    # print(f"Processing seed: {seed}")
 
     # Call sort.py with the seed
     subprocess.call(["python", "sort.py", seed])
