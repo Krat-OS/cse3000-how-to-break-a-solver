@@ -1,0 +1,963 @@
+Conda module loaded!
+Conda environment 'global-env' activated!
+chevu_000_s17774001476622577957_000.cnf
+Namespace(counters='/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/exp/ganak_counter_config_mc.json', instances='/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn', projected=False, weighted=False, timeout=900, memout=10000, verbosity=2, keep_bugs_only=False, out_dir='/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/out', log_dir='/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/out/logs', verified_counts=None, clean_up_proofs=False)
+[SharpVelvet]: 
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h48m49s: Instance 1/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_069.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_069.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_069.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+chevu_000_s17774001476622577957_000.cnf
+Namespace(counters='/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/exp/d4r_counter_config_mc.json', instances='/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn', projected=False, weighted=False, timeout=900, memout=10000, verbosity=2, keep_bugs_only=False, out_dir='/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/out', log_dir='/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/out/logs', verified_counts=None, clean_up_proofs=False)
+[SharpVelvet]: 
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h48m49s: Instance 1/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_069.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_069.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_069.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+chevu_000_s17774001476622577957_000.cnf
+Namespace(counters='/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/exp/d4g_counter_config_mc.json', instances='/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn', projected=False, weighted=False, timeout=900, memout=10000, verbosity=2, keep_bugs_only=False, out_dir='/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/out', log_dir='/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/out/logs', verified_counts=None, clean_up_proofs=False)
+[SharpVelvet]: 
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h48m49s: Instance 1/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_069.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_069.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_069.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+chevu_000_s17774001476622577957_000.cnf
+Namespace(counters='/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/exp/gpmc_counter_config_mc.json', instances='/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn', projected=False, weighted=False, timeout=900, memout=10000, verbosity=2, keep_bugs_only=False, out_dir='/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/out', log_dir='/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/out/logs', verified_counts=None, clean_up_proofs=False)
+[SharpVelvet]: 
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h48m49s: Instance 1/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_069.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_069.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_069.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 44132014
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h48m49s: Instance 2/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_017.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_017.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_017.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 44132014
+[SharpVelvet]: Counter d4r reports count 44132014
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h48m49s: Instance 2/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_017.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_017.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_017.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h48m49s: Instance 2/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_017.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_017.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_017.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 44132014
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h48m52s: Instance 2/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_017.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_017.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_017.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 2009273773804398
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h50m21s: Instance 3/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_061.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_061.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_061.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 599373302
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h50m21s: Instance 4/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_007.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_007.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_007.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 327221480506426507
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h51m14s: Instance 5/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_085.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_085.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_085.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 6003674172381
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h51m17s: Instance 6/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_084.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_084.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_084.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 105471090228
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h51m18s: Instance 7/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_074.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_074.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_074.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 3391851365
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h51m19s: Instance 8/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_006.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_006.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_006.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 2009273773804398
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h51m46s: Instance 3/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_061.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_061.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_061.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 599373302
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h51m51s: Instance 4/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_007.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_007.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_007.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 327221480506426507
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h52m34s: Instance 5/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_085.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_085.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_085.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 6003674172381
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h52m41s: Instance 6/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_084.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_084.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_084.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 2009273773804398
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h52m42s: Instance 3/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_061.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_061.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_061.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 599373302
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h52m42s: Instance 4/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_007.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_007.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_007.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 105471090228
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h52m45s: Instance 7/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_074.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_074.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_074.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 2009273773804398
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h52m49s: Instance 3/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_061.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_061.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_061.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 599373302
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h52m49s: Instance 4/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_007.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_007.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_007.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 3391851365
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h52m49s: Instance 8/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_006.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_006.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_006.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 327221480506426507
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h54m30s: Instance 5/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_085.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_085.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_085.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 60140554709538050
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h54m35s: Instance 9/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_098.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_098.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_098.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 6003674172381
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h54m35s: Instance 6/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_084.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_084.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_084.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 105471090228
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h54m36s: Instance 7/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_074.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_074.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_074.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 3391851365
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h54m36s: Instance 8/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_006.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_006.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_006.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 327221480506426507
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h54m41s: Instance 5/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_085.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_085.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_085.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 6003674172381
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h54m46s: Instance 6/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_084.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_084.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_084.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 105471090228
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h54m47s: Instance 7/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_074.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_074.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_074.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 3391851365
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h54m47s: Instance 8/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_006.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_006.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_006.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 26738908664200207
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h56m48s: Instance 10/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_023.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_023.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_023.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 252200987402
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h56m48s: Instance 11/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_074.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_074.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_074.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 819698462814
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h56m49s: Instance 12/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_046.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_046.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_046.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 604106689
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h56m50s: Instance 13/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_030.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_030.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_030.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 122189822939
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h56m50s: Instance 14/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_095.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_095.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_095.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 4530974657569703
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h57m43s: Instance 15/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_042.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_042.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_042.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 54297970662
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h57m44s: Instance 16/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_073.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_073.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_073.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 474479321790
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h57m45s: Instance 17/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_090.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_090.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_090.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 11375552762156
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h57m50s: Instance 18/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_027.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_027.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_027.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 1263100696054
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h57m51s: Instance 19/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_093.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_093.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_093.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 1694364910351472
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h58m23s: Instance 20/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_062.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_062.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_062.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 39714432
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h58m23s: Instance 21/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_074.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_074.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_074.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 29497892674
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h58m23s: Instance 22/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_083.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_083.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_083.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 50655270130246
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h58m31s: Instance 23/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_001.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_001.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_001.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 60140554709538050
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 14h58m43s: Instance 9/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_098.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_098.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_098.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 60140554709538050
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h01m56s: Instance 9/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_098.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_098.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_098.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 60140554709538050
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h02m21s: Instance 9/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_098.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_098.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_098.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 26738908664200207
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h04m28s: Instance 10/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_023.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_023.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_023.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 252200987402
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h04m33s: Instance 11/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_074.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_074.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_074.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 819698462814
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h04m37s: Instance 12/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_046.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_046.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_046.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 604106689
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h04m40s: Instance 13/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_030.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_030.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_030.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 122189822939
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h04m45s: Instance 14/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_095.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_095.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_095.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 4530974657569703
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h05m24s: Instance 15/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_042.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_042.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_042.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 54297970662
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h05m28s: Instance 16/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_073.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_073.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_073.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 474479321790
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h05m32s: Instance 17/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_090.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_090.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_090.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 11375552762156
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h05m41s: Instance 18/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_027.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_027.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_027.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 1263100696054
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h05m46s: Instance 19/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_093.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_093.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_093.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 1694364910351472
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h06m21s: Instance 20/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_062.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_062.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_062.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 39714432
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h06m23s: Instance 21/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_074.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_074.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_074.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 29497892674
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h06m26s: Instance 22/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_083.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_083.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_083.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 50655270130246
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h06m47s: Instance 23/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_001.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_001.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_001.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 26738908664200207
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h07m04s: Instance 10/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_023.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_023.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_023.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 252200987402
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h07m04s: Instance 11/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_074.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_074.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_074.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 819698462814
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h07m06s: Instance 12/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_046.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_046.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_046.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 604106689
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h07m06s: Instance 13/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_030.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_030.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_030.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 122189822939
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h07m07s: Instance 14/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_095.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_095.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_095.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 26738908664200207
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h07m40s: Instance 10/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_023.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_023.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_023.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 252200987402
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h07m41s: Instance 11/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_074.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_074.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_074.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 819698462814
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h07m42s: Instance 12/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_046.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_046.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_046.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 604106689
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h07m43s: Instance 13/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_030.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_030.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_030.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 122189822939
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h07m44s: Instance 14/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_095.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_095.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_095.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 4530974657569703
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h09m03s: Instance 15/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_042.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_042.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_042.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 54297970662
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h09m04s: Instance 16/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_073.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_073.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_073.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 474479321790
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h09m05s: Instance 17/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_090.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_090.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_090.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 11375552762156
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h09m16s: Instance 18/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_027.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_027.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_027.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 1263100696054
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h09m18s: Instance 19/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_093.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_093.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_093.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 4530974657569703
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h09m43s: Instance 15/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_042.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_042.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_042.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 54297970662
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h09m44s: Instance 16/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_073.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_073.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_073.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 474479321790
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h09m45s: Instance 17/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_090.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_090.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_090.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 11375552762156
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h09m56s: Instance 18/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_027.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_027.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_027.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 1263100696054
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h09m59s: Instance 19/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_093.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_093.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_093.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 1694364910351472
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h10m32s: Instance 20/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_062.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_062.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_062.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 39714432
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h10m32s: Instance 21/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_074.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_074.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_074.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 29497892674
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h10m32s: Instance 22/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_083.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_083.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_083.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 50655270130246
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h10m49s: Instance 23/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_001.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_001.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_001.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 1694364910351472
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h11m10s: Instance 20/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_062.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_062.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_062.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 39714432
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h11m11s: Instance 21/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_074.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_074.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_074.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 29497892674
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h11m11s: Instance 22/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_083.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_083.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_083.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 50655270130246
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h11m29s: Instance 23/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_001.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_001.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_001.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 900 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_001.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h13m38s: Instance 24/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_052.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_052.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_052.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 1604982460
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h13m38s: Instance 25/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_073.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_073.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_073.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 1122910
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h13m38s: Instance 26/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_099.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_099.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_099.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h20m56s: Instance 24/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_052.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_052.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_052.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 1604982460
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h20m59s: Instance 25/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_073.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_073.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_073.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 1122910
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h21m01s: Instance 26/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_099.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_099.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_099.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 426303612490106289
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h22m22s: Instance 27/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_092.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_092.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_092.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 6225110050314
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h22m26s: Instance 28/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_040.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_040.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_040.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 1021710978
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h22m26s: Instance 29/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_054.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_054.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_054.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 1704431654
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h22m26s: Instance 30/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_076.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_076.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_076.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 19505040816
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h22m26s: Instance 31/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_028.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_028.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_028.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 341745925442
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h22m26s: Instance 32/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_087.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_087.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_087.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 3397882381181
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h22m30s: Instance 33/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_054.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_054.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_054.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 2115298
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h22m31s: Instance 34/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_046.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_046.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_046.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 4464416818
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h22m31s: Instance 35/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_026.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_026.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_026.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 22426650535
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h22m31s: Instance 36/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_088.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_088.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_088.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 6686861238371
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h22m33s: Instance 37/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_049.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_049.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_049.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 3039109858
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h22m33s: Instance 38/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_075.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_075.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_075.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 27061315698
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h22m33s: Instance 39/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_071.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_071.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_071.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 126162728614
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h22m33s: Instance 40/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_068.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_068.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_068.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 322772750
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h22m33s: Instance 41/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_041.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_041.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_041.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 49513710
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h22m34s: Instance 42/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_058.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_058.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_058.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 22447547
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h22m34s: Instance 43/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_067.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_067.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_067.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 39235468180
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h22m34s: Instance 44/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_099.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_099.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_099.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 426303612490106289
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h23m53s: Instance 27/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_092.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_092.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_092.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 6225110050314
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h24m00s: Instance 28/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_040.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_040.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_040.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 1021710978
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h24m01s: Instance 29/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_054.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_054.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_054.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 1704431654
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h24m04s: Instance 30/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_076.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_076.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_076.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 19505040816
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h24m08s: Instance 31/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_028.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_028.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_028.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 341745925442
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h24m12s: Instance 32/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_087.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_087.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_087.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 3397882381181
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h24m21s: Instance 33/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_054.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_054.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_054.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 2115298
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h24m24s: Instance 34/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_046.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_046.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_046.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 4464416818
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h24m27s: Instance 35/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_026.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_026.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_026.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 22426650535
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h24m30s: Instance 36/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_088.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_088.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_088.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 6686861238371
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h24m35s: Instance 37/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_049.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_049.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_049.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 3039109858
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h24m38s: Instance 38/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_075.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_075.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_075.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 27061315698
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h24m41s: Instance 39/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_071.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_071.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_071.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 126162728614
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h24m45s: Instance 40/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_068.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_068.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_068.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 322772750
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h24m48s: Instance 41/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_041.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_041.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_041.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 49513710
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h24m52s: Instance 42/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_058.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_058.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_058.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 22447547
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h24m54s: Instance 43/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_067.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_067.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_067.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 39235468180
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h24m59s: Instance 44/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_099.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_099.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_099.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4r exceeded maximum time of 900 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_001.cnf.
+[SharpVelvet]: Counter d4r reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h27m38s: Instance 24/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_052.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_052.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_052.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 1604982460
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h27m38s: Instance 25/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_073.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_073.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_073.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 1122910
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h27m38s: Instance 26/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_099.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_099.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_099.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 544679465920087153
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h27m54s: Instance 45/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_060.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_060.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_060.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 226616749
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h27m54s: Instance 46/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_062.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_062.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_062.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 13787868412
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h27m54s: Instance 47/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_076.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_076.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_076.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 1405462296952
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h27m55s: Instance 48/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_031.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_031.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_031.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 209689574834
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h27m55s: Instance 49/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_059.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_059.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_059.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 35223136
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h27m56s: Instance 50/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_039.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_039.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_039.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter gpmc reports count 686461276
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h27m56s: Instance 51/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_099.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_099.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_099.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 900 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_001.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h28m17s: Instance 24/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_052.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_052.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_052.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 1604982460
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h28m17s: Instance 25/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_073.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_073.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_009_s17774001476622577966_073.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 1122910
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h28m17s: Instance 26/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_099.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_099.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_099.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 544679465920087153
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h29m35s: Instance 45/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_060.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_060.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_060.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 226616749
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h29m38s: Instance 46/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_062.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_062.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_062.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 13787868412
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h29m41s: Instance 47/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_076.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_076.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_076.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 1405462296952
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h29m46s: Instance 48/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_031.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_031.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_031.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 209689574834
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h29m50s: Instance 49/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_059.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_059.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_059.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 35223136
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h29m52s: Instance 50/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_039.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_039.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_039.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter ganak reports count 686461276
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h29m55s: Instance 51/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_099.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_099.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_099.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 426303612490106289
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m04s: Instance 27/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_092.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_092.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_092.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 6225110050314
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m12s: Instance 28/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_040.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_040.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_040.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 1021710978
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m12s: Instance 29/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_054.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_054.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_054.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 1704431654
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m12s: Instance 30/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_076.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_076.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_076.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 19505040816
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m13s: Instance 31/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_028.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_028.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_028.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 341745925442
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m13s: Instance 32/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_087.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_087.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_087.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 3397882381181
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m20s: Instance 33/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_054.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_054.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_054.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 2115298
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m21s: Instance 34/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_046.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_046.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_046.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 4464416818
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m21s: Instance 35/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_026.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_026.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_026.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 22426650535
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m23s: Instance 36/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_088.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_088.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_088.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 6686861238371
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m26s: Instance 37/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_049.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_049.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_049.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 3039109858
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m27s: Instance 38/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_075.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_075.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_075.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 27061315698
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m27s: Instance 39/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_071.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_071.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_071.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 126162728614
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m28s: Instance 40/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_068.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_068.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_068.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 322772750
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m29s: Instance 41/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_041.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_041.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_041.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 49513710
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m29s: Instance 42/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_058.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_058.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_058.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 22447547
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m29s: Instance 43/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_067.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_067.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_067.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4r reports count 39235468180
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m31s: Instance 44/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_099.cnf
+[SharpVelvet]: Running counter d4r on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_099.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_099.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 426303612490106289
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h37m53s: Instance 27/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_092.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_092.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_092.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 6225110050314
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h38m01s: Instance 28/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_040.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_040.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_040.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 1021710978
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h38m01s: Instance 29/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_054.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_054.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_054.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 1704431654
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h38m01s: Instance 30/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_076.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_076.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_004_s17774001476622577961_076.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 19505040816
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h38m02s: Instance 31/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_028.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_028.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_028.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 341745925442
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h38m03s: Instance 32/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_087.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_087.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_001_s17774001476622577958_087.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 3397882381181
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h38m10s: Instance 33/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_054.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_054.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_054.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 2115298
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h38m10s: Instance 34/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_046.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_046.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_046.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 4464416818
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h38m11s: Instance 35/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_026.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_026.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_026.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 22426650535
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h38m11s: Instance 36/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_088.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_088.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_000_s17774001476622577957_088.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 6686861238371
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h38m15s: Instance 37/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_049.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_049.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_049.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 3039109858
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h38m15s: Instance 38/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_075.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_075.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_075.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 27061315698
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h38m16s: Instance 39/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_071.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_071.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_002_s17774001476622577959_071.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 126162728614
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h38m16s: Instance 40/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_068.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_068.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_008_s17774001476622577965_068.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 322772750
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h38m17s: Instance 41/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_041.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_041.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_003_s17774001476622577960_041.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 49513710
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h38m17s: Instance 42/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_058.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_058.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_006_s17774001476622577963_058.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 22447547
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h38m17s: Instance 43/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_067.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_067.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_005_s17774001476622577962_067.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Counter d4g reports count 39235468180
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-14, 15h38m19s: Instance 44/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_099.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_099.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn/chevu_007_s17774001476622577964_099.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
