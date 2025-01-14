@@ -1,0 +1,10 @@
+$ ./ganak /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn/chevu_006_s5207252779782092308_055.cnf
+[SharpVelvet]: Setting resource limit in child (pid 472713)
+c o CMS revision: 437f79fa3afbbfdf916e57be8999cd490cf770e6
+c o Arjun SHA revision: ab2651b8f9fa3846816029cec271f25120db7509
+c o Arjun SBVA SHA revision: c1a0214b1a5acb345683f7085d104a546d64d7b9
+c o GANAK SHA revision 2ab48a9192ef05cd5a8c9f2df7753c03e31dc38b
+c o GANAK compilation env CMAKE_CXX_COMPILER = /usr/lib/ccache/bin/c++ | CMAKE_CXX_FLAGS =  -fno-stack-protector -mpopcnt -msse4.2 -mpclmul -march=sandybridge -Wlogical-op -Wrestrict -Wnull-dereference -Wdouble-promotion -Wshadow -Wformat=2 -Wextra-semi -pedantic | COMPILE_DEFINES =  | STATICCOMPILE = ON | Boost_FOUND = TRUE | ZLIB_FOUND = TRUE | ENABLE_ASSERTIONS = OFF | 
+c o GANAK compiled with gcc version 13.2.1 20240417
+c o called with: ./ganak /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn/chevu_006_s5207252779782092308_055.cnf
+ERROR! Could not open file '/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn/chevu_006_s5207252779782092308_055.cnf' for reading: No such file or directory

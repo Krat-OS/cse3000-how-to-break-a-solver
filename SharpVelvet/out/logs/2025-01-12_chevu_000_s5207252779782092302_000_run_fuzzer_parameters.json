@@ -1,0 +1,21 @@
+{
+    "counters": "/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/tool-config/exp/ganak_counter_config_mc.json",
+    "instances": "/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn",
+    "projected": false,
+    "weighted": false,
+    "timeout": 3600,
+    "memout": 3200,
+    "verbosity": 2,
+    "keep_bugs_only": false,
+    "out_dir": "/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/out",
+    "log_dir": "/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/out/logs",
+    "verified_counts": null,
+    "clean_up_proofs": false,
+    "counters_configs": {
+        "ganak": {
+            "path": "/home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/ganak",
+            "config": "{INSTANCE}",
+            "exact": "True"
+        }
+    }
+}
