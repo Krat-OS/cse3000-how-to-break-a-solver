@@ -1,2 +1,5 @@
 ,counter,instance,satisfiability,problem_type,est_type,est_val,counter_type,count_precision,count_notation,count_value,timed_out,error,solve_time,generator,verified
 0,d4g,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn2/chevu_002_s9_039.cnf,SATISFIABLE,mc,log10-estimate,5.7036421119969502551727892026025518072393130164398,exact,arb,int,505408,False,False,0.06303620338439941,unknown,False
+1,d4g,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn2/chevu_000_s7_007.cnf,,,,,,,,,True,False,990.7614631652832,unknown,False
+2,d4g,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn2/chevu_001_s8_029.cnf,SATISFIABLE,mc,log10-estimate,12.630803396256458149575404552044457216505200230284,exact,arb,int,4273693735848,False,False,1.333390235900879,unknown,False
+3,d4g,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-horn2/chevu_002_s9_091.cnf,,,,,,,,,True,False,965.6476619243622,unknown,False
