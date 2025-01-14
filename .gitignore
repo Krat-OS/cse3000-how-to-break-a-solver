@@ -30,3 +30,4 @@ cpog_verifier/output.csv
 
 # Local Binaries (VUK)
 binaries/
+*.log
