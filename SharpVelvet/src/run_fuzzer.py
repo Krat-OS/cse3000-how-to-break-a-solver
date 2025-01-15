@@ -47,8 +47,7 @@ import fuzzer_utils as fut
 import report_manager as rm
 
 instances_prefix_pat = re.compile(r'(?P<prefix>\d{4}-\d{2}-\d{2}_s\d+)_generated_instances\.txt', re.DOTALL)
-instance_seed_pat = re.compile(r'[\w\-]+_000_s(?P<seed>\d+)\.\w+', re.DOTALL)
-
+instance_seed_pat = re.compile(r'[\w\-]+_\d+_s(?P<seed>\d+)\.\w+', re.DOTALL)
 
 def parse_arguments():
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
