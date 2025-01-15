@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name="task-400-3cnf-test"
+#SBATCH --job-name="task2-400-3cnf-test"
 #SBATCH --time=05:45:00
 #SBATCH --ntasks=4                # Number of tasks (one per solver)
 #SBATCH --cpus-per-task=1         # One CPU per task
@@ -27,7 +27,7 @@ configs=(
 for i in "${!configs[@]}"; do
     srun --exclusive -n1 -c1 python /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/src/run_fuzzer.py \
         --counters "${configs[i]}" \
-        --instances /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn3 \
+        --instances /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn2 \
         &
 done
 
