@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name="task-400-3cnf-test"
-#SBATCH --time=06:30:00
+#SBATCH --time=05:45:00
 #SBATCH --ntasks=4                # Number of tasks (one per solver)
 #SBATCH --cpus-per-task=1         # One CPU per task
 #SBATCH --mem-per-cpu=8G          # Memory per CPU
