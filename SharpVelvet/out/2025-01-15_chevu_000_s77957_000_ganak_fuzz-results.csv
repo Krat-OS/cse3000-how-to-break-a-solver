@@ -65,3 +65,5 @@
 63,ganak,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn2/chevu_001_s77958_017.cnf,SATISFIABLE,mc,log10-estimate,12.244713262751,exact,arb,int,1756763350962,False,False,6.550148963928223,unknown,False
 64,ganak,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn2/chevu_001_s77958_062.cnf,SATISFIABLE,mc,log10-estimate,7.469309894422,exact,arb,int,29465234,False,False,1.3897120952606201,unknown,False
 65,ganak,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn2/chevu_002_s77959_052.cnf,SATISFIABLE,mc,log10-estimate,9.008847381004,exact,arb,int,1020580770,False,False,2.1015870571136475,unknown,False
+66,ganak,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn2/chevu_001_s77958_099.cnf,,,,,,,,,False,False,634.421421289444,unknown,False
+67,ganak,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-horn2/chevu_002_s77959_097.cnf,SATISFIABLE,mc,log10-estimate,16.290653319412,exact,arb,int,19527800042323005,False,False,52.09528565406799,unknown,False
