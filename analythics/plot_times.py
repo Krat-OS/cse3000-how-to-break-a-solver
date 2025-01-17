@@ -25,6 +25,8 @@ def plot_solve_times(seed, solver_filter=None,
     directory = "../SharpVelvet/out/"
     files = [f for f in os.listdir(directory) if seed in f and f.endswith(".csv")]
 
+    plt.rcParams.update({'font.size': 16})  # Global font size
+
     if not files:
         print(f"No files found for seed: {seed}")
         sys.exit(1)
@@ -100,7 +102,7 @@ def plot_solve_times(seed, solver_filter=None,
         solved_scatter = ax1.scatter(
             solved['index'],
             solved['solve_time'],
-            s=5,
+            s=12,
             marker='o',  # circle
             label=None
         )
@@ -113,7 +115,7 @@ def plot_solve_times(seed, solver_filter=None,
         unsolved_scatter = ax1.scatter(
             unsolved['index'],
             unsolved['solve_time'],
-            s=50,
+            s=60,
             marker='x',  # circle with X
             color=solved_scatter.get_facecolor()[0],
             label=None
@@ -142,14 +144,8 @@ def plot_solve_times(seed, solver_filter=None,
     # ---------------------------------------------------
     # Plot formatting for solve time
     # ---------------------------------------------------
-    ax1.set_xlabel("Instance Index")
-    ax1.set_ylabel("Solve Time (seconds)")
-    ax_title = f"Solve Times for Seed {seed}"
-    if solver_filter and solver_filter != "all":
-        ax_title += f" - Solver: {solver_filter}"
-    else:
-        ax_title += " - ALL Solvers"
-    ax1.set_title(ax_title)
+    ax1.set_xlabel("Horn Clause Fraction", fontsize=16)
+    ax1.set_ylabel("Solve Time (seconds)", fontsize=16)
     ax1.grid(True)
 
     # ---------------------------------------------------
@@ -171,7 +167,7 @@ def plot_solve_times(seed, solver_filter=None,
                        label=label_str)
         )
     if legend_labels:
-        ax1.legend(handles=legend_labels, title="Solvers", loc="upper center")
+        ax1.legend(handles=legend_labels, title="Solvers", loc="upper center", fontsize=16)
 
     # ---------------------------------------------------
     # Mismatch check if 'all' solvers are plotted
@@ -192,7 +188,7 @@ def plot_solve_times(seed, solver_filter=None,
         if not combined_df.empty:
             combined_df.sort_values(by='index', inplace=True)
             ax2 = ax1.twinx()
-            ax2.set_ylabel("Model Count")
+            ax2.set_ylabel("Model Count", fontsize=16)
             ax2.plot(
                 combined_df['index'],
                 combined_df['count_value'],

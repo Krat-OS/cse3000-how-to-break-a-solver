@@ -56,7 +56,7 @@ class BipartiteGraph:
             else:
                 return random.choice(can_use)
 
-        previous_clause_literals = None  # To keep track of the previous clause's literals
+        previous_clause_literals = None
 
         for c in range(1, num_clauses + 1):
             chosen_literals = set()
@@ -107,29 +107,28 @@ class BipartiteGraph:
                         chosen_literals.add(flipped_lit)
                         references[abs(flipped_lit)] += 1
 
-                    if random.choice([True, False]):
-                        num_literals_to_flip = random.choice([1, 2])
-                        
-                        for _ in range(num_literals_to_flip):
-                            if chosen_literals:
-                                lit_to_replace = random.choice(list(chosen_literals))
-                                chosen_literals.remove(lit_to_replace)
-                                references[abs(lit_to_replace)] -= 1
-                                var = pick_variable()
+                    num_literals_to_replace = random.choice([0, len(chosen_literals) - 1])
+                    
+                    for _ in range(num_literals_to_replace):
+                        if chosen_literals:
+                            lit_to_replace = random.choice(list(chosen_literals))
+                            chosen_literals.remove(lit_to_replace)
+                            references[abs(lit_to_replace)] -= 1
+                            var = pick_variable()
+                            
+                            if var is not None:
+                                sign = random.choice([True, False])
+                                new_lit = var if sign else -var
                                 
-                                if var is not None:
-                                    sign = random.choice([True, False])
-                                    new_lit = var if sign else -var
-                                    
-                                    if not allow_taut and -new_lit in chosen_literals:
-                                        chosen_literals.add(lit_to_replace)
-                                        references[abs(lit_to_replace)] += 1
-                                    elif new_lit in chosen_literals:
-                                        chosen_literals.add(lit_to_replace)
-                                        references[abs(lit_to_replace)] += 1
-                                    else:
-                                        chosen_literals.add(new_lit)
-                                        references[abs(new_lit)] += 1
+                                if not allow_taut and -new_lit in chosen_literals:
+                                    chosen_literals.add(lit_to_replace)
+                                    references[abs(lit_to_replace)] += 1
+                                elif new_lit in chosen_literals:
+                                    chosen_literals.add(lit_to_replace)
+                                    references[abs(lit_to_replace)] += 1
+                                else:
+                                    chosen_literals.add(new_lit)
+                                    references[abs(new_lit)] += 1
 
             previous_clause_literals = chosen_literals.copy()
             for lit in chosen_literals:
