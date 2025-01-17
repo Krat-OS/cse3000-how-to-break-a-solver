@@ -2,7 +2,7 @@
 SharpVelvet/*.json
 SharpVelvet/generators/build/
 SharpVelvet/model-counters/
-# SharpVelvet/out/
+SharpVelvet/out/logs
 # SharpVelvet/tool-config/vuk/
 
 # Python Artifacts
