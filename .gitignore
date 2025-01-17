@@ -18,8 +18,8 @@ final-paper-template-tex/doc/
 /.idea/
 
 # Result Analysis
-result_analysis/result_analysis.ipynb
 result_analysis/*.csv
+result_analysis/*.png
 
 # CPOG Verifier
 cpog_verifier/cpog/
