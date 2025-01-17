@@ -126,6 +126,8 @@ def create_horn_instances(header, clauses, output_folder, base_filename, threads
     n = max(num_clauses // 100, 1)
 
     def generate_instance(i):
+        if args.seed is not None:
+            random.seed(i + args.seed)
         target_horn_clauses = i * n
         modified_clauses = [clause[:] for clause in clauses]  # Deep copy
 

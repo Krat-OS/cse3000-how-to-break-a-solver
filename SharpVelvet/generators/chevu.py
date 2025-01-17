@@ -330,6 +330,9 @@ class BipartiteGraph:
 
 def generate_instance(index, args):
     """Generates a single bipartite graph instance."""
+    if args.seed is not None:
+        random.seed(args.seed + index)
+    
     graph = BipartiteGraph.create_graph(
         min_clauses=args.min_clauses,
         max_clauses=args.max_clauses,
