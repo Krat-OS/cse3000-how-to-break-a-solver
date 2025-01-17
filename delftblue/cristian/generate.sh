@@ -119,7 +119,7 @@ echo "[generate.sh] Using generator JSON: $GENERATOR_JSON"
 echo "[generate.sh] Using input seeds file: $INPUT_SEEDS"
 
 run_with_tracking \
-  "$PROJECT_PATH/global_cli.py" generate \
+"$PROJECT_PATH/global_cli.py" --use-slurm generate \
   --generators "$GENERATOR_JSON" \
   --input-seeds "$INPUT_SEEDS" \
   --num-iter "$NUM_ITER" \

@@ -1,134 +1,130 @@
 #!/usr/bin/env python3
 """
-A unified CLI tool with 4 subcommands:
-  1) generate
-  2) fuzz
-  3) cpog_verify
-  4) satzilla_extract
+A unified CLI tool with integrated SLURM support for running SharpVelvet operations.
 
-It references:
-  - cpog_verifier.utils (verify_with_cpog, verify_single_instance, etc.)
-  - satzilla_feature_extractor.compute_sat_feature_data (compute_features, etc.)
+The tool provides four main subcommands:
+    1) generate - Generate CNF instances
+    2) fuzz - Fuzz CNF instances with multiple solvers
+    3) cpog_verify - Verify CNF instances using CPOG
+    4) satzilla_extract - Extract SAT features
 
-Usage:
-    global_cli.py <subcommand> [args...]
-
-Example:
-    ./global_cli.py generate --help
-    ./global_cli.py fuzz --help
-    ./global_cli.py cpog_verify --help
-    ./global_cli.py satzilla_extract --help
+Each command can be run either standalone or in a SLURM environment using the --use-slurm flag.
 """
 
 import argparse
 import logging
 import os
 import shutil
-import signal
 import subprocess
 import sys
 import tempfile
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
-from typing import List, Optional
+from typing import List, Sequence
+
 import pandas as pd
 
-from cpog_verifier.cli import process_results_and_verify_with_cpog, verify_single_cnf, get_output_path
+from cpog_verifier.cli import process_results_and_verify_with_cpog, verify_single_cnf
+from cpog_verifier.cli import get_output_path
 from satzilla_feature_extractor.compute_sat_feature_data import compute_features, process_csv_files
 
-###############################################################################
-# Logging Setup
-###############################################################################
+# Base paths for SharpVelvet executables
+SCRIPT_DIR: Path = Path(__file__).resolve().parent
+GENERATE_INSTANCES_PATH: Path = SCRIPT_DIR / "SharpVelvet/src/generate_instances.py"
+RUN_FUZZER_PATH: Path = SCRIPT_DIR / "SharpVelvet/src/run_fuzzer.py"
 
 class CustomFormatter(logging.Formatter):
     """
-    Custom logging formatter to show levelname only for WARNING or ERROR,
-    and add color to the output.
+    Custom logging formatter that adds contextual information to log messages.
+
+    The formatter displays:
+    - Level name only for WARNING and ERROR levels
+    - Timestamp and message content
     """
-    RESET = "\033[0m"
-    COLORS = {
-        "WARNING": "\033[93m",  # Yellow
-        "ERROR": "\033[91m",    # Red
-    }
+
 
     def format(self, record: logging.LogRecord) -> str:
-        if record.levelname in self.COLORS:
-            colored_level = f"{self.COLORS[record.levelname]}{record.levelname}{self.RESET}"
-        else:
-            colored_level = record.levelname
+        """
+        Format a log record.
 
-        # Format: [GLOBAL CLI <LEVEL>], 2024-01-01 12:34:56: message
-        return (f"[GLOBAL CLI {colored_level}], "
-                f"{self.formatTime(record)}: "
-                f"{record.getMessage()}")
+        Args:
+            record: The log record to format
 
-def setup_logger() -> None:
-    """
-    Set up the global logger with a custom formatter.
-    """
-    logging.basicConfig(level=logging.INFO)
-    logger = logging.getLogger()
-    handler = logging.StreamHandler()
-    handler.setFormatter(CustomFormatter())
-    logger.handlers = [handler]
+        Returns:
+            Formatted log message string
+        """
 
-setup_logger()
+        return (
+            f"[GLOBAL CLI {record.levelname}], "
+            f"{self.formatTime(record)}: "
+            f"{record.getMessage()}"
+        )
+
 logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger()
+handler = logging.StreamHandler()
+handler.setFormatter(CustomFormatter())
+logger.handlers = [handler]
 
-# Global signal handling
-should_terminate = False
+def wrap_slurm_command(cmd: Sequence[str], use_slurm: bool) -> List[str]:
+    """
+    Wrap a command with SLURM execution parameters if SLURM mode is enabled.
 
-def signal_handler(signum, frame) -> None:
-    global should_terminate
-    should_terminate = True
-    logger.warning(f"Received signal {signum}. Terminating processes.")
+    Args:
+        cmd: Base command sequence to potentially wrap with SLURM
+        use_slurm: Flag indicating whether to use SLURM
 
-signal.signal(signal.SIGTERM, signal_handler)
-signal.signal(signal.SIGINT, signal_handler)
-
-###############################################################################
-# Subcommand: generate
-###############################################################################
+    Returns:
+        Command sequence with SLURM prefixes if enabled, otherwise unchanged
+    """
+    if use_slurm:
+        return ["srun", "--exclusive", "-n1", "-c1"] + list(cmd)
+    return list(cmd)
 
 def add_generate_subparser(subparsers: argparse._SubParsersAction) -> None:
     """
-    Add the 'generate' subcommand parser to the top-level subparsers.
+    Configure the 'generate' subcommand parser with its arguments.
+
+    Args:
+        subparsers: Subparser collection to add the generate parser to
     """
     parser_gen = subparsers.add_parser(
         "generate",
-        help="Generate CNF instances using SharpVelvet's generate_instances.py."
+        help="Generate CNF instances using SharpVelvet's generate_instances.py"
     )
     parser_gen.add_argument(
         "--input-seeds",
         type=str,
         required=True,
-        help="Path to a text file containing a list of seeds."
+        help="Path to a text file containing a list of seeds"
     )
     parser_gen.add_argument(
         "--generators",
         nargs="+",
         required=True,
-        help="Paths to generator JSON files."
+        help="Paths to generator JSON files"
     )
     parser_gen.add_argument(
         "--num-iter",
         type=int,
         required=True,
-        help="Number of iterations per generator."
+        help="Number of iterations per generator"
     )
     parser_gen.add_argument(
         "--out-dir",
         type=str,
         required=True,
-        help="Path to the final output directory."
+        help="Path to the final output directory"
     )
     parser_gen.set_defaults(func=command_generate)
 
 def command_generate(args: argparse.Namespace) -> None:
     """
-    Execute the 'generate' subcommand:
-      1) Reads seeds from the input file.
-      2) Runs generate_instances.py as a script for each seed.
+    Execute instance generation with optional SLURM support.
+
+    Args:
+        args: Parsed command line arguments including generation parameters
     """
     if not os.path.isfile(args.input_seeds):
         logger.error(f"Input seeds file not found: {args.input_seeds}")
@@ -137,110 +133,118 @@ def command_generate(args: argparse.Namespace) -> None:
     with open(args.input_seeds, "r") as f:
         seeds: List[str] = [line.strip() for line in f if line.strip().isdigit()]
 
-    if not seeds or not all(seed.isdigit() for seed in seeds):
-        logger.error("No valid seeds found in the input seeds file.")
+    if not seeds:
+        logger.error("No valid seeds found in the input seeds file")
         sys.exit(1)
 
     os.makedirs(args.out_dir, exist_ok=True)
 
-    sharpvelvet_dir = os.path.dirname(os.path.abspath(__file__))
-    generate_instances_script = os.path.join(sharpvelvet_dir, "SharpVelvet/src/generate_instances.py")
-
-    def run_generation(seed: str):
+    def run_generation(seed: str) -> None:
+        """Execute generation for a single seed."""
         try:
-            logger.info(f"Generating instances for seed {seed}...")
-            cmd = [
+            logger.info(f"Generating instances for seed {seed}")
+            base_cmd = [
                 sys.executable,
-                generate_instances_script,
+                str(GENERATE_INSTANCES_PATH),
                 "--generators", *args.generators,
                 "--num-iter", str(args.num_iter),
                 "--seed", seed,
                 "--out-dir", args.out_dir,
             ]
+
+            cmd = wrap_slurm_command(base_cmd, args.use_slurm)
             subprocess.run(cmd, check=True)
-            logger.info(f"Successfully generated instances for seed {seed}.")
+            logger.info(f"Successfully generated instances for seed {seed}")
+
         except subprocess.CalledProcessError as e:
             logger.error(f"Error generating instances for seed {seed}: {e}")
         except Exception as e:
             logger.error(f"Unexpected error for seed {seed}: {e}")
 
-    # Run generation for each seed
     for seed in seeds:
         run_generation(seed)
 
-    logger.info("Instance generation complete.")
-
-
-###############################################################################
-# Subcommand: fuzz
-###############################################################################
+    logger.info("Instance generation complete")
 
 def add_fuzz_subparser(subparsers: argparse._SubParsersAction) -> None:
     """
-    Add the 'fuzz' subcommand parser.
+    Configure the 'fuzz' subcommand parser with its arguments.
+
+    Args:
+        subparsers: Subparser collection to add the fuzz parser to
     """
     parser_fz = subparsers.add_parser(
         "fuzz",
-        help="Fuzz CNF instances using SharpVelvet's run_fuzzer.py with multiple solvers."
+        help="Fuzz CNF instances using multiple solvers"
     )
     parser_fz.add_argument(
         "--instances",
         type=str,
         required=True,
-        help="Path to the folder containing CNF instances."
+        help="Path to the folder containing CNF instances"
     )
     parser_fz.add_argument(
         "--solvers",
         nargs="+",
         required=True,
-        help="List of solver JSON file paths."
+        help="List of solver JSON file paths"
     )
     parser_fz.add_argument(
         "--solver-timeout",
         type=int,
         required=True,
-        help="Timeout in seconds for each solver."
-    )
-    parser_fz.add_argument(
-        "--sharpvelvet-fuzzer",
-        type=str,
-        required=True,
-        help="Path to SharpVelvet's run_fuzzer.py."
+        help="Timeout in seconds for each solver"
     )
     parser_fz.add_argument(
         "--out-dir",
         type=str,
         required=True,
-        help="Path to the final output directory."
+        help="Path to the final output directory"
     )
     parser_fz.set_defaults(func=command_fuzz)
 
 def command_fuzz(args: argparse.Namespace) -> None:
+    """
+    Execute fuzzing operations with optional SLURM support.
+
+    Args:
+        args: Parsed command line arguments including fuzzing parameters
+    """
     def create_temp_dir() -> str:
+        """Create and return path to temporary directory."""
         return tempfile.mkdtemp(prefix="fuzz_out_")
 
     def run_fuzzer(solver_path: str, out_dir: str) -> None:
+        """
+        Execute fuzzing for a single solver.
+
+        Args:
+            solver_path: Path to the solver configuration file
+            out_dir: Directory to store fuzzing results
+        """
         if not os.path.isfile(solver_path):
             logger.warning(f"Solver file not found: {solver_path}")
             return
 
-        cmd = [
+        base_cmd = [
             sys.executable,
-            args.sharpvelvet_fuzzer,
+            str(RUN_FUZZER_PATH),
             "--verbosity", "1",
             "--counters", solver_path,
             "--instances", args.instances,
             "--timeout", str(args.solver_timeout),
             "--out-dir", out_dir,
         ]
+
+        cmd = wrap_slurm_command(base_cmd, args.use_slurm)
+
         try:
             logger.info(f"Running fuzzer: {' '.join(cmd)}")
             subprocess.run(cmd, check=True)
-
         except subprocess.CalledProcessError as e:
             logger.error(f"Error running fuzzer for solver {solver_path}: {e}")
 
-    temp_out_dirs = []
+    temp_out_dirs: List[str] = []
     with ThreadPoolExecutor(max_workers=len(args.solvers)) as executor:
         futures = []
         for solver_path in args.solvers:
@@ -254,10 +258,8 @@ def command_fuzz(args: argparse.Namespace) -> None:
     csv_paths: List[str] = []
     for temp_out_dir in temp_out_dirs:
         for item in os.listdir(temp_out_dir):
-            src = os.path.join(temp_out_dir, item)
-            dst = os.path.join(args.out_dir, item)
             if item.endswith(".csv"):
-                csv_paths.append(src)
+                csv_paths.append(os.path.join(temp_out_dir, item))
 
     if csv_paths:
         final_csv_name = Path(csv_paths[0]).name
@@ -284,10 +286,6 @@ def merge_csv_files(csv_paths: List[str], out_csv: str) -> None:
     merged = pd.concat(dfs, ignore_index=True)
     merged.to_csv(out_csv, index=False)
     logger.info(f"Merged CSV file created at {out_csv}")
-
-###############################################################################
-# Subcommand: cpog_verify
-###############################################################################
 
 def add_cpog_subparser(subparsers: argparse._SubParsersAction) -> None:
     """
@@ -438,14 +436,23 @@ def command_satzilla_extract(args: argparse.Namespace) -> None:
 
 def build_parser() -> argparse.ArgumentParser:
     """
-    Build the top-level parser and subcommand parsers.
+    Create and configure the main argument parser with all subcommands.
+
+    Returns:
+        Configured argument parser instance
     """
     parser = argparse.ArgumentParser(
         prog="global_cli",
-        description="Unified CLI for generating, fuzzing, verifying, "
-                    "and extracting Satzilla features."
+        description="Unified CLI for SAT-related operations with optional SLURM support"
     )
-    subparsers = parser.add_subparsers(dest="command", help="Subcommands")
+
+    parser.add_argument(
+        "--use-slurm",
+        action="store_true",
+        help="Use SLURM for parallel execution"
+    )
+
+    subparsers = parser.add_subparsers(dest="command", help="Available subcommands")
 
     add_generate_subparser(subparsers)
     add_fuzz_subparser(subparsers)
@@ -456,7 +463,9 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main() -> None:
     """
-    Parse command line arguments and dispatch to the appropriate subcommand handler.
+    Main entry point for the CLI application.
+
+    Parses command line arguments and dispatches to appropriate subcommand handler.
     """
     parser = build_parser()
     args = parser.parse_args()

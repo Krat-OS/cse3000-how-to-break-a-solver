@@ -125,11 +125,10 @@ echo "[fuzz.sh] Instances path: $INSTANCES_PATH, solver timeout: $SOLVER_TIMEOUT
 echo "[fuzz.sh] Output directory: $OUTPUT_DIR"
 
 run_with_tracking \
-  "$PROJECT_PATH/global_cli.py" fuzz \
+  "$PROJECT_PATH/global_cli.py" --use-slurm fuzz \
   --instances "$INSTANCES_PATH" \
   --solvers "${SOLVER_JSONS[@]}" \
   --solver-timeout "$SOLVER_TIMEOUT" \
-  --sharpvelvet-fuzzer "$PROJECT_PATH/SharpVelvet/src/run_fuzzer.py" \
   --out-dir "$OUTPUT_DIR"
 
 echo "[fuzz.sh] Done."
