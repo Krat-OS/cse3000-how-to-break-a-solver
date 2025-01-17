@@ -360,21 +360,21 @@ def main():
     parser.add_argument("--threads", type=int, default=4,
                         help="Number of threads to use for parallel generation (default: 4).")
 
-    parser.add_argument("--min-clauses", type=int, default=500,
-                        help="Minimum number of clauses (default=500).")
-    parser.add_argument("--max-clauses", type=int, default=500,
-                        help="Maximum number of clauses (default=500).")
-    parser.add_argument("--min-vars", type=int, default=125,
-                        help="Minimum number of variables (default=125).")
-    parser.add_argument("--max-vars", type=int, default=125,
-                        help="Maximum number of variables (default=125).")
-    parser.add_argument("--min-clause-len", type=int, default=3,
-                        help="Minimum clause length (default=3).")
-    parser.add_argument("--max-clause-len", type=int, default=3,
-                        help="Maximum clause length (default=3).")
-    parser.add_argument("--min-refs", type=int, default=5,
+    parser.add_argument("--min-clauses", type=int, default=450,
+                        help="Minimum number of clauses (default=450).")
+    parser.add_argument("--max-clauses", type=int, default=450,
+                        help="Maximum number of clauses (default=450).")
+    parser.add_argument("--min-vars", type=int, default=112,
+                        help="Minimum number of variables (default=112).")
+    parser.add_argument("--max-vars", type=int, default=112,
+                        help="Maximum number of variables (default=112).")
+    parser.add_argument("--min-clause-len", type=int, default=4,
+                        help="Minimum clause length (default=4).")
+    parser.add_argument("--max-clause-len", type=int, default=4,
+                        help="Maximum clause length (default=4).")
+    parser.add_argument("--min-refs", type=int, default=3,
                         help="Minimum references per variable (default=1).")
-    parser.add_argument("--max-refs", type=int, default=50,
+    parser.add_argument("--max-refs", type=int, default=1000,
                         help="Maximum references per variable (default=30).")
 
     parser.add_argument("--allow-taut", action="store_true",
