@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name="generate-instances-cse3000-finding-different-ways-to-break-a-solver"
-#SBATCH --time=01:00:00
+#SBATCH --time=02:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=4000
