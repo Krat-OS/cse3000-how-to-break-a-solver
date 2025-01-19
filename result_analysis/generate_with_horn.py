@@ -57,7 +57,7 @@ def run_horn_generator(base_path: str, instances: Dict[str, str]) -> None:
         subprocess.CalledProcessError: If horn_gen.py execution fails
     """
     script_dir = Path(__file__).parent
-    horn_gen_path = script_dir.parent.parent / "SharpVelvet" / "generators" / "horn_gen.py"
+    horn_gen_path = script_dir.parent / "SharpVelvet" / "generators" / "horn_gen.py"
     
     for instance_key, instance_name in instances.items():
         generator, difficulty = instance_key.split('-')
