@@ -26,7 +26,7 @@ configs=(
 for i in "${!configs[@]}"; do
     srun --exclusive -n1 -c1 python /home/$USER/cse3000-how-to-break-a-solver/SharpVelvet/src/run_fuzzer.py \
         --counters "${configs[i]}" \
-        --instances /Users/vukjurisic/Work/Uni/RP/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-90var-horn \
+        --instances /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-400clause-90var-horn \
         &
 done
 
