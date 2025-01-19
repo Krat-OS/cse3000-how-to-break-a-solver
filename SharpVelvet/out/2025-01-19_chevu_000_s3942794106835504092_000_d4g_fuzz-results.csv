@@ -70,3 +70,5 @@
 68,d4g,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-125var-horn/chevu_008_s3942794106835504100_057.cnf,SATISFIABLE,mc,log10-estimate,9.1352485750316138628352300507942119314620198079365,exact,arb,int,1365364400,False,False,0.20798444747924805,unknown,False
 69,d4g,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-125var-horn/chevu_000_s3942794106835504092_047.cnf,SATISFIABLE,mc,log10-estimate,11.183818150752360347954825151361272732666768985081,exact,arb,int,152692656453,False,False,1.6911561489105225,unknown,False
 70,d4g,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-125var-horn/chevu_002_s3942794106835504094_018.cnf,,,,,,,,,True,False,602.1902318000793,unknown,False
+71,d4g,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-125var-horn/chevu_009_s3942794106835504101_008.cnf,,,,,,,,,True,False,602.1854240894318,unknown,False
+72,d4g,/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/3cnf-500clause-125var-horn/chevu_005_s3942794106835504097_001.cnf,,,,,,,,,True,False,602.1331257820129,unknown,False
