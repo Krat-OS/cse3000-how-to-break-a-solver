@@ -14,34 +14,38 @@ from result_processor.utils import process_results
 ###############################################################################
 # Logging Setup
 ###############################################################################
+class CustomFormatter(logging.Formatter):
+    """
+    Custom logging formatter that adds contextual information to log messages.
 
-class CustomFormatterExtractor(logging.Formatter):
+    The formatter displays:
+    - Level name only for WARNING and ERROR levels
+    - Timestamp and message content
     """
-    Custom logging formatter to show levelname only for WARNING or ERROR,
-    and add color to the output.
-    """
-    RESET = "\033[0m"
-    COLORS = {
-        "WARNING": "\033[93m",  # Yellow
-        "ERROR": "\033[91m",    # Red
-    }
+
 
     def format(self, record: logging.LogRecord) -> str:
-        if record.levelname in self.COLORS:
-            colored_level = f"{self.COLORS[record.levelname]}{record.levelname}{self.RESET}"
-        else:
-            colored_level = record.levelname
+        """
+        Format a log record.
 
-        # Format: [FEATURE EXTRACTOR <LEVEL>], 2024-01-01 12:34:56: message
-        return (f"[FEATURE EXTRACTOR {colored_level}], "
-                f"{self.formatTime(record)}: "
-                f"{record.getMessage()}")
+        Args:
+            record: The log record to format
+
+        Returns:
+            Formatted log message string
+        """
+
+        return (
+            f"[GLOBAL CLI {record.levelname}], "
+            f"{self.formatTime(record)}: "
+            f"{record.getMessage()}"
+        )
 
 satzilla_logger = logging.getLogger("SATZilla Feature Extractor Tool")
 satzilla_logger.setLevel(logging.INFO)
 
 local_handler = logging.StreamHandler()
-local_handler.setFormatter(CustomFormatterExtractor())
+local_handler.setFormatter(CustomFormatter())
 satzilla_logger.addHandler(local_handler)
 
 satzilla_logger.propagate = False

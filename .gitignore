@@ -20,6 +20,7 @@ final-paper-template-tex/doc/
 # Result Analysis
 result_analysis/*.csv
 result_analysis/*.png
+result_analysis/*.txt
 
 # CPOG Verifier
 cpog_verifier/cpog/
