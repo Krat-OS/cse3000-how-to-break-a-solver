@@ -471,3 +471,982 @@ Namespace(counters='/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/too
 [SharpVelvet], 2025-01-18, 10h00m38s: Instance 26/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_017.cnf
 [SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_017.cnf.
 [SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_017.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_017.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h06m31s: Instance 27/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_038.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_038.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_038.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_017.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h06m31s: Instance 27/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_038.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_038.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_038.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_017.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h06m40s: Instance 27/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_038.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_038.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_038.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_038.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h12m33s: Instance 28/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_051.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_051.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_051.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_038.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h12m33s: Instance 28/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_051.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_051.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_051.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_038.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h12m42s: Instance 28/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_051.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_051.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_051.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_051.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h18m35s: Instance 29/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_099.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_099.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_099.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_051.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h18m35s: Instance 29/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_099.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_099.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_099.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_051.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h18m44s: Instance 29/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_099.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_099.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_099.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_099.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h24m37s: Instance 30/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_027.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_027.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_027.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_099.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h24m37s: Instance 30/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_027.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_027.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_027.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_099.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h24m47s: Instance 30/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_027.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_027.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_027.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_027.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h30m39s: Instance 31/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_011.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_011.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_011.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_027.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h30m39s: Instance 31/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_011.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_011.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_011.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_027.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h30m49s: Instance 31/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_011.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_011.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_011.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_011.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h36m41s: Instance 32/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_010.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_010.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_010.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_011.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h36m41s: Instance 32/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_010.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_010.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_010.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_011.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h36m51s: Instance 32/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_010.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_010.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_010.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_010.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h42m43s: Instance 33/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_039.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_039.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_039.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_010.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h42m43s: Instance 33/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_039.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_039.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_039.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_010.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h42m54s: Instance 33/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_039.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_039.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_039.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_039.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h48m44s: Instance 34/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_007.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_007.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_007.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_039.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h48m45s: Instance 34/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_007.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_007.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_007.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_039.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h48m56s: Instance 34/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_007.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_007.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_007.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_007.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h54m46s: Instance 35/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_057.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_057.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_057.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_007.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h54m47s: Instance 35/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_057.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_057.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_057.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_007.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 10h54m58s: Instance 35/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_057.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_057.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_057.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_057.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h00m48s: Instance 36/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_065.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_065.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_065.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_057.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h00m49s: Instance 36/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_065.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_065.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_065.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_057.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h01m00s: Instance 36/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_065.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_065.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_065.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_065.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h06m50s: Instance 37/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_084.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_084.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_084.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_065.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h06m51s: Instance 37/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_084.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_084.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_084.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_065.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h07m02s: Instance 37/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_084.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_084.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_084.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_084.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h12m52s: Instance 38/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_013.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_013.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_013.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_084.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h12m53s: Instance 38/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_013.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_013.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_013.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_084.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h13m05s: Instance 38/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_013.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_013.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_013.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_013.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h18m54s: Instance 39/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_065.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_065.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_065.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_013.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h18m55s: Instance 39/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_065.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_065.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_065.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_013.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h19m07s: Instance 39/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_065.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_065.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_065.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_065.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h24m56s: Instance 40/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_001.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_001.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_001.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_065.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h24m56s: Instance 40/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_001.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_001.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_001.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_065.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h25m09s: Instance 40/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_001.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_001.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_001.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_001.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h30m58s: Instance 41/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_009.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_009.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_009.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_001.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h30m58s: Instance 41/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_009.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_009.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_009.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_001.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h31m11s: Instance 41/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_009.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_009.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_009.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_009.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h37m00s: Instance 42/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_001_s3128693473214360847_064.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_001_s3128693473214360847_064.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_001_s3128693473214360847_064.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_009.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h37m00s: Instance 42/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_001_s3128693473214360847_064.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_001_s3128693473214360847_064.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_001_s3128693473214360847_064.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_009.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h37m14s: Instance 42/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_001_s3128693473214360847_064.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_001_s3128693473214360847_064.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_001_s3128693473214360847_064.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_001_s3128693473214360847_064.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h43m02s: Instance 43/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_009.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_009.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_009.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_001_s3128693473214360847_064.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h43m02s: Instance 43/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_009.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_009.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_009.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_001_s3128693473214360847_064.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h43m16s: Instance 43/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_009.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_009.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_009.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_009.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h49m04s: Instance 44/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_060.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_060.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_060.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_009.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h49m04s: Instance 44/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_060.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_060.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_060.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_009.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h49m18s: Instance 44/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_060.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_060.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_060.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_060.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h55m06s: Instance 45/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_041.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_041.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_041.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_060.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h55m06s: Instance 45/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_041.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_041.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_041.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_060.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 11h55m20s: Instance 45/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_041.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_041.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_041.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_041.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h01m07s: Instance 46/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_086.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_086.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_086.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_041.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h01m08s: Instance 46/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_086.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_086.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_086.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_041.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h01m23s: Instance 46/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_086.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_086.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_086.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_086.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h07m10s: Instance 47/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_046.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_046.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_046.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_086.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h07m10s: Instance 47/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_046.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_046.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_046.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_086.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h07m25s: Instance 47/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_046.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_046.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_046.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_046.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h13m11s: Instance 48/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_005.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_005.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_005.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_046.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h13m12s: Instance 48/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_005.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_005.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_005.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_046.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h13m27s: Instance 48/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_005.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_005.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_005.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_005.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h19m13s: Instance 49/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_063.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_063.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_063.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_005.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h19m14s: Instance 49/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_063.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_063.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_063.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_005.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h19m30s: Instance 49/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_063.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_063.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_063.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_063.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h25m16s: Instance 50/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_088.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_088.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_088.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_063.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h25m16s: Instance 50/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_088.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_088.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_088.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_063.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h25m32s: Instance 50/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_088.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_088.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_088.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_088.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h31m17s: Instance 51/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_069.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_069.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_069.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_088.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h31m18s: Instance 51/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_069.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_069.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_069.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_088.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h31m34s: Instance 51/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_069.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_069.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_069.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_069.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h37m19s: Instance 52/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_038.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_038.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_038.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_069.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h37m20s: Instance 52/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_038.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_038.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_038.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_069.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h37m36s: Instance 52/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_038.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_038.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_038.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_038.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h43m21s: Instance 53/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_023.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_023.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_023.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_038.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h43m22s: Instance 53/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_023.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_023.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_023.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_038.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h43m39s: Instance 53/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_023.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_023.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_023.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_023.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h49m23s: Instance 54/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_021.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_021.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_021.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_023.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h49m24s: Instance 54/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_021.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_021.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_021.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_023.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h49m41s: Instance 54/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_021.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_021.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_021.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_021.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h55m25s: Instance 55/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_086.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_086.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_086.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_021.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h55m25s: Instance 55/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_086.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_086.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_086.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_021.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 12h55m43s: Instance 55/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_086.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_086.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_086.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_086.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h01m27s: Instance 56/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_005.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_005.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_005.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_086.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h01m27s: Instance 56/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_005.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_005.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_005.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_006_s3128693473214360852_086.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h01m45s: Instance 56/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_005.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_005.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_005.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_005.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h07m29s: Instance 57/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_060.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_060.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_060.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_005.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h07m29s: Instance 57/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_060.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_060.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_060.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_004_s3128693473214360850_005.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h07m48s: Instance 57/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_060.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_060.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_060.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_060.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h13m31s: Instance 58/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_083.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_083.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_083.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_060.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h13m31s: Instance 58/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_083.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_083.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_083.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_060.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h13m50s: Instance 58/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_083.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_083.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_083.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_083.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h19m33s: Instance 59/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_027.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_027.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_027.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_083.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h19m33s: Instance 59/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_027.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_027.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_027.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_083.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h19m52s: Instance 59/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_027.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_027.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_027.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_027.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h25m35s: Instance 60/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_034.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_034.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_034.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_027.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h25m35s: Instance 60/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_034.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_034.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_034.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_027.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h25m54s: Instance 60/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_034.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_034.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_034.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_034.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h31m37s: Instance 61/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_087.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_087.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_087.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_034.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h31m37s: Instance 61/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_087.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_087.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_087.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_034.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h31m57s: Instance 61/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_087.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_087.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_087.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_087.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h37m38s: Instance 62/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_036.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_036.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_036.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_087.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h37m38s: Instance 62/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_036.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_036.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_036.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_087.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h37m59s: Instance 62/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_036.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_036.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_036.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_036.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h43m40s: Instance 63/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_072.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_072.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_072.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_036.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h43m40s: Instance 63/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_072.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_072.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_072.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_036.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h44m01s: Instance 63/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_072.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_072.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_072.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_072.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h49m42s: Instance 64/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_079.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_079.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_079.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_072.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h49m42s: Instance 64/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_079.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_079.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_079.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_072.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h50m03s: Instance 64/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_079.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_079.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_079.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_079.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h55m44s: Instance 65/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_085.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_085.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_085.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_079.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h55m44s: Instance 65/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_085.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_085.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_085.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_079.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 13h56m05s: Instance 65/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_085.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_085.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_085.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_085.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h01m46s: Instance 66/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_042.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_042.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_042.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_085.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h01m46s: Instance 66/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_042.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_042.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_042.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_085.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h02m08s: Instance 66/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_042.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_042.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_042.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_042.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_042.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h07m48s: Instance 67/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_081.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_081.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_081.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h07m48s: Instance 67/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_081.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_081.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_081.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_042.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h08m10s: Instance 67/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_081.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_081.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_081.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_081.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h13m50s: Instance 68/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_097.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_097.cnf.
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_081.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_097.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h13m50s: Instance 68/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_097.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_097.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_097.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_081.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h14m12s: Instance 68/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_097.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_097.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_097.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_097.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h19m52s: Instance 69/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_023.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_023.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_023.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_097.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h19m52s: Instance 69/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_023.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_023.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_023.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_097.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h20m14s: Instance 69/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_023.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_023.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_023.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_023.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h25m54s: Instance 70/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_029.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_029.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_029.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_023.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h25m54s: Instance 70/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_029.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_029.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_029.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_023.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h26m16s: Instance 70/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_029.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_029.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_029.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_029.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h31m56s: Instance 71/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_070.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_070.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_070.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_029.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h31m56s: Instance 71/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_070.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_070.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_070.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_029.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h32m19s: Instance 71/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_070.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_070.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_070.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_070.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h37m58s: Instance 72/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_053.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_053.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_053.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_070.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h37m58s: Instance 72/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_053.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_053.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_053.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_005_s3128693473214360851_070.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h38m21s: Instance 72/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_053.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_053.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_053.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_053.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h44m00s: Instance 73/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_061.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_061.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_061.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_053.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h44m00s: Instance 73/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_061.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_061.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_061.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_053.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h44m23s: Instance 73/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_061.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_061.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_061.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_061.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h50m02s: Instance 74/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_087.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_087.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_087.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_061.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h50m02s: Instance 74/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_087.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_087.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_087.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_061.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h50m26s: Instance 74/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_087.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_087.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_087.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_087.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h56m04s: Instance 75/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_010.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_010.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_010.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_087.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h56m04s: Instance 75/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_010.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_010.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_010.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_003_s3128693473214360849_087.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 14h56m28s: Instance 75/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_010.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_010.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_010.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_010.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 15h02m06s: Instance 76/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_079.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_079.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_079.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_010.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 15h02m06s: Instance 76/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_079.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_079.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_079.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_000_s3128693473214360846_010.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 15h02m30s: Instance 76/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_079.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_079.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_079.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_079.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 15h08m08s: Instance 77/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_069.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_069.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_069.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_079.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 15h08m08s: Instance 77/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_069.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_069.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_069.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_079.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 15h08m32s: Instance 77/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_069.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_069.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_069.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_069.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 15h14m10s: Instance 78/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_051.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_051.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_051.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_069.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 15h14m10s: Instance 78/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_051.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_051.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_051.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_008_s3128693473214360854_069.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 15h14m35s: Instance 78/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_051.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_051.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_051.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_051.cnf.
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_051.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 15h20m12s: Instance 79/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_074.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_074.cnf.
+[SharpVelvet]: 
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_074.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet], 2025-01-18, 15h20m12s: Instance 79/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_074.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_074.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_074.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_007_s3128693473214360853_051.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 15h20m37s: Instance 79/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_074.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_074.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_074.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter d4g exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_074.cnf.
+[SharpVelvet]: Counter d4g reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 15h26m14s: Instance 80/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_057.cnf
+[SharpVelvet]: Running counter d4g on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_057.cnf.
+[SharpVelvet]: --> Executing: ./d4g /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_057.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter ganak exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_074.cnf.
+[SharpVelvet]: Counter ganak reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 15h26m14s: Instance 80/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_057.cnf
+[SharpVelvet]: Running counter ganak on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_057.cnf.
+[SharpVelvet]: --> Executing: ./ganak --verb 0 --bveresolvmaxsz 12 --sbva 1 --maxcache 7800 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_057.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+[SharpVelvet]: Aborted! Counter gpmc exceeded maximum time of 360 s on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_009_s3128693473214360855_074.cnf.
+[SharpVelvet]: Counter gpmc reports count None
+[SharpVelvet]: 
+[SharpVelvet], 2025-01-18, 15h26m39s: Instance 80/1010: /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_057.cnf
+[SharpVelvet]: Running counter gpmc on instance /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_057.cnf.
+[SharpVelvet]: --> Executing: ./gpmc /home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/instances/4cnf-500clause-horn/chevu_002_s3128693473214360848_057.cnf in dir /home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/
+slurmstepd: error: *** STEP 5351250.1 ON cmp260 CANCELLED AT 2025-01-18T15:29:36 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 5351250.2 ON cmp260 CANCELLED AT 2025-01-18T15:29:36 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 5351250.0 ON cmp260 CANCELLED AT 2025-01-18T15:29:36 DUE TO TIME LIMIT ***
+srun: Job step aborted: Waiting up to 122 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 122 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 122 seconds for job step to finish.
+slurmstepd: error: *** JOB 5351250 ON cmp260 CANCELLED AT 2025-01-18T15:29:36 DUE TO TIME LIMIT ***
