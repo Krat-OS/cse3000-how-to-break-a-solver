@@ -1,7 +1,0 @@
-{
-    "sharpSAT": {
-      "path": "/home/vjurisic/cse3000-how-to-break-a-solver/binaries/solvers/sharpSAT",
-      "config": "{INSTANCE}",
-      "exact": "True"
-    }
-  }

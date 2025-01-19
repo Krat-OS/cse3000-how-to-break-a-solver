@@ -330,6 +330,9 @@ class BipartiteGraph:
 
 def generate_instance(index, args):
     """Generates a single bipartite graph instance."""
+    if args.seed is not None:
+        random.seed(args.seed + index)
+    
     graph = BipartiteGraph.create_graph(
         min_clauses=args.min_clauses,
         max_clauses=args.max_clauses,
@@ -360,21 +363,21 @@ def main():
     parser.add_argument("--threads", type=int, default=4,
                         help="Number of threads to use for parallel generation (default: 4).")
 
-    parser.add_argument("--min-clauses", type=int, default=450,
-                        help="Minimum number of clauses (default=450).")
-    parser.add_argument("--max-clauses", type=int, default=450,
-                        help="Maximum number of clauses (default=450).")
-    parser.add_argument("--min-vars", type=int, default=112,
-                        help="Minimum number of variables (default=112).")
-    parser.add_argument("--max-vars", type=int, default=112,
-                        help="Maximum number of variables (default=112).")
-    parser.add_argument("--min-clause-len", type=int, default=4,
-                        help="Minimum clause length (default=4).")
-    parser.add_argument("--max-clause-len", type=int, default=4,
-                        help="Maximum clause length (default=4).")
-    parser.add_argument("--min-refs", type=int, default=3,
+    parser.add_argument("--min-clauses", type=int, default=400,
+                        help="Minimum number of clauses (default=400).")
+    parser.add_argument("--max-clauses", type=int, default=400,
+                        help="Maximum number of clauses (default=400).")
+    parser.add_argument("--min-vars", type=int, default=90,
+                        help="Minimum number of variables (default=90).")
+    parser.add_argument("--max-vars", type=int, default=90,
+                        help="Maximum number of variables (default=90).")
+    parser.add_argument("--min-clause-len", type=int, default=3,
+                        help="Minimum clause length (default=3).")
+    parser.add_argument("--max-clause-len", type=int, default=3,
+                        help="Maximum clause length (default=3).")
+    parser.add_argument("--min-refs", type=int, default=1,
                         help="Minimum references per variable (default=1).")
-    parser.add_argument("--max-refs", type=int, default=1000,
+    parser.add_argument("--max-refs", type=int, default=50,
                         help="Maximum references per variable (default=30).")
 
     parser.add_argument("--allow-taut", action="store_true",
