@@ -87,11 +87,11 @@ def parse_arguments():
 
     # -------------------------   BEHAVIOUR   ------------------------- #
     behaviour.add_argument(
-        "--timeout", "-t", dest="timeout", type=int, default=10, required=False,
+        "--timeout", "-t", dest="timeout", type=int, default=720, required=False,
         help="Timeout time for individual runs, in seconds."
     )
     behaviour.add_argument(
-        "--memout", "-m", dest="memout", type=int, default=3200, required=False,
+        "--memout", "-m", dest="memout", type=int, default=20000, required=False,
         help="Max memory for individual runs."
     )
     behaviour.add_argument(
@@ -150,23 +150,39 @@ def parse_arguments():
 def run_counter(counter: fut.Counter,
                 path_to_instance: str,
                 log_dir: str,
-                timeout=10,
-                memout=3200,
+                timeout=720,
+                memout=20000,
                 verbosity=1) -> dict:
 
     if verbosity >= 2:
         rm.log_message(f"Running counter {counter.name} on instance {path_to_instance}.")
 
     command, counter_dir = fut.construct_command(counter, path_to_instance, memout=memout, timeout=timeout)
+
+    # 1. Start timing
     start_time = time.time()
+
+    # Run the solver
     counter_output, err = fut.run(command.split(), counter_dir + '/', verbosity=verbosity, timeout=timeout)
+
+    # Check errors/timeouts
     error = fut.handle_errors(err, verbosity=verbosity)
     timed_out = fut.handle_timeout(start_time=start_time, timeout=timeout,
                                    counter_name=counter.name, path_to_instance=path_to_instance)
 
-    return fut.parse_counter_output(
+    # 2. Compute total solver time
+    solve_time = time.time() - start_time
+
+    # Parse solver output
+    result_dict = fut.parse_counter_output(
         counter_output, counter, path_to_instance,
-        timed_out=timed_out, error=error, log_dir=log_dir, command=command)
+        timed_out=timed_out, error=error, log_dir=log_dir, command=command
+    )
+
+    # 3. Add solver time to the returned dictionary
+    result_dict["solve_time"] = solve_time
+
+    return result_dict
 
 
 def fuzz(instances: [],
@@ -176,8 +192,8 @@ def fuzz(instances: [],
          verified_counts=None,
          projected=False,
          weighted=False,
-         timeout=10,
-         memout=3200,
+         timeout=720,
+         memout=20000,
          verbosity=1,
          clean_up_proofs=False,
          ):
