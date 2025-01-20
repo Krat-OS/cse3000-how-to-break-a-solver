@@ -74,50 +74,38 @@ def parse_input_file(file_path: str) -> Tuple[str, Dict[str, str]]:
     except Exception as e:
         raise ValueError(f"Error parsing input file: {str(e)}")
 
-
-def create_horn_directories(base_path: str, instances: Dict[str, str]) -> None:
+def create_horn_output_directory(base_path: str) -> Path:
     """
-    Create directories for HORN formula outputs for each generator-difficulty combination.
+    Create a single output directory for all HORN formula outputs.
 
     Args:
-        base_path: Base directory where HORN directories will be created
-        instances: Dictionary mapping generator-difficulty keys to instance names
+        base_path: Base directory where the HORN directory will be created
 
-    Creates directories with pattern: {base_path}/{generator}-HORN-{difficulty}
-
-    Example:
-        For base_path="/sat" and instance "PairSAT-easy", creates:
-        /sat/PairSAT-HORN-easy
+    Returns:
+        Path to the created HORN output directory
 
     Raises:
         PermissionError: If directory creation fails due to permissions
         OSError: If directory creation fails for other reasons
     """
-    for instance_key in instances:
-        generator, difficulty = instance_key.split("-")
-        horn_dir: Path = Path(base_path) / f"{generator}-HORN-{difficulty}"
-        
-        try:
-            horn_dir.mkdir(parents=True, exist_ok=True)
-            print(f"Created directory: {horn_dir}")
-        except PermissionError:
-            print(f"Error: Permission denied creating directory: {horn_dir}")
-        except OSError as e:
-            print(f"Error creating directory {horn_dir}: {e}")
+    horn_dir: Path = Path(base_path) / "HORN"
+    try:
+        horn_dir.mkdir(parents=True, exist_ok=True)
+        print(f"Created directory: {horn_dir}")
+        return horn_dir
+    except PermissionError:
+        raise PermissionError(f"Permission denied creating directory: {horn_dir}")
+    except OSError as e:
+        raise OSError(f"Error creating directory {horn_dir}: {e}")
 
-
-def run_horn_generator(base_path: str, instances: Dict[str, str]) -> None:
+def run_horn_generator(base_path: str, instances: Dict[str, str], output_dir: Path) -> None:
     """
     Execute horn_gen.py to generate HORN formulas for each instance.
 
     Args:
         base_path: Base directory containing input instances
         instances: Dictionary mapping generator-difficulty keys to instance names
-
-    Processes each instance by:
-        1. Extracting seed from instance name
-        2. Constructing input/output paths
-        3. Running horn_gen.py with appropriate parameters
+        output_dir: Path to the single HORN output directory
 
     Command format:
         python horn_gen.py --input={input_path} --output={output_dir} --seed={seed}
@@ -137,7 +125,6 @@ def run_horn_generator(base_path: str, instances: Dict[str, str]) -> None:
         seed: str = get_seed_from_instance(instance_name)
         
         input_path: Path = Path(base_path) / f"{generator}-{difficulty}" / f"{instance_name}.cnf"
-        output_dir: Path = Path(base_path) / f"{generator}-HORN-{difficulty}"
 
         if not input_path.exists():
             print(f"Warning: Input file not found: {input_path}")
@@ -160,22 +147,21 @@ def run_horn_generator(base_path: str, instances: Dict[str, str]) -> None:
             print(f"stdout: {e.stdout}")
             print(f"stderr: {e.stderr}")
 
-
-def rename_horn_files(base_path: str, instances: Dict[str, str]) -> None:
+def rename_horn_files(output_dir: Path, instances: Dict[str, str]) -> None:
     """
     Rename generated HORN formula files to follow the standardized naming convention.
 
     Args:
-        base_path: Base directory containing HORN directories
+        output_dir: Path to the single HORN output directory
         instances: Dictionary mapping generator-difficulty keys to instance names
 
     Naming convention:
         Original: {instance_name}_{idx}.cnf
-        New: {generator}-HORN-{difficulty}-{randomness}_{idx}_{seed}.cnf
+        New: {generator}HORN{difficulty}-{randomness}_{idx}_{seed}.cnf
 
     Example:
         Original: PairSAT-easy-50_015_s10293847561249_000.cnf
-        New: PairSAT-HORN-easy-50_000_s10293847561249.cnf
+        New: PairSATHORNeasy-50_000_s10293847561249.cnf
 
     Note:
         - Extracts randomness value from original instance name
@@ -184,7 +170,6 @@ def rename_horn_files(base_path: str, instances: Dict[str, str]) -> None:
     """
     for instance_key, instance_name in instances.items():
         generator, difficulty = instance_key.split("-")
-        horn_dir: Path = Path(base_path) / f"{generator}-HORN-{difficulty}"
 
         seed_match: Optional[Match[str]] = re.search(r's(\d+)', instance_name)
         rand_match: Optional[Match[str]] = re.search(r'-(\d+)_', instance_name)
@@ -196,20 +181,19 @@ def rename_horn_files(base_path: str, instances: Dict[str, str]) -> None:
         seed: str = seed_match.group(0)
         randomness: str = rand_match.group(1)
 
-        for file in horn_dir.glob("*.cnf"):
+        for file in output_dir.glob("*.cnf"):
             if instance_name in file.name:
                 idx_match: Optional[Match[str]] = re.search(r'_(\d+)\.cnf$', file.name)
                 if idx_match:
                     idx: str = idx_match.group(1)
-                    new_name: str = f"{generator}-HORN-{difficulty}-{randomness}_{idx}_{seed}.cnf"
-                    new_path: Path = horn_dir / new_name
-                    
+                    new_name: str = f"{generator}HORN{difficulty}-{randomness}_{idx}_{seed}.cnf"
+                    new_path: Path = output_dir / new_name
+
                     try:
                         file.rename(new_path)
                         print(f"Renamed: {file.name} -> {new_name}")
                     except OSError as e:
                         print(f"Error renaming {file.name}: {e}")
-
 
 def main() -> None:
     """
@@ -220,7 +204,7 @@ def main() -> None:
 
     Process:
         1. Parses input file for instance mappings and base path
-        2. Creates necessary HORN directories
+        2. Creates a single HORN output directory
         3. Generates HORN formulas using horn_gen.py
         4. Renames output files to follow convention
 
@@ -240,9 +224,9 @@ def main() -> None:
         print(f"Base path: {base_path}")
         print("Processing instances:", instances)
 
-        create_horn_directories(base_path, instances)
-        run_horn_generator(base_path, instances)
-        rename_horn_files(base_path, instances)
+        output_dir = create_horn_output_directory(base_path)
+        run_horn_generator(base_path, instances, output_dir)
+        rename_horn_files(output_dir, instances)
 
     except Exception as e:
         print(f"Error: {str(e)}")
