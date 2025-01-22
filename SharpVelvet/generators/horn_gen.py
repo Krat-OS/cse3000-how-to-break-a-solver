@@ -51,7 +51,7 @@ def generate_solution(clauses, num_vars):
 
     return solution
 
-def make_satisfiable(clauses, num_vars, target_horn_count, instance_index):
+def make_satisfiable(clauses, num_vars, target_horn_count):
     """Ensure the set of clauses is satisfiable while keeping horn clause count as close as possible."""
     solution = generate_solution(clauses, num_vars)
 
@@ -118,12 +118,12 @@ def make_satisfiable(clauses, num_vars, target_horn_count, instance_index):
 
     return clauses
 
-def create_horn_instances(header, clauses, output_folder, base_filename, threads=4):
+def create_horn_instances(header, clauses, output_folder, base_filename, threads=4, count=0):
     """Generate 101 CNF instances with varying numbers of horn clauses."""
     _, _, num_vars, num_clauses = header.split()
     num_vars = int(num_vars)
     num_clauses = int(num_clauses)
-    n = max(num_clauses // 100, 1)
+    n = max(num_clauses // count, 1)
 
     def generate_instance(i):
         if args.seed is not None:
@@ -190,17 +190,18 @@ def create_horn_instances(header, clauses, output_folder, base_filename, threads
     with ThreadPool(threads) as pool:
         pool.map(generate_instance, range(101))
 
-def process_input_file(input_file, output_folder, threads):
+def process_input_file(input_file, output_folder, threads, count):
     """Process a single CNF file and generate horn instances."""
     header, clauses = parse_cnf_file(input_file)
     base_filename = os.path.splitext(os.path.basename(input_file))[0]
-    create_horn_instances(header, clauses, output_folder, base_filename, threads)
+    create_horn_instances(header, clauses, output_folder, base_filename, threads, count)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate CNF instances with varying numbers of horn clauses.")
     parser.add_argument("--input", type=str, required=True, help="Path to the input CNF file.")
     parser.add_argument("--output", type=str, required=True, help="Path to the folder to save output CNF files.")
     parser.add_argument("--threads", type=int, default=4, help="Number of threads for parallel execution.")
+    parser.add_argument("--count", type=int, default=100, help="Number of instances to generate.")
     parser.add_argument("--seed", type=int, default=None, help="Set the random seed (default: None).")
     args = parser.parse_args()
 
@@ -208,4 +209,4 @@ if __name__ == "__main__":
         random.seed(args.seed)
 
     os.makedirs(args.output, exist_ok=True)
-    process_input_file(args.input, args.output, args.threads)
+    process_input_file(args.input, args.output, args.threads, args.count)
