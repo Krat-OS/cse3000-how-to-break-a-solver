@@ -1,6 +1,7 @@
 import sys
 import os
 import argparse
+from decimal import Decimal
 import pandas as pd
 import matplotlib.pyplot as plt
 import mplcursors  # For enabling hover functionality
@@ -132,7 +133,7 @@ def plot_solve_times(seed, solver_filter=None,
                 inst = row["instance_short"]
                 cval = row.get("count_value", None)
                 if pd.notna(cval):
-                    instance_counts[inst][solver] = str(int(cval))
+                    instance_counts[inst][solver] = str(int(float(cval)))
 
     # ---------------------------------------------------
     # If nothing was plotted, exit
