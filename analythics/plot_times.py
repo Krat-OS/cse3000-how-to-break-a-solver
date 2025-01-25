@@ -14,7 +14,7 @@ def plot_solve_times(seed, solver_filter=None,
     directory = "../SharpVelvet/out/"
     files = [f for f in os.listdir(directory) if seed in f and f.endswith(".csv")]
 
-    plt.rcParams.update({'font.size': 16})  # Global font size
+    plt.rcParams.update({'font.size': 20})  # Global font size
 
     if not files:
         print(f"No files found for seed: {seed}")
@@ -89,8 +89,8 @@ def plot_solve_times(seed, solver_filter=None,
         print(f"No data found for solver filter '{solver_filter}'. Exiting.")
         return
 
-    ax1.set_xlabel("Horn Clause Fraction", fontsize=16)
-    ax1.set_ylabel("Solve Time (seconds)", fontsize=16)
+    ax1.set_xlabel("Horn Clause Fraction", fontsize=20)
+    ax1.set_ylabel("Solve Time (seconds)", fontsize=20)
     ax1.grid(True)
 
     legend_labels = []
@@ -99,6 +99,8 @@ def plot_solve_times(seed, solver_filter=None,
         if solver_errors[solver]:
             label_str += " (ERROR)"
         empty_count = solver_empty_counts[solver]
+        solved_count = len(solver_dfs[solver][0][solver_dfs[solver][0]["count_value"].notna()])
+        label_str += f" (Solved: {solved_count})"
         if empty_count > 0:
             label_str += f" (Unsolved: {empty_count})"
         legend_labels.append(
@@ -109,7 +111,7 @@ def plot_solve_times(seed, solver_filter=None,
                        label=label_str)
         )
     if legend_labels:
-        ax1.legend(handles=legend_labels, title="Solvers", loc="upper center", fontsize=16)
+        ax1.legend(handles=legend_labels, title="Solvers", loc="upper center", fontsize=20)
 
     if solver_filter and solver_filter != "all":
         combined_df = pd.concat(solver_dfs[solver_filter], ignore_index=True)
@@ -118,7 +120,7 @@ def plot_solve_times(seed, solver_filter=None,
             combined_df.sort_values(by='index', inplace=True)
 
             ax2 = ax1.twinx()
-            ax2.set_ylabel("Model Count", fontsize=16)
+            ax2.set_ylabel("Model Count", fontsize=20)
             ax2.scatter(
                 combined_df['index'],
                 combined_df['count_value'],
@@ -144,7 +146,7 @@ def plot_solve_times(seed, solver_filter=None,
                     label="Model Count (Fitted)"
                 )
 
-            ax2.legend(loc="upper center", fontsize=16)
+            ax2.legend(loc="upper center", fontsize=20)
 
     if xmin is not None or xmax is not None:
         # Set x-axis limits
