@@ -38,7 +38,7 @@ def generate_solution(clauses, num_vars):
         for lit in clause:
             var = abs(lit)
             if var not in solution:
-                solution[var] = (lit > 0)  # Assign the literal's sign as its value
+                solution[var] = (lit > 0)
                 if len(solution) == num_vars:
                     break
         if len(solution) == num_vars:
@@ -71,8 +71,6 @@ def make_satisfiable(clauses, num_vars, target_horn_count):
                         clause[index] = -abs(lit)
                 if is_clause_satisfied(clause, solution) and len([lit for lit in clause if lit > 0]) <= 1:
                     current_horn_count += 1
-                elif not is_clause_satisfied(clause, solution):
-                    print(f"Error1: Clause not satisfied: {clause}")
             else:
                 if is_clause_satisfied(clause, solution):
                     continue
@@ -86,8 +84,6 @@ def make_satisfiable(clauses, num_vars, target_horn_count):
 
                     if is_clause_satisfied(clause, solution) and len([lit for lit in clause if lit > 0]) > 1:
                         current_horn_count -= 1
-                    elif not is_clause_satisfied(clause, solution):
-                        print(f"Error2: Clause not satisfied: {clause}")
         else:
             if len(positive_literals) > 1:
                 if is_clause_satisfied(clause, solution):
@@ -100,8 +96,6 @@ def make_satisfiable(clauses, num_vars, target_horn_count):
                         clause[index] = -abs(lit)
                 if is_clause_satisfied(clause, solution) and len([lit for lit in clause if lit > 0]) <= 1:
                     current_horn_count += 1
-                elif not is_clause_satisfied(clause, solution):
-                    print(f"Error3: Clause not satisfied: {clause}")
             else:
                 if not (is_clause_satisfied(clause, solution)):
                     for index, lit in negative_literals:
@@ -113,28 +107,22 @@ def make_satisfiable(clauses, num_vars, target_horn_count):
 
                     if is_clause_satisfied(clause, solution) and len([lit for lit in clause if lit > 0]) > 1:
                         current_horn_count -= 1
-                    elif not is_clause_satisfied(clause, solution):
-                        print(f"Error4: Clause not satisfied: {clause}")
 
     return clauses
 
-def create_horn_instances(header, clauses, output_folder, base_filename, threads=4, count=0):
-    """Generate 101 CNF instances with varying numbers of horn clauses."""
+def create_horn_instances(header, clauses, output_folder, base_filename, threads, count):
+    """Generate CNF instances with varying numbers of horn clauses."""
     _, _, num_vars, num_clauses = header.split()
     num_vars = int(num_vars)
     num_clauses = int(num_clauses)
-    n = max(num_clauses // count, 1)
+    step = max(num_clauses // count, 1)
 
     def generate_instance(i):
-        if args.seed is not None:
-            random.seed(i + args.seed)
-        target_horn_clauses = i * n
+        target_horn_clauses = i * step
         modified_clauses = [clause[:] for clause in clauses]  # Deep copy
 
-        # Adjust Horn clauses while maintaining satisfiability
+        # Adjust clauses to match the target horn clause count
         horn_count = count_horn_clauses(modified_clauses)
-        print(f"Instance {i}: Horn count of modified_clauses before tweaks: {horn_count}\n")
-        difference = abs(target_horn_clauses - horn_count)
 
         if horn_count < target_horn_clauses:
             for clause in modified_clauses:
@@ -142,53 +130,40 @@ def create_horn_instances(header, clauses, output_folder, base_filename, threads
                     break
                 positive_literals = [lit for lit in clause if lit > 0]
                 if len(positive_literals) > 1:
-                    literals_to_flip = positive_literals[:-1]
-                    for lit_to_flip in literals_to_flip:
+                    for lit_to_flip in positive_literals[:-1]:
                         clause[clause.index(lit_to_flip)] = -lit_to_flip
                     horn_count += 1
+
         elif horn_count > target_horn_clauses:
             for clause in modified_clauses:
                 if horn_count <= target_horn_clauses:
                     break
                 if len([lit for lit in clause if lit > 0]) <= 1:
                     neg_literals = [lit for lit in clause if lit < 0]
-                    num_to_flip = min(2, len(neg_literals))
-                    for j in range(num_to_flip):
-                        lit_to_flip = neg_literals[j]
+                    for lit_to_flip in neg_literals[:2]:
                         clause[clause.index(lit_to_flip)] = abs(lit_to_flip)
                     if len([lit for lit in clause if lit > 0]) >= 2:
                         horn_count -= 1
 
-        horn_count = count_horn_clauses(modified_clauses)
-        # print(f"Instance {i}: Horn count of modified_clauses before make_satisfiable: {horn_count}\n")
-
-        # ensure satisfiability with 75% chance
         if (random.random() < 0.75):
-            sat_clauses = make_satisfiable(modified_clauses, num_vars, target_horn_clauses, i)
+            sat_clauses = make_satisfiable(modified_clauses, num_vars, target_horn_clauses)
         else:
             # Use the modified clauses directly without guaranteeing satisfiability
             sat_clauses = modified_clauses
 
-        final_horn_count = count_horn_clauses(sat_clauses)
-        # difference = target_horn_clauses - final_horn_count
-        # print(f"Instance {i}: Horn count of sat_clauses after make_satisfiable: {final_horn_count}\n")
-        # print(f"Instance {i}: Target horn clause count: {target_horn_clauses}\n")
-        # print(f"Instance {i}: Difference between target and sat_clauses: {difference}\n")
-        # print(f"__________________________________________________________________________________\n\n")
-
+        # Write the modified instance to a CNF file
         cnf_string = f"{header}\n"
         cnf_string += "c t mc\n"
         for clause in sat_clauses:
             cnf_string += " ".join(map(str, clause)) + " 0\n"
 
-        # Write CNF string to file
         output_file = os.path.join(output_folder, f"{base_filename}_{i:03d}.cnf")
         with open(output_file, 'w') as f:
             f.write(cnf_string)
 
-    # Parallelize using ThreadPool
+    # Parallelize instance generation
     with ThreadPool(threads) as pool:
-        pool.map(generate_instance, range(101))
+        pool.map(generate_instance, range(count))
 
 def process_input_file(input_file, output_folder, threads, count):
     """Process a single CNF file and generate horn instances."""

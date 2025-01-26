@@ -6,6 +6,10 @@ import argparse
 from concurrent.futures import ThreadPoolExecutor
 
 class BipartiteGraph:
+    """
+    Represents a bipartite graph with clauses and variables as nodes.
+    The graph is used to generate constrained CNF formulas.
+    """
     def __init__(self, num_clauses=0, num_vars=0, edges=None):
         self.num_clauses = num_clauses
         self.num_vars = num_vars
@@ -21,29 +25,33 @@ class BipartiteGraph:
                      balanced=False,
                      clause_to_var_ratio=None):
         """
-        Create a bipartite graph subject to constraints:
-          - #clauses in [min_clauses, max_clauses] OR determined by clause_to_var_ratio
-          - #vars in [min_vars, max_vars]
-          - Each clause length in [min_clause_len, max_clause_len] (skewed toward smaller)
-          - Each variable has at least min_refs and at most max_refs references
-          - If balanced=True, distribute variable usage more evenly
-          - If allow_taut=False, do not allow x and -x in the same clause
-          - If clause_to_var_ratio is not None, override #clauses = int(ratio * num_vars)
+        Create a bipartite graph representing a CNF formula subject to constraints:
+        - The number of clauses and variables can be defined or constrained.
+        - Clauses are generated with lengths and references based on specified bounds.
+        - Balancing ensures more even variable usage.
+        - Allows or disallows tautologies in clauses.
+
+        Returns:
+            BipartiteGraph: A bipartite graph object representing the CNF formula.
         """
         num_vars = random.randint(min_vars, max_vars)
 
+        # Determine the number of clauses based on the ratio or fixed range
         if clause_to_var_ratio is not None:
             num_clauses = int(clause_to_var_ratio * num_vars)
         else:
             num_clauses = random.randint(min_clauses, max_clauses)
 
-        edges = []
-        references = {v: 0 for v in range(1, num_vars + 1)}
+        edges = []  # List to store edges (clause-literal pairs)
+        references = {v: 0 for v in range(1, num_vars + 1)}  # Track variable references
 
         def pick_variable():
             """
-            If balanced=True, pick from the least-used variables
-            Otherwise pick any variable that hasn't hit max_refs.
+            Picks a variable for inclusion in a clause. Balancing ensures less-used
+            variables are selected first if enabled.
+
+            Returns:
+                int or None: The selected variable or None if no valid variable exists.
             """
             can_use = [v for v in range(1, num_vars + 1) if references[v] < max_refs]
             if not can_use:
@@ -58,11 +66,12 @@ class BipartiteGraph:
 
         previous_clause_literals = None
 
+        # Generate each clause
         for c in range(1, num_clauses + 1):
             chosen_literals = set()
 
             if c % 2 == 1:
-                # **Odd-Numbered Clauses: Randomly Generated**
+                # Odd-numbered clauses: Randomly generated
                 clause_len = min_clause_len + int(
                     (max_clause_len - min_clause_len) * (random.random() ** 4)
                 )
@@ -83,7 +92,7 @@ class BipartiteGraph:
                     chosen_literals.add(literal)
                     references[abs(literal)] += 1
             else:
-                # **Even-Numbered Clauses: Constrained Generation**
+                # Even-numbered clauses: Constrained generation
                 if previous_clause_literals:
                     chosen_literals = set(previous_clause_literals)
                     flip_count = random.randint(1, len(chosen_literals))
@@ -134,6 +143,7 @@ class BipartiteGraph:
             for lit in chosen_literals:
                 edges.append((c, lit))
 
+        # Ensure each variable meets the minimum reference count
         for var in range(1, num_vars + 1):
             while references[var] < min_refs:
                 clause_lengths = {clause_idx: 0 for clause_idx in range(1, num_clauses + 1)}
@@ -161,97 +171,12 @@ class BipartiteGraph:
 
         return cls(num_clauses, num_vars, edges)
 
-    def _format_clause(self, c):
-        """Format a clause node for text output."""
-        return f"C{c}"
-
-    def _format_var(self, v):
-        """Format a variable node for text output."""
-        if v >= 0:
-            return f"X{v}"
-        else:
-            return f"NX{-v}"
-
-    def to_file(self, filename):
-        """
-        Save the graph to a text file in the specified format:
-        Clauses: N
-        Variables: M
-        Edges:
-        C1 X1
-        C1 NX2
-        ...
-        """
-        with open(filename, 'w') as f:
-            f.write(f"Clauses: {self.num_clauses}\n")
-            f.write(f"Variables: {self.num_vars}\n")
-            f.write("Edges:\n")
-
-            sorted_edges = sorted(self.edges, key=lambda x: (x[0], x[1]))
-
-            for c, v in sorted_edges:
-                f.write(f"{self._format_clause(c)} {self._format_var(v)}\n")
-
-    @classmethod
-    def from_file(cls, filename):
-        """
-        Load a graph from a text file in the specified format.
-        """
-        with open(filename, 'r') as f:
-            line = f.readline().strip()
-            _, n_str = line.split(':')
-            num_clauses = int(n_str.strip())
-
-            line = f.readline().strip()
-            _, m_str = line.split(':')
-            num_vars = int(m_str.strip())
-
-            line = f.readline().strip()
-            if not line.startswith("Edges"):
-                raise ValueError("Expected 'Edges:' line not found.")
-
-            edges = []
-            for line in f:
-                if line.strip():
-                    c_str, v_str = line.strip().split()
-                    c = int(c_str[1:])
-                    if v_str.startswith("NX"):
-                        v = -int(v_str[2:])
-                    else:
-                        v = int(v_str[1:])
-                    edges.append((c, v))
-
-            return cls(num_clauses, num_vars, edges)
-
-    def __str__(self):
-        """
-        Return a string representation of the bipartite graph in the same
-        format as the file:
-          Clauses: N
-          Variables: M
-          Edges:
-          C1 X1
-          C2 NX2
-          ...
-        """
-        lines = [
-            f"Clauses: {self.num_clauses}",
-            f"Variables: {self.num_vars}",
-            "Edges:"
-        ]
-
-        sorted_edges = sorted(self.edges, key=lambda x: (x[0], x[1]))
-        for c, v in sorted_edges:
-            lines.append(f"{self._format_clause(c)} {self._format_var(v)}")
-        return "\n".join(lines)
-
     def to_cnf_string(self):
         """
-        Return the CNF DIMACS format as a string (no intermediate file).
-        Format:
-          - Header: p cnf {num_vars} {num_clauses}
-          - Comment: c t mc
-          - Clauses: each clause as a line ending with 0
+        Convert the bipartite graph to CNF DIMACS format as a string.
+
+        Returns:
+            str: The CNF DIMACS formatted string.
         """
         num_clauses = self.num_clauses
         num_vars = self.num_vars
@@ -260,33 +185,23 @@ class BipartiteGraph:
         for clause, literal in self.edges:
             clause_dict[clause].append(literal)
 
-        lines = []
-        lines.append(f"p cnf {num_vars} {num_clauses}")
-        lines.append("c t mc")
+        lines = [f"p cnf {num_vars} {num_clauses}", "c t mc"]
         for c in range(1, num_clauses + 1):
             clause_line = " ".join(map(str, clause_dict[c])) + " 0"
             lines.append(clause_line)
 
         return "\n".join(lines) + "\n"
 
-    def to_cnf_file(self, filename="instance.cnf"):
-        """
-        Converts the bipartite graph to CNF DIMACS format and saves it to a file.
-        (Kept for compatibility, but we won't use it in the main loop.)
-        """
-        cnf_text = self.to_cnf_string()
-        with open(filename, "w") as f:
-            f.write(cnf_text)
-
     def ensure_satisfiable(self, solution=None):
         """
-        Modifies edges so that the formula is satisfied by the given solution.
-        If solution is None, a random solution is created (var->bool).
-        Then for each clause that is unsatisfied by that solution,
-        one literal is flipped (if needed) to make that clause satisfied.
+        Ensure the formula is satisfiable by modifying literals to satisfy each clause.
+
+        Args:
+            solution (dict): A dictionary mapping variable IDs to their Boolean values.
+                             If None, a random solution is generated.
 
         Returns:
-            dict: The solution (var -> bool) that satisfies the formula.
+            dict: The solution ensuring the formula's satisfiability.
         """
         if solution is None:
             solution = {v: random.choice([True, False]) for v in range(1, self.num_vars + 1)}
@@ -324,15 +239,20 @@ class BipartiteGraph:
         return solution
 
 
-###############################################################################
-# Main script entry point for SharpVelvet compatibility + generating instances
-###############################################################################
-
 def generate_instance(index, args):
-    """Generates a single bipartite graph instance."""
+    """
+    Generate a single bipartite graph instance and ensure satisfiability.
+
+    Args:
+        index (int): The instance index.
+        args (Namespace): Parsed command-line arguments.
+
+    Returns:
+        str: The CNF DIMACS formatted string for the instance.
+    """
     if args.seed is not None:
         random.seed(args.seed + index)
-    
+
     graph = BipartiteGraph.create_graph(
         min_clauses=args.min_clauses,
         max_clauses=args.max_clauses,
@@ -353,6 +273,9 @@ def generate_instance(index, args):
     return graph.to_cnf_string()
 
 def main():
+    """
+    Main function for generating CNF instances using parallel threads.
+    """
     parser = argparse.ArgumentParser(
         description="Generate bipartite graphs (CNF formulas) with constraints in parallel."
     )
@@ -402,4 +325,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

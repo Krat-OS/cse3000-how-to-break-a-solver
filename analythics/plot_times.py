@@ -49,8 +49,8 @@ def plot_solve_times(seed, solver_filter=None,
             solver_empty_counts[solver] += df_empty_count
 
         df['primary_num'] = df['instance'].str.extract(r'_(\d{3})_')[0].astype(int)
-        df['secondary_num'] = df['instance'].str.extract(r'_(\d{3}).cnf$')[0].astype(int)
-        df['index'] = (df['primary_num'] + df['secondary_num'] * 10) / 10.1
+        # df['secondary_num'] = df['instance'].str.extract(r'_(\d{3}).cnf$')[0].astype(int)
+        df['index'] = df['primary_num']
 
         if "count_value" in df.columns:
             df['count_value'] = pd.to_numeric(df['count_value'], errors='coerce')

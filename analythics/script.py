@@ -18,7 +18,7 @@ def main():
         additional_args = sys.argv[2:]  # Everything else
 
     # Call sort.py with the seed
-    subprocess.call(["python", "sort.py", seed])
+    # subprocess.call(["python", "sort.py", seed])
 
     # Call plot_times.py with the seed, solver, and additional arguments
     print(f"Plotting solver: {solver}")
