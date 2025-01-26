@@ -1,6 +1,6 @@
 {
-  "chevu": {
-    "path": "/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/generators/chevu.py",
-    "config": "--seed {seed} > {out_file}"
+  "brummayer": {
+    "path": "/home/vjurisic/cse3000-how-to-break-a-solver/SharpVelvet/generators/cnf-fuzz-brummayer.py",
+    "config": "-i 20 -I 50 -l 3 - L 3 -p 5 -s {seed} -T 3 > {out_file}"
   }
 }
