@@ -173,18 +173,38 @@ def compute_features(cnf_dir: str, features_output_dir: str, satzilla_path: str)
         except ValueError as e:
             satzilla_logger.error(f"Error merging CSV files: {e}")
 
-def process_csv_files(features_output_dir: str):
-    """Process CSV files to remove duplicates."""
+def process_csv_files(features_output_dir: str) -> None:
+    """
+    Remove duplicate rows from CSV files while preserving the first row of each file.
+
+    Processes each CSV file in the given directory by keeping the first row and removing any 
+    subsequent rows that are duplicates of the first row. This ensures the first instance is always
+    preserved in the dataset.
+
+    Args:
+        features_output_dir: Directory path containing the CSV files to process.
+
+    Raises:
+        OSError: If there are file system related errors during processing.
+        pd.errors.EmptyDataError: If a CSV file is empty or cannot be read.
+    """
     for csv_file in os.listdir(features_output_dir):
-        if csv_file.endswith(".csv"):
-            csv_file_path = os.path.join(features_output_dir, csv_file)
-            try:
-                satzilla_logger.info(f"Processing CSV file: {csv_file_path}")
-                df = pd.read_csv(csv_file_path, header=None)
-                first_row = df.iloc[0]
-                df = df[df.ne(first_row).any(axis=1)]
-                df.iloc[0] = first_row
-                df.to_csv(csv_file_path, index=False, header=False)
-                satzilla_logger.info(f"Processed successfully: {csv_file_path}")
-            except Exception as e:
-                satzilla_logger.error(f"Error processing {csv_file_path}: {e}")
+        if not csv_file.endswith(".csv"):
+            continue
+
+        csv_file_path = os.path.join(features_output_dir, csv_file)
+        try:
+            satzilla_logger.info(f"Processing CSV file: {csv_file_path}")
+            df: pd.DataFrame = pd.read_csv(csv_file_path, header=None)
+
+            if len(df) <= 1:
+                continue
+
+            first_row: pd.Series = df.iloc[0].copy()
+            rest_of_df: pd.DataFrame = df.iloc[1:]
+            filtered_df: pd.DataFrame = rest_of_df[rest_of_df.ne(first_row).any(axis=1)]
+            final_df: pd.DataFrame = pd.concat([pd.DataFrame([first_row]), filtered_df])
+            final_df.to_csv(csv_file_path, index=False, header=False)
+            satzilla_logger.info(f"Processed successfully: {csv_file_path}")
+        except Exception as e:
+            satzilla_logger.error(f"Error processing {csv_file_path}: {e}")

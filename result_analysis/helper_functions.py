@@ -9,92 +9,77 @@ from typing import Dict, Tuple, Any, List
 
 def process_csv_data(file_path: str) -> pd.DataFrame:
     """
-    Load a CSV file into a pandas DataFrame.
-
+    Load a CSV file into a pandas DataFrame, handling multiple CSV formats.
     Args:
         file_path (str): Path to the CSV file.
-
     Returns:
-        pd.DataFrame: Loaded DataFrame.
+        pd.DataFrame: Processed DataFrame with consistent formatting.
     """
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"File not found: {file_path}")
+    
     data = pd.read_csv(file_path)
-    if "instance_path" in data.columns:
-        data["instance_name"] = data["instance_path"].apply(
+    
+    # Drop 'Unnamed: 0' column if it exists
+    if 'Unnamed: 0' in data.columns:
+        data.drop(columns=['Unnamed: 0'], inplace=True)
+    
+    if "instance" in data.columns:
+        # Create instance_name from instance_path
+        data["instance_name"] = data["instance"].apply(
             lambda x: os.path.basename(x).replace(".cnf", "")
         )
-        data.drop(columns=["instance_path"], inplace=True)
-    drop_cols = [
-        "est_val", "instance_path", "Unnamed: 0",
-        "est_type", "counter_type", "count_precision", "count_notation", "instance"
-    ]
-    data_cleaned = data.drop(columns=[col for col in drop_cols if col in data.columns], errors="ignore")
-    if "instance_name" in data_cleaned.columns:
-        data_cleaned = data_cleaned.set_index("instance_name")
-    return data_cleaned
-
-def add_seed_magnitude_column(data: pd.DataFrame) -> pd.DataFrame:
-    """
-    Add a column for seed magnitude to the DataFrame.
-
-    Args:
-        data (pd.DataFrame): Input DataFrame containing a 'seed' column.
-
-    Returns:
-        pd.DataFrame: DataFrame with added 'seed_magnitude' column.
-    """
-    data["seed_magnitude"] = data["seed"].apply(
-        lambda x: len(str(int(abs(x)))) if pd.notnull(x) else None
+        data.drop(columns=["instance"], inplace=True)
+    elif "instance_name" not in data.columns:
+        # If neither instance nor instance_name exists,
+        # try to create it from generator and seed
+        if "generator" in data.columns and "seed" in data.columns:
+            data["instance_name"] = data.apply(
+                lambda row: f"{row['generator']}_{row['seed']}",
+                axis=1
+            )
+        else:
+            raise ValueError("Could not find 'instance' or 'instance_name' columns.")
+    
+    # Transform count_value to float instead of integer to handle NaN properly
+    if 'count_value' in data.columns:
+        data['count_value'] = pd.to_numeric(data['count_value'], errors='coerce')
+    
+    # Extract generator based on the naming pattern
+    def extract_generator(x):
+        parts = x.split('_')[0].split('-')  # Split before underscore, then by hyphen
+        if len(parts) >= 3:  # If we have at least 3 parts (generator, difficulty, randomness)
+            return f"{parts[0]}-{parts[1]}-{parts[2]}"
+        return x  # Return original if pattern doesn't match
+    
+    data["generator"] = data["instance_name"].apply(extract_generator)
+    
+    # Extract base generator
+    data["base_generator"] = data["instance_name"].apply(
+        lambda x: x.split("-")[0]
     )
+    
+    # Extract presumed difficulty
+    data["presumed_difficulty"] = data["instance_name"].apply(
+        lambda x: x.split("-")[1]
+    )
+    
+    # Extract randomness value
+    data["randomness"] = data["instance_name"].apply(
+        lambda x: int(x.split("-")[2].split("_")[0])
+    )
+    
+    # Always set index to instance_name
+    if "instance_name" in data.columns:
+        data = data.set_index("instance_name")
+    
     return data
 
-def add_generator_iter_column(data: pd.DataFrame) -> pd.DataFrame:
-    """
-    Adds a 'generator_iter_number' column to the DataFrame by extracting iteration numbers
-    from the 'instance_name' column or index. Assumes the iteration number is in the format
-    '_<number>_s' within the 'instance_name'.
-
-    Args:
-        data (pd.DataFrame): DataFrame containing 'instance_name' in its columns or index.
-
-    Returns:
-        pd.DataFrame: Updated DataFrame with an added 'generator_iter_number' column, where:
-                      - Numbers are extracted from 'instance_name'.
-                      - Missing or unmatched values are replaced with -1.
-    """
-    instance_source: pd.Series = (
-        data["instance_name"] if "instance_name" in data.columns else data.index.to_series()
-    )
-    data["generator_iter_number"] = (
-        instance_source
-        .str.extract(r"_(\d+)_s")[0]
-        .fillna(-1)
-        .astype(int)
-        .values
-    )
-    return data
-
-def add_seed_index_column(data: pd.DataFrame) -> pd.DataFrame:
-    """
-    Add a seed index column to the DataFrame based on the length of seed magnitudes.
-
-    Args:
-        data (pd.DataFrame): DataFrame containing a 'seed' column.
-
-    Returns:
-        pd.DataFrame: DataFrame with added 'seed_index' column.
-    """
-    data["seed_index"] = np.where(
-        data["seed"].notnull() & data["seed"].abs().astype(int).astype(str).str.len().isin([1, 2]),
-        0,
-        np.where(
-            data["seed"].notnull() & data["seed"].abs().astype(int).astype(str).str.len() == 3,
-            1,
-            data["seed"].abs().astype(int).astype(str).str.len()
-        )
-    )
-    return data
+def get_numeric_features(df):
+    """Get numeric features, excluding metadata and time columns"""
+    features_to_exclude = ['seed', 'randomness', 'solved', 'Pre-featuretime', 'Basic-featuretime', 'KLB-featuretime', 'CG-featuretime', 'solve_time', "count_value", "est_val"]
+    numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns
+    return [col for col in numeric_cols if col not in features_to_exclude]
 
 def process_generator_column(data: pd.DataFrame, ordered_generators: List[str]) -> pd.DataFrame:
     """
@@ -225,106 +210,111 @@ def analyze_learning_curves(
 
     return pd.DataFrame(results).dropna()
 
-def merge_data(
-    fuzzing_results: pd.DataFrame,
-    satzilla_features: pd.DataFrame
-) -> pd.DataFrame:
+def _classify_with_cpog(merged_df: pd.DataFrame) -> List[pd.DataFrame]:
     """
-    Merge invalid fuzzer instances with Satzilla features, based on their index
-    (which should be set to 'instance_name' in both data frames).
-
-    Args:
-        fuzzing_results (pd.DataFrame): DataFrame of invalid fuzzer instances.
-        satzilla_features (pd.DataFrame): DataFrame of Satzilla features.
-
-    Returns:
-        pd.DataFrame: Merged DataFrame, containing rows that appear in both.
+    Classify fuzzing results using CPOG verification.
     """
-    # Make sure both DataFrames have 'instance_name' set as index
-    if "instance_name" in fuzzing_results.columns:
-        fuzzing_results = fuzzing_results.set_index("instance_name")
-    if "instance_name" in satzilla_features.columns:
-        satzilla_features = satzilla_features.set_index("instance_name")
+    # 3. CORRECT COUNT
+    correct_mask = merged_df["count_matches"] == True
+    correct_results = merged_df[correct_mask].copy()
+    remaining_df = merged_df[~correct_mask].copy()
+    
+    # 4. INCORRECT COUNT - first pass for clear incorrect counts
+    incorrect_mask = (remaining_df["count_matches"] == False) & (remaining_df["cpog_message"] == "NO ERROR")
+    incorrect_results = remaining_df[incorrect_mask].copy()
+    remaining_df = remaining_df[~incorrect_mask].copy()
+    
+    # 5. Process remaining instances - check count value consistency
+    cpog_errors_list = []
+    if not remaining_df.empty:
+        # Group by instance_name and check count_value consistency
+        instance_groups = remaining_df.groupby(level=0)
+        additional_incorrect = pd.DataFrame()
+        consistent_cpog_errors = pd.DataFrame()
+        
+        for _, group in instance_groups:
+            unique_counts = group["count_value"].unique()
+            if len(unique_counts) > 1:
+                # Multiple count values - do majority vote
+                count_value_counts = group["count_value"].value_counts()
+                majority_count = count_value_counts.index[0]
+                incorrect_mask = group["count_value"] != majority_count
+                additional_incorrect = pd.concat([additional_incorrect, group[incorrect_mask]])
+            else:
+                # Consistent count values - this is a CPOG error
+                consistent_cpog_errors = pd.concat([consistent_cpog_errors, group])
+        
+        # Add instances with inconsistent counts to incorrect_results
+        incorrect_results = pd.concat([incorrect_results, additional_incorrect])
+        
+        # Group remaining CPOG errors by message
+        if not consistent_cpog_errors.empty:
+            for msg in consistent_cpog_errors["cpog_message"].unique():
+                if pd.notna(msg):
+                    subset = consistent_cpog_errors[consistent_cpog_errors["cpog_message"] == msg].copy()
+                    cpog_errors_list.append(subset)
+    
+    return [correct_results, incorrect_results] + cpog_errors_list
 
-    satzilla_features.drop(columns=["generator"], inplace=True, errors="ignore")
-    # Merge on the index
-    merged_df = fuzzing_results.join(satzilla_features, how="inner")
-    return merged_df
+def _classify_with_majority_vote(merged_df: pd.DataFrame) -> List[pd.DataFrame]:
+    """
+    Classify fuzzing results using majority vote across counters.
+    """
+    # Add majority vote column
+    instance_groups = merged_df.groupby(level=0)
+    majority_votes = {}
+    
+    for instance_name, group in instance_groups:
+        count_value_counts = group["count_value"].value_counts()
+        majority_count = count_value_counts.index[0]
+        majority_votes[instance_name] = majority_count
+    
+    merged_df["correct_count_majority_vote"] = merged_df.index.map(majority_votes)
+    merged_df["count_matches_majority"] = merged_df["count_value"] == merged_df["correct_count_majority_vote"]
+    
+    # Classify based on majority vote
+    correct_mask = merged_df["count_matches_majority"] == True
+    correct_results = merged_df[correct_mask].copy()
+    incorrect_results = merged_df[~correct_mask].copy()
+    
+    return [correct_results, incorrect_results]
 
 def classify_fuzzing_results(merged_df: pd.DataFrame) -> List[pd.DataFrame]:
-   """
-   Classify fuzzing results into categories:
-   1. TIMEOUT: Where timed_out is True
-   2. CRASH: Where satisfiability or count_value is NaN/Null
-   3. CORRECT COUNT: Where count_matches is True
-   4. INCORRECT COUNT: Where count_matches is False and cpog_message is "NO ERROR",
-      or where count_values don't match the majority within an instance group
-   5. CPOG errors: Remaining instances with consistent count_values, grouped by cpog_message
-
-   Args:
-       merged_df (pd.DataFrame): DataFrame (already merged with Satzilla features)
-                               containing fuzzing results and relevant columns.
-
-   Returns:
-       List[pd.DataFrame]: A list containing DataFrames for each category:
-           - timeout_results
-           - crash_results
-           - correct_results
-           - incorrect_results
-           followed by DataFrames for each CPOG error message
-   """
-   # 1. TIMEOUT
-   timeout_mask = merged_df["timed_out"] == True if "timed_out" in merged_df.columns else pd.Series(False, index=merged_df.index)
-   timeout_results = merged_df[timeout_mask].copy()
-   remaining_df = merged_df[~timeout_mask].copy()
-
-   # 2. CRASH
-   crash_mask = remaining_df["satisfiability"].isna() | remaining_df["count_value"].isna()
-   crash_results = remaining_df[crash_mask].copy()
-   remaining_df = remaining_df[~crash_mask].copy()
-
-   # 3. CORRECT COUNT
-   correct_mask = remaining_df["count_matches"] == True
-   correct_results = remaining_df[correct_mask].copy()
-   remaining_df = remaining_df[~correct_mask].copy()
-
-   # 4. INCORRECT COUNT - first pass for clear incorrect counts
-   incorrect_mask = (remaining_df["count_matches"] == False) & (remaining_df["cpog_message"] == "NO ERROR")
-   incorrect_results = remaining_df[incorrect_mask].copy()
-   remaining_df = remaining_df[~incorrect_mask].copy()
-
-   # 5. Process remaining instances - check count value consistency
-   cpog_errors_list = []
-   if not remaining_df.empty:
-       # Group by instance_name and check count_value consistency
-       instance_groups = remaining_df.groupby(level=0)
-       
-       additional_incorrect = pd.DataFrame()
-       consistent_cpog_errors = pd.DataFrame()
-       
-       for _, group in instance_groups:
-           unique_counts = group["count_value"].unique()
-           if len(unique_counts) > 1:
-               # Multiple count values - do majority vote
-               count_value_counts = group["count_value"].value_counts()
-               majority_count = count_value_counts.index[0]
-               incorrect_mask = group["count_value"] != majority_count
-               additional_incorrect = pd.concat([additional_incorrect, group[incorrect_mask]])
-           else:
-               # Consistent count values - this is a CPOG error
-               consistent_cpog_errors = pd.concat([consistent_cpog_errors, group])
-       
-       # Add instances with inconsistent counts to incorrect_results
-       incorrect_results = pd.concat([incorrect_results, additional_incorrect])
-       
-       # Group remaining CPOG errors by message
-       if not consistent_cpog_errors.empty:
-           for msg in consistent_cpog_errors["cpog_message"].unique():
-               if pd.notna(msg):
-                   subset = consistent_cpog_errors[consistent_cpog_errors["cpog_message"] == msg].copy()
-                   cpog_errors_list.append(subset)
-
-   return [timeout_results, crash_results, correct_results, incorrect_results] + cpog_errors_list
+    """
+    Classify fuzzing results into categories, using either CPOG verification or majority voting
+    depending on available columns.
+    
+    Args:
+        merged_df (pd.DataFrame): DataFrame containing fuzzing results
+        
+    Returns:
+        List[pd.DataFrame]: A list containing DataFrames for each category:
+        - timeout_results
+        - crash_results
+        - correct_results
+        - incorrect_results
+        followed by DataFrames for each CPOG error message (if using CPOG verification)
+    """
+    # 1. TIMEOUT
+    timeout_mask = merged_df["timed_out"] == True if "timed_out" in merged_df.columns else pd.Series(False, index=merged_df.index)
+    timeout_results = merged_df[timeout_mask].copy()
+    remaining_df = merged_df[~timeout_mask].copy()
+    
+    # 2. CRASH
+    crash_mask = remaining_df["satisfiability"].isna() & remaining_df["count_value"].isna()
+    crash_results = remaining_df[crash_mask].copy()
+    remaining_df = remaining_df[~crash_mask].copy()
+    
+    # Check if CPOG columns exist
+    has_cpog = all(col in remaining_df.columns for col in ["cpog_message", "cpog_count", "count_matches"])
+    
+    # Use appropriate classification method
+    if has_cpog:
+        classification_results = _classify_with_cpog(remaining_df)
+    else:
+        classification_results = _classify_with_majority_vote(remaining_df)
+    
+    return [timeout_results, crash_results] + classification_results
 
 def perform_stratified_rf_analysis(
     data: pd.DataFrame,

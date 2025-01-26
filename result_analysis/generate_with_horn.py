@@ -186,7 +186,7 @@ def rename_horn_files(output_dir: Path, instances: Dict[str, str]) -> None:
                 idx_match: Optional[Match[str]] = re.search(r'_(\d+)\.cnf$', file.name)
                 if idx_match:
                     idx: str = idx_match.group(1)
-                    new_name: str = f"{generator}HORN{difficulty}-{randomness}_{idx}_{seed}.cnf"
+                    new_name: str = f"{generator}HORN-{difficulty}-{randomness}_{idx}_{seed}.cnf"
                     new_path: Path = output_dir / new_name
 
                     try:
