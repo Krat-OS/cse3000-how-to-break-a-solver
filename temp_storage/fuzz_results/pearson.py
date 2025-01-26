@@ -36,7 +36,7 @@ def main():
     count_vals = count_series.loc[common_idx]
 
     # Take square root of count values for Pearson correlation
-    sqrt_count_vals = np.power(count_vals, 1/4)
+    sqrt_count_vals = np.power(count_vals, 30/10)
 
     # If no overlapping data, exit
     if len(time_vals) == 0:
@@ -44,8 +44,8 @@ def main():
         sys.exit(0)
 
     # 6) Pearson’s correlation (linear, with sqrt(count_value))
-    pearson_coef_sqrt, pearson_p_sqrt = pearsonr(time_vals, sqrt_count_vals)
-    print(f"Pearson correlation (with sqrt of count_value):  r = {pearson_coef_sqrt:.3f},  p-value = {pearson_p_sqrt:.3e}")
+    pearson_coef_sqrt, pearson_p_sqrt = pearsonr(time_vals, np.power(count_vals, 1/4))
+    print(f"Pearson correlation (with 1/4 of count_value):  r = {pearson_coef_sqrt:.3f},  p-value = {pearson_p_sqrt:.3e}")
 
     # 7) Spearman’s rank correlation (monotonic)
     spearman_coef, spearman_p = spearmanr(time_vals, count_vals)

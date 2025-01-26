@@ -74,7 +74,7 @@ def main():
     labels = []
 
     # Degree of the polynomial fit
-    poly_degree = 20
+    poly_degree = 15
 
     # -------------------------------------------------------------------------
     # 4) If -time flag is provided, plot time on the left y-axis
@@ -118,7 +118,7 @@ def main():
             print("Error: 'count_value' column not found in CSV.")
             sys.exit(1)
 
-        y_count_all = np.power(pd.to_numeric(df['count_value'], errors='coerce'), 1/4)
+        y_count_all = np.power(pd.to_numeric(df['count_value'], errors='coerce'), 1)
         valid_mask_count = ~y_count_all.isna()
         x_count = x_all[valid_mask_count]
         y_count = y_count_all[valid_mask_count]
