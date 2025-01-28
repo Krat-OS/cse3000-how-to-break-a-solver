@@ -1,0 +1,7 @@
+{
+    "Ganak": {
+        "path":"/path/to/SharpVelvet/model-counters/ganak",
+        "config":" --verb 0 --bveresolvmaxsz 12 --sbva 1 --tdexpmult 1.1 --tdminw 7 --tdmaxw 60 --arjunoraclefindbins 6 --rdbclstarget 10000 {INSTANCE}",
+        "exact":"True"
+    }
+}

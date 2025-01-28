@@ -1,0 +1,7 @@
+{
+    "ExactMC": {
+        "path": "/path/to/SharpVelvet/model-counters/ExactMC/KCBox",
+        "config": "ExactMC --competition --quiet {INSTANCE}",
+        "exact": "True"
+    }
+}

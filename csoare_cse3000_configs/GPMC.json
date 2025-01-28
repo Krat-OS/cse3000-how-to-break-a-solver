@@ -1,0 +1,7 @@
+{
+    "GPMC": {
+        "path": "/path/to/SharpVelvet/model-counters/gpmc",
+        "config":"-mode=0 {INSTANCE}",
+        "exact":"True"
+    }
+}

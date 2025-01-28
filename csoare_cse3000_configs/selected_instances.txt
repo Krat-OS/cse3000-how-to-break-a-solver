@@ -1,0 +1,4 @@
+FuzzSAT-easy: FuzzSAT-easy-100_010_s12345688
+FuzzSAT-hard: FuzzSAT-hard-100_022_s505
+PairSAT-easy: PairSAT-easy-100_016_s1029384772
+PairSAT-hard: PairSAT-hard-100_037_s10293847561271

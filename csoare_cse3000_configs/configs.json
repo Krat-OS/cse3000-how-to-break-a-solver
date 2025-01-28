@@ -1,0 +1,42 @@
+{
+  "FuzzSAT-easy-0": {
+    "path": "/path/to/SharpVelvet/generators/cnf-fuzz-brummayer.py",
+    "config": "-I 30 -i 18 -p 0 -P 0 -l 1 -L 1 -s {seed} -T 0 > {out_file}"
+  },
+  "FuzzSAT-easy-50": {
+    "path": "/path/to/SharpVelvet/generators/cnf-fuzz-brummayer.py",
+    "config": "-I 30 -i 18 -p 45 -P 55 -l 1 -L 3 -s {seed} -T 0 > {out_file}"
+  },
+  "FuzzSAT-easy-100": {
+    "path": "/path/to/SharpVelvet/generators/cnf-fuzz-brummayer.py",
+    "config": "-I 30 -i 18 -p 90 -P 100 -l 1 -L 3 -s {seed} -T 0 > {out_file}"
+  },
+  "FuzzSAT-hard-0": {
+    "path": "/path/to/SharpVelvet/generators/cnf-fuzz-brummayer.py",
+    "config": "-I 50 -i 30 -p 0 -P 0 -l 1 -L 1 -s {seed} -T 0 > {out_file}"
+  },
+  "FuzzSAT-hard-50": {
+    "path": "/path/to/SharpVelvet/generators/cnf-fuzz-brummayer.py",
+    "config": "-I 50 -i 30 -p 45 -P 55 -l 4 -L 6 -s {seed} -T 0 > {out_file}"
+  },
+  "FuzzSAT-hard-100": {
+    "path": "/path/to/SharpVelvet/generators/cnf-fuzz-brummayer.py",
+    "config": "-I 50 -i 30 -p 90 -P 100 -l 4 -L 6 -s {seed} -T 0 > {out_file}"
+  },
+  "PairSAT-easy-0": {
+    "path": "/path/to/SharpVelvet/generators/pairSAT.py",
+    "config": "--min-vars 30 --max-vars 50 --ratio 4.0 --min-clause-len 1 --max-clause-len 3 --min-refs 1 --max-refs 50 --balanced --seed {seed} > {out_file}"
+  },
+  "PairSAT-easy-100": {
+    "path": "/path/to/SharpVelvet/generators/pairSAT.py",
+    "config": "--min-vars 30 --max-vars 50 --min-clauses 150 --max-clauses 240 --min-clause-len 1 --max-clause-len 3 --min-refs 1 --max-refs 50 --seed {seed} > {out_file}"
+  },
+  "PairSAT-hard-0": {
+    "path": "/path/to/SharpVelvet/generators/pairSAT.py",
+    "config": "--min-vars 55 --max-vars 90 --ratio 4.5 --min-clause-len 4 --max-clause-len 6 --min-refs 1 --max-refs 50 --balanced --seed {seed} > {out_file}"
+  },
+  "PairSAT-hard-100": {
+    "path": "/path/to/SharpVelvet/generators/pairSAT.py",
+    "config": "--min-vars 55 --max-vars 90 --min-clauses 375 --max-clauses 525 --min-clause-len 4 --max-clause-len 6 --min-refs 1 --max-refs 50 --seed {seed} > {out_file}"
+  }
+}

@@ -18,4 +18,4 @@ I recommend setting up an `SSH key-pair` and saving the `<user>@<delftblue>` as 
 10. After the SharpVelvet run has finished, you can see SharpVelvet's output in the corresponding `slurm-<jobid>.out` file, and the report should be generated in the usual folder in the `SharpVelvet` directory.
 
 The relevant default parameters I used in the `generate` and `run` script are 12 CPU cores and 15 minutes maximum runtime. This enables instant scheduling with no wait times. When doing actual fuzzing, adjust as needed. However keep in mind that waiting time increases exponentially if requesting many (64/128/etc.) cores for longer periods (1/5/10hours) during periods of peak DelftBlue usage by fellow researchers.
-For the compile script, since conda is slow, I used a default of `30` minutes. 
+For the compile script, since conda is slow, I used a default of `30` minutes.

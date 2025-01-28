@@ -1,51 +1,48 @@
 #!/bin/bash
-#SBATCH --job-name="cpog-verify-instances-cse3000-finding-different-ways-to-break-a-solver"
-#SBATCH --time=24:00:00
+#SBATCH --job-name=""
+#SBATCH --time=02:00:00
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
-#SBATCH --mem-per-cpu=30G
-#SBATCH --partition=compute-p2
-#SBATCH --account=education-eemcs-courses-cse3000
+#SBATCH --cpus-per-task=1
+#SBATCH --mem-per-cpu=4000
 
 ################################################################################
-# CONFIG
+# BASIC CONFIG
 ################################################################################
 
+# Hard-coded path to your project
 PROJECT_PATH="/home/$USER/cse3000-how-to-break-a-solver"
 
-# Minimal user arguments:
-#   1) CSV path (relative or absolute)
-#   2) MAX_WORKERS
-#   3) THREAD_TIMEOUT
-#   4) BATCH_SIZE
-#   5) MEMORY_LIMIT_GB
-CSV_FILE="$1"
-MAX_WORKERS="$2"
-THREAD_TIMEOUT="$3"
-BATCH_SIZE="$4"
-MEMORY_LIMIT_GB="$5"
+# Below: parse minimal user arguments from command line:
+#   1) Generator name (without .json)
+#   2) Input seeds file path
+#   3) num-iter (integer)
+#   4) output directory
+GENERATOR_NAME="$1"
+INPUT_SEEDS="$2"
+NUM_ITER="$3"
+OUT_DIR="$4"
 
-if [[ -z "$CSV_FILE" || -z "$MAX_WORKERS" || -z "$THREAD_TIMEOUT" \
-      || -z "$BATCH_SIZE" || -z "$MEMORY_LIMIT_GB" ]]; then
-  echo "Usage: sbatch cpog_verify.sh <CSV_FILE> <MAX_WORKERS> <THREAD_TIMEOUT> <BATCH_SIZE> <MEMORY_LIMIT_GB>"
-  echo "Example: sbatch cpog_verify.sh /path/to/fuzz-results.csv 4 120 10 8"
+if [[ -z "$GENERATOR_NAME" || -z "$INPUT_SEEDS" || -z "$NUM_ITER" || -z "$OUT_DIR" ]]; then
+  echo "Usage: sbatch generate.sh <GENERATOR_NAME> <INPUT_SEEDS> <NUM_ITER> <OUT_DIR>"
+  echo "Example: sbatch generate.sh MyGenerator input.txt 10 /home/user/out"
   exit 1
 fi
 
 ################################################################################
-# GRACEFUL SHUTDOWN
+# GRACEFUL SHUTDOWN SETUP
 ################################################################################
 
 declare -a PIDS_TO_CLEANUP=()
 
 cleanup() {
     local signal="$1"
-    echo "[cpog_verify.sh] Cleanup invoked..."
+    echo "[generate.sh] Cleanup invoked..."
 
+    # Kill tracked processes in reverse order
     for (( idx=${#PIDS_TO_CLEANUP[@]}-1 ; idx>=0 ; idx-- )) ; do
         local pid="${PIDS_TO_CLEANUP[idx]}"
         if kill -0 "$pid" 2>/dev/null; then
-            echo "[cpog_verify.sh] Terminating PID: $pid..."
+            echo "[generate.sh] Terminating PID: $pid..."
             kill -TERM "$pid" 2>/dev/null
             for _ in {1..5}; do
                 if ! kill -0 "$pid" 2>/dev/null; then
@@ -54,16 +51,16 @@ cleanup() {
                 sleep 1
             done
             if kill -0 "$pid" 2>/dev/null; then
-                echo "[cpog_verify.sh] PID $pid still alive. Sending SIGKILL..."
+                echo "[generate.sh] PID $pid still alive. Sending SIGKILL..."
                 kill -9 "$pid" 2>/dev/null
             fi
         fi
     done
 
-    echo "[cpog_verify.sh] Deactivate venv"
+    echo "[generate.sh] Deactivate venv"
     deactivate 2>/dev/null || true
 
-    echo "[cpog_verify.sh] Cleanup complete."
+    echo "[generate.sh] Cleanup complete."
     if [[ -n "$signal" ]]; then
         exit $((128 + signal))
     fi
@@ -84,42 +81,46 @@ trap 'cleanup 15' TERM
 trap 'cleanup' EXIT
 
 ################################################################################
-# VENV
+# VENV SETUP
 ################################################################################
 
 if [[ ! -d "$PROJECT_PATH/.venv" ]]; then
-  echo "[cpog_verify.sh] Creating Python 3.11 venv..."
+  echo "[generate.sh] Creating Python 3.11 venv at $PROJECT_PATH/.venv"
   python3.11 -m venv "$PROJECT_PATH/.venv" || {
-    echo "Error: Unable to create venv"
+    echo "Error: Unable to create venv with python3.11"
     exit 1
   }
   source "$PROJECT_PATH/.venv/bin/activate"
   pip install -e "$PROJECT_PATH"
 else
+  echo "[generate.sh] Activating existing venv at $PROJECT_PATH/.venv"
   source "$PROJECT_PATH/.venv/bin/activate"
 fi
 
 ################################################################################
-# MAIN
+# MAIN: CALL GLOBAL_CLI.PY generate
 ################################################################################
 
-echo "[cpog_verify.sh] Verifying CSV: $CSV_FILE"
+GENERATOR_JSON="$PROJECT_PATH/SharpVelvet/$GENERATOR_NAME.json"
 
-run_with_tracking \
-  python "$PROJECT_PATH/global_cli.py" cpog_verify \
-  --csv-path "$CSV_FILE" \
-  --max-workers "$MAX_WORKERS" \
-  --thread-timeout "$THREAD_TIMEOUT" \
-  --batch-size "$BATCH_SIZE" \
-  --memory-limit-gb "$MEMORY_LIMIT_GB" \
-  --output-dir "$(dirname "$CSV_FILE")" \
-  --verifier-dir "$PROJECT_PATH/cpog_verifier/cpog" \
-
-if [[ -f "$OUTPUT_FILE" ]]; then
-  echo "[cpog_verify.sh] Verification complete. Output saved to $OUTPUT_FILE"
-else
-  echo "[cpog_verify.sh] Verification failed or output not generated."
+if [[ ! -f "$GENERATOR_JSON" ]]; then
+  echo "Error: generator JSON not found at $GENERATOR_JSON"
   exit 1
 fi
 
-echo "[cpog_verify.sh] Done."
+if [[ ! -f "$INPUT_SEEDS" ]]; then
+  echo "Error: Input seeds file not found at $INPUT_SEEDS"
+  exit 1
+fi
+
+echo "[generate.sh] Using generator JSON: $GENERATOR_JSON"
+echo "[generate.sh] Using input seeds file: $INPUT_SEEDS"
+
+run_with_tracking \
+"$PROJECT_PATH/global_cli.py" --use-slurm generate \
+  --generators "$GENERATOR_JSON" \
+  --input-seeds "$INPUT_SEEDS" \
+  --num-iter "$NUM_ITER" \
+  --out-dir "$OUT_DIR"
+
+echo "[generate.sh] Done."

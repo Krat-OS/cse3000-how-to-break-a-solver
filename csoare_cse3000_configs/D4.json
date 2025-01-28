@@ -1,0 +1,7 @@
+{
+    "D4": {
+        "path":"/path/to/SharpVelvet/model-counters/d4",
+        "config":"{INSTANCE}",
+        "exact":"True"
+    }
+}

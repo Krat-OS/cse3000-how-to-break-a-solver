@@ -20,7 +20,9 @@ dependencies = [
     "pandas==2.2.2",
     "ipykernel",
     "matplotlib",
-    "seaborn"
+    "seaborn",
+    "numpy",
+    "scikit-learn"
 ]
 
 [tool.setuptools.packages.find]
