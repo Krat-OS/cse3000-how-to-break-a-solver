@@ -30,7 +30,7 @@ where = ["."]
 include = [
     "cpog_verifier",
     "result_processor",
-    "result_analysis",
+    "csoare_cse3000_result_analysis",
     "satzilla_feature_extractor",
     "delftblue",
     "final-paper-template-tex",
